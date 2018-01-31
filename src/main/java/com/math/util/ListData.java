@@ -1,4 +1,4 @@
-package com.iu.util;
+package com.math.util;
 
 public class ListData {
 	private String search;
