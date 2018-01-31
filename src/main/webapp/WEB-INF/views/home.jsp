@@ -9,5 +9,6 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<a href="study/studymain">Study</a>
 </body>
 </html>
