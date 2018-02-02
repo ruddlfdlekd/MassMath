@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="ProblemMapper">
-  	<select id="selectOne" parameterType="int" resultType="com.math.data.ProblemDTO">
+  	<select id="selectOne" parameterType="int" resultType="ProblemDTO">
   		select * from problem where pnum=#{pnum}
   	</select>
   </mapper>

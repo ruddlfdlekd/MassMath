@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.math.notice.NoticeDAO" id="noticeDAO">
+		<constructor-arg name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
+	<bean class="com.math.file.FileDAO" id="fileDAO">
+		<constructor-arg name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
+	<bean class="com.math.notice.NoticeService" id="noticeService">
+	<!-- <constructor-arg name="noticeDAO" ref="noticeDAO"/> -->
+		
+	</bean>
+	
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+	<property name="defaultEncoding" value="UTF-8"/>
+	<property name="maxUploadSize" value="10485760"/>
+	</bean>
+	
+
+	
+	
+	
+
+</beans>

@@ -1,6 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Home</title>
 </head>
 <script type="text/x-mathjax-config">
@@ -17,11 +20,10 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-<a href="./problem/result?pnum=1">asdf</a>
-
+<a href="./problem/result?pnum=1">가나다라마바사</a>
+<a href="./notice/noticeList">Notice</a>
  <div>
  
-\[x={ x }_{ 1 }+t\left( x_{ 2 }-{ x }_{ 1 } \right) ,\\ y={ y }_{ 1 }+t({ y }_{ 2 }-{ y }_{ 1 })\]
 
 
  </div>
