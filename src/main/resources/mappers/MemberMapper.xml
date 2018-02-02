@@ -2,9 +2,26 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  	<mapper namespace="MemberMapper">
-  		
-  		
-  		
-  	</mapper>
+
+<mapper namespace="MemberMapper">
+	<!-- Join -->
+	<insert id="memberJoin" parameterType="MemberDTO">
+		insert into member values(#{id},#{pw},#{name},#{address},#{goal},#{birth},0,#{phone},sysdate,sysdate,#{auto_payment})
+	</insert>
+	 
+	
+	<!-- ID Check -->
+	<select id="memberIdCheck" parameterType="String" resultType="MemberDTO">
+		select id from member where id=#{id}
+	</select>
+
+	<!-- Login -->
+	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+		select * from member where id=#{id} and pw=#{pw}
+	</select>
+
+	<!-- My Page -->
+	<select id="memberMyPage" parameterType="String" resultType="MemberDTO">
+		select * from member where id=#{id}
+	</select>
+</mapper>
