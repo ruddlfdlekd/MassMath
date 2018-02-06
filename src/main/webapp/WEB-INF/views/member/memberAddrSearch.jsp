@@ -12,6 +12,9 @@
 		btn.addEventListener("click", function(){
 			window.opener.document.frm.postal_code.value=document.getElementById("sample4_postcode").value;
 			window.opener.document.frm.street.value=document.getElementById("sample4_roadAddress").value;
+			if(window.opener.document.frm.address){
+				window.opener.document.frm.address.remove();	
+			}
 			window.self.close();
 		});
 		

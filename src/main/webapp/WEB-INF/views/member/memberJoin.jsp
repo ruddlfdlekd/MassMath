@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -51,6 +52,12 @@
 		});
 		
 		$("#btn").click(function() {
+			if(email==$("#email").val() && $("#check").val()=="t"){
+		  		alert($("#email").val());
+		  		alert(email);
+			}else{
+				alert("이메일 인증을 다시 해주세요.");
+			} 		
 			if ($("#id").val() && $("#pw").val() && $("#pw2").val() && $("#name").val() && $("#goal").val() && $("#birth").val() && $("#phone").val() && $("#postal_code").val().length > 0) {
 				frm.submit();
 				alert("회원가입 완료");
@@ -58,7 +65,11 @@
 				alert("필수입력사항을 입력해주세요");
 			}
 		});
-		
+		var email="";
+  		$("#btn2").click(function(){
+  			email = $("#email input").val();
+  			window.open("./sendMail?id="+$("#email input").val(),"","top=300, left=750, width=410, height=450");
+  		});
 		
 	});
 
@@ -69,8 +80,19 @@
 	<h1> Member Join </h1>
 	
 	<form action="./memberJoin" method="post" name="frm">
-	<p>ID : <input type="email" name="id" id="id"></p>
+	
+
+	<div id="email">
+		<label>이메일:</label> 
+   		<input type="text" name="email" placeholder="필수항목">
+		<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+    </div>
+    	<input type="button" value="인증번호 발급" id="btn2">
+
 	<div id="result"></div>
+	
+	<p>PW : <input type="text" name="check" id="check" value="f">
+	
 	<p>PW : <input type="password" name="pw" id="pw"><p id="pwcheck"></p>
 	<p>PW_CHECK : <input type="password" id="pw2"><p id="pwcheck2"></p>
 	<p>NAME : <input type="text" name="name" id="name"></p>

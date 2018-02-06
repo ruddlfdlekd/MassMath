@@ -26,7 +26,7 @@
 	
 	<!-- Update -->
 	<update id="memberUpdate" parameterType="MemberDTO">
-		update member pw=#{pw}, name=#{name}, address=#{address}, goal=#{goal}, birth=#{birth}, phone=#{phone}, auto_payment=#{auto_payment} where id=#{id}
+		update member set pw=#{pw}, name=#{name}, address=#{address}, goal=#{goal}, birth=#{birth}, phone=#{phone} where id=#{id}
 	</update>	
 	
 	<!-- Delete -->

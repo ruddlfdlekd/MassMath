@@ -8,7 +8,6 @@ public class MemberDTO {
 	private String address;
 	private int goal;
 	private String birth;
-	private String email;
 	private String level_avg;
 	private String phone;
 	private String join_date;
@@ -51,12 +50,6 @@ public class MemberDTO {
 	}
 	public void setBirth(String birth) {
 		this.birth = birth;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getLevel_avg() {
 		return level_avg;
