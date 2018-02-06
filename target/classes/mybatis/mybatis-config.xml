@@ -5,6 +5,11 @@
   
   <configuration>
   	<typeAliases>
+  		<typeAlias type="java.util.Map" alias="Map"/>
+  		<typeAlias type="com.math.study.StudyDTO" alias="StudyDTO"/>
+  		<typeAlias type="com.math.problem.ProblemDTO" alias="ProblemDTO"/>
+  		<typeAlias type="com.math.util.ListData" alias="ListData"/>
+  		<typeAlias type="com.math.member.MemberDTO" alias="MemberDTO"/>
   	</typeAliases>
   
   </configuration>

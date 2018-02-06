@@ -1,6 +1,6 @@
-package com.math.study;
+package com.math.member;
 
-public class StudyDTO {
+public class MemberDTO {
 	
 	private String id;
 	private String pw;
