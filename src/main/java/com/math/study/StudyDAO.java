@@ -1,5 +1,6 @@
 package com.math.study;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,4 +27,35 @@ public class StudyDAO {
 		
 		return sqlSession.selectList(NAMESPACE+"SelectConcept", problemDTO);
 	}
+	
+	public List<ProblemDTO> CheckProblem(String chapter,String id)throws Exception{
+		ProblemDTO problemDTO= new ProblemDTO();
+		problemDTO.setBook(Integer.parseInt(chapter.charAt(0)+""));
+		problemDTO.setChapter(Integer.parseInt(chapter.charAt(1)+""));
+		problemDTO.setChapter_m(Integer.parseInt(chapter.charAt(2)+""));
+		problemDTO.setChapter_s(Integer.parseInt(chapter.charAt(3)+""));
+		problemDTO.setRate(1);
+		HashMap<String, Object> map =  new HashMap<>();
+		 map.put("problem", problemDTO);
+		 map.put("id", id);
+		
+		return sqlSession.selectList(NAMESPACE+"CheckProblem", map);
+	}
+	
+	public ProblemDTO SelectProblem(int pnum)throws Exception{
+		
+		return sqlSession.selectOne(NAMESPACE+"SelectProblem", pnum);
+		
+	}
+	
+	
+	
+	
+	
+	
+	public int UpdateCount(int pnum)throws Exception{
+		return sqlSession.update(NAMESPACE+"UpdateCount", pnum);
+	}
+	
+	
 }

@@ -12,6 +12,16 @@ public class ProblemDTO {
 	private String contents;
 	private int rate;
 	private String commentary;
+	private int my_answer;
+	
+	
+	
+	public int getMy_answer() {
+		return my_answer;
+	}
+	public void setMy_answer(int my_answer) {
+		this.my_answer = my_answer;
+	}
 	public int getPnum() {
 		return pnum;
 	}

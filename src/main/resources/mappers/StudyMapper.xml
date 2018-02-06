@@ -9,7 +9,13 @@
  		select level_l from member where id=#{id}
  	</select>
  	
- 		
+ 		<select id="CheckProblem" parameterType="map" resultType="ProblemDTO">
+ 		<![CDATA[select * from PROBLEM_DATA_SAVE where id=#{id} and book=#{problem.book} and chapter=#{problem.chapter} and chapter_m=#{problem.chapter_m} and chapter_s=#{problem.chapter_s}]]>
+ 		 </select>
+ 		 
+ 		<select id="SelectProblem" parameterType="int" resultType="ProblemDTO">
+		select a.*, b.my_answer from problem a,problem_data_save b where a.pnum = #{pnum} and b.pnum=#{pnum}
+ 		</select>
  		
  		<select id="SelectConcept" parameterType="ProblemDTO" resultType="ProblemDTO">
  		<![CDATA[select * from 
@@ -17,6 +23,10 @@
  		 where rownum<11]]>
  		 </select>
  		
+ 		
+ 		<update id="UpdateCount" parameterType="ProblemDTO">
+ 		update problem set count=count+1 where pnum = #{pnum}
+ 		</update>
 
   		<!-- <delete id="Delete" parameterType="MemberDTO">
   			delete member where id=#{id}
