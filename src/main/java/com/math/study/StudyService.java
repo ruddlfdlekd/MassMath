@@ -29,6 +29,10 @@ public class StudyService {
 		 }
 		 else{
 			 ar=studyDAO.SelectConcept(chapter);
+			 for(int i=0; i<ar.size(); i++){
+				 ProblemDTO problemDTO = ar.get(i);
+				 studyDAO.SaveProblem(problemDTO);
+			 }
 		 }
 		 return ar;
 		}
@@ -38,6 +42,9 @@ public class StudyService {
 		return studyDAO.UpdateCount(pnum);
 	}
 	
+	public int answerCheck(ProblemDTO problemDTO)throws Exception{
+		return studyDAO.answerCheck(problemDTO);
+	}
 
 
 }

@@ -1,6 +1,7 @@
 package com.math.problem;
 
 public class ProblemDTO {
+	private String id;
 	private int pnum;
 	private int book;
 	private int chapter;
@@ -16,6 +17,12 @@ public class ProblemDTO {
 	
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getMy_answer() {
 		return my_answer;
 	}

@@ -59,6 +59,7 @@ public class StudyController {
 		System.out.println(problemDTO.getPnum());
 		System.out.println("asdf");
 	}
+	
 	/*@RequestMapping(value="study2")
 	public ModelAndView study2(String chapter)throws Exception{
 		chapter +="2";
@@ -82,4 +83,13 @@ public class StudyController {
 		mv.addObject("chapter", chapter);
 		return mv;
 	}*/
+	
+	
+	@RequestMapping(value="answerCheck")
+	public void answerCheck(ProblemDTO problemDTO)throws Exception{
+		problemDTO.setId("iu");
+		studyService.answerCheck(problemDTO);
+	}
+	
+	
 }

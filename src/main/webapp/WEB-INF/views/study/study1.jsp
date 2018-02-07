@@ -10,7 +10,11 @@
 <script type="text/javascript">
 $(function(){
 	$(".answer").click(function(){
-		alert($(this).val());
+		var answer = $(this).val();
+		var num = $(this).attr("title");
+		$.get("./answerCheck?pnum="+num+"&my_answer="+answer,function(data){
+			alert(data);
+		});
 	});
 });
 </script>
@@ -19,10 +23,9 @@ $(function(){
 <h1>문제페이지</h1>
 <form action="study1" method="POST">
 <c:forEach items="${ar}" var="problem" varStatus="i">
-		<input type="hidden" name="pnum" value="pnum">
 		<p>${i.index+1 }문제  ${problem.contents }</p>
 		<c:forEach items="${problem.answerlist.split(',')}" var="answerlist" varStatus="a">
-		<input type="radio" class="answer" name="answer${i.index+1 }" value="${a.index}">${answerlist } ${a.index }
+		<input type="radio"<c:if test="${problem.my_answer == a.index+1}">  checked="checked"</c:if> class="answer" title="${problem.pnum }" name="answer${i.index+1 }" value="${a.index+1}">${answerlist } ${a.index }
 		</c:forEach>
 </c:forEach>
 <button>제출</button>

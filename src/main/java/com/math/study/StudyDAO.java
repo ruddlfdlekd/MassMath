@@ -48,10 +48,16 @@ public class StudyDAO {
 		
 	}
 	
+	public int SaveProblem(ProblemDTO problemDTO)throws Exception{
+
+		return sqlSession.insert(NAMESPACE+"SaveProblem", problemDTO);
+	}
 	
 	
 	
-	
+	public int answerCheck(ProblemDTO problemDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"answerCheck",problemDTO);
+	}
 	
 	public int UpdateCount(int pnum)throws Exception{
 		return sqlSession.update(NAMESPACE+"UpdateCount", pnum);

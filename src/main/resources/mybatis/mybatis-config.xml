@@ -5,6 +5,7 @@
   
   <configuration>
   	<typeAliases>
+  		<typeAlias type="java.util.List" alias="List"/>
   		<typeAlias type="java.util.Map" alias="Map"/>
   		<typeAlias type="com.math.study.StudyDTO" alias="StudyDTO"/>
   		<typeAlias type="com.math.problem.ProblemDTO" alias="ProblemDTO"/>
