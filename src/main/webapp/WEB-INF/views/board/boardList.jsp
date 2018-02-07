@@ -21,10 +21,11 @@
 			document.frm.kind.value='${page.kind}';
 			document.frm.submit();
 		});
+		
 	});
 </script>
 <style type="text/css">
-	.page {
+	.page{
 		cursor: pointer;
 	}
 </style>
@@ -41,9 +42,10 @@
 				<option value="contents">CONTENTS</option>
 			</select>
 			<input type="text" name="search">
-			<input id="btn" type="submit" value="SEARCH">
+		<input id="btn" type="submit" value="SEARCH">
 		</form>
 </div>
+
 	<table>
 		<tr>
 			<td>NUM</td>

@@ -24,6 +24,8 @@ public class NoticeController {
 	@Inject
 	private NoticeService noticeService;
 	
+	
+	
 	@RequestMapping(value="noticeDelete")
 	public String delete(int num, HttpSession session,  RedirectAttributes re)throws Exception{
 		int result= noticeService.delete(num, session);
@@ -38,32 +40,37 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeUpdate", method=RequestMethod.POST)
-	public String noticeUpdate(BoardDTO boardDTO,MultipartFile[] f1, HttpSession session, RedirectAttributes re) throws Exception{
-		 int result = noticeService.update(boardDTO);
-		 int result2 = noticeService.insert2(boardDTO, f1, session);
-			String message="실패 또는 바뀐거 없음";
-			if((result>0)&&(result2>0)){
-				message="Update Success";
-			}
-			
-			re.addFlashAttribute("message", message);
-			return "redirect:./noticeList";
+	public String noticeUpdate(BoardDTO boardDTO, RedirectAttributes re) throws Exception{
 		
+		int result=noticeService.update(boardDTO);
+		String message="Update fail";
+		if(result>0){
+			message="Update success";
+		}
+		
+		re.addFlashAttribute("message", message);
+		re.addFlashAttribute("board", "notice");
+		
+		return "redirect:./noticeList";
 	}
 	
 	
 	@RequestMapping(value="noticeUpdate", method=RequestMethod.GET)
-	public String noticeUpdate(int num, Model model) throws Exception{
+	public ModelAndView noticeUpdate(int num) throws Exception{
+		System.out.println("noticeUpdate:"+num);
+		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO=noticeService.selectOne(num);
-		model.addAttribute("board", "notice");
-		model.addAttribute("view", boardDTO);
-		return "board/boardUpdate";
+		mv.addObject("board", "notice");
+		mv.addObject("view", boardDTO);
+		mv.setViewName("board/boardUpdate");
+		return mv;
 	}
 	
 	@RequestMapping(value="noticeView", method=RequestMethod.GET)
 	public ModelAndView noticeView(int num) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO=noticeService.selectOne(num);
+		noticeService.hitUpdate(boardDTO);
 		mv.addObject("board", "notice");
 		mv.addObject("view", boardDTO);
 		mv.setViewName("board/boardView");
@@ -71,11 +78,9 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeWrite", method=RequestMethod.POST)
-	public String noticeInsert(BoardDTO boardDTO,MultipartFile [] f1,HttpSession session, RedirectAttributes re) throws Exception{
-		System.out.println("====writePost===");
-		int result=noticeService.insert(boardDTO, f1, session);
-		System.out.println(result);
-		return "redirect:../";
+	public String noticeInsert(BoardDTO boardDTO,RedirectAttributes re) throws Exception{
+		int result=noticeService.insert(boardDTO);
+		return "redirect:./noticeList";
 				
 	}
 	
@@ -84,7 +89,6 @@ public class NoticeController {
 		model.addAttribute("board", "notice");
 		return "board/boardWrite";
 	}
-	
 	@RequestMapping(value="noticeList")
 	public ModelAndView selectList(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();

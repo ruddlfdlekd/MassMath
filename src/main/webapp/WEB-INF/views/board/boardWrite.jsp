@@ -5,22 +5,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+ 	$("#btn").click(function(){
+ 		if($("#title").val().length<0){
+ 			alert("title insert");
+ 		}
+ 		$("#frm").submit();
+ 	})
+ 	
+	
+
+});
+</script>
+<style type="text/css">
+
+</style>
 </head>
 <body>
 
 	<h1>${board}Write</h1>
-	<form action="./${board}Write" method="post">
+	<form action="./${board}Write" method="post" id="frm">
 		<p>Email : <input type="text" name="email"></p>
-		<p>Title : <input type="text" name="title"></p>
-		<p>Writer : <input type="text" name="writer"></p>
-		<p>Fname : <input type="text" name="fname"></p>
-		<p>contents : <textarea rows="" cols="" name="contents"></textarea></p>
-		<p><input type="button" value="FileAdd" id="btn"></p>
-		<div id="result">
-		</div>	
+		<p>Title : <input type="text" name="title" id="title" placeholder="Title Insert"></p>
+		<p>Writer : <input type="text" name="writer" id="writer"></p>
+		<p>contents : <textarea rows="" cols="" name="contents" id="contents"></textarea></p>
 		
-		<button>Write</button>
+		<input type="button" value="Write" id="btn">
 	</form>
+	
 
 </body>
 </html>

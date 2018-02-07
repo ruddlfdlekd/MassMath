@@ -13,8 +13,8 @@
 		<p>Email : ${view.email}</p>
 		<p>Title : ${view.title}</p>
 		<p>Writer : ${view.writer}</p>
-		<p>Fname : ${view.fname}</p>
 		<p>contents : ${view.contents}</p>
+		<p>hit : ${view.hit}</p>
 	
 		<a href="${board}Update?num=${view.num}">Update</a>
 		<a href="${board}Delete?num=${view.num}">Delete</a>

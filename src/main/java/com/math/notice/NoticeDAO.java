@@ -21,6 +21,10 @@ public class NoticeDAO implements BoardDAO {
 	public NoticeDAO(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
+	public int hitUpdate(BoardDTO boardDTO) throws Exception{
+		return sqlSession.update(namespace+"hitUpdate", boardDTO);
+	}
 
 	@Override
 	public List<BoardDTO> selectList(ListData listData) throws Exception {
@@ -34,23 +38,22 @@ public class NoticeDAO implements BoardDAO {
 
 	@Override
 	public int insert(BoardDTO boardDTO) throws Exception {
-		return sqlSession.insert(namespace+"noticeInsert", boardDTO);
+		return sqlSession.insert(namespace+"insert", boardDTO);
 	}
 
 	@Override
 	public int update(BoardDTO boardDTO) throws Exception {
-		return sqlSession.update(namespace+"noticeUpdate", boardDTO);
+		return sqlSession.update(namespace+"update", boardDTO);
 	}
 
 	@Override
 	public int delete(int num) throws Exception {
-		return sqlSession.delete(namespace+"noticeDelete", num);
+		return sqlSession.delete(namespace+"delete", num);
 	}
 
 	@Override
 	public int totalCount(ListData listData) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne(namespace+"totalCount", listData);
 	}
 
 }

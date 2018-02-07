@@ -10,7 +10,8 @@
  		<typeAlias type="com.math.util.ListData" alias="ListData"/>
  		<typeAlias type="java.util.Map" alias="Map"/>
  		<typeAlias type="com.math.file.FileDTO" alias="FileDTO"/>
- 		<typeAlias type="com.math.member.MemberDTO" alias="Member"/>
+ 		<typeAlias type="com.math.member.MemberDTO" alias="MemberDTO"/>
+ 		<typeAlias type="com.math.board.BoardDTO" alias="BoardDTO"/>
  		
  	</typeAliases>
  </configuration>
