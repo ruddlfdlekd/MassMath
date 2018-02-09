@@ -12,6 +12,7 @@
  		<typeAlias type="com.math.file.FileDTO" alias="FileDTO"/>
  		<typeAlias type="com.math.member.MemberDTO" alias="MemberDTO"/>
  		<typeAlias type="com.math.board.BoardDTO" alias="BoardDTO"/>
+ 		<typeAlias type="com.math.qna.QnaDTO" alias="QnaDTO"/>
  		
  	</typeAliases>
  </configuration>

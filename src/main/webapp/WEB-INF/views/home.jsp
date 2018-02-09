@@ -22,6 +22,7 @@
 
 <a href="./problem/result?pnum=1">가나다라마바사</a>
 <a href="./notice/noticeList">Notice</a>
+<a href="./qna/qnaList">Qna</a>
  <div>
  
 

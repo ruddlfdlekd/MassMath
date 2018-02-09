@@ -44,8 +44,8 @@ public class FileDAO {
 		return sqlSession.selectList(NAMESPACE+"selectList", num);
 	}
 	
-	public FileDTO selectOne(MemberDTO memberDTO)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"selectOne", memberDTO);
+	public FileDTO selectOne(int num)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"selectOne", num);
 	}
 	
 	public int update(FileDTO fileDTO)throws Exception{
