@@ -2,8 +2,9 @@ package com.math.m1;
 
 
 
-import java.util.ArrayList;
+
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,6 @@ public class StudyController {
 	public ModelAndView study1(String chapter,String id)throws Exception{
 		
 		chapter +="1";
-		System.out.println(chapter);
 		id="iu";
 		List<ProblemDTO> ar = null;
 		ar = studyService.CheckProblem(chapter, id);
@@ -54,17 +54,21 @@ public class StudyController {
 	
 	
 	
-	@RequestMapping(value="study1",method=RequestMethod.POST)
-	public void study1(ProblemDTO problemDTO)throws Exception{
-		System.out.println(problemDTO.getPnum());
-		System.out.println("asdf");
-	}
+	
+	@RequestMapping(value="AnswerCheck", method=RequestMethod.POST)
+	public void study1(String[] pnum,String[] answer,String ma)throws Exception{
+		/*for(int i=0; i<pnum.length; i++){
+		System.out.println(pnum[i]);
+		System.out.println(answer[i]);
+		}*/
+		System.out.println(ma);
+		}
 	
 	/*@RequestMapping(value="study2")
 	public ModelAndView study2(String chapter)throws Exception{
 		chapter +="2";
 		System.out.println(chapter);
-		List<ProblemDTO> ar = new ArrayList<>();
+		List<ProblemDTO> ar = new .ArrayList<>();
 		ar = studyService.SelectConcept(chapter);
 		System.out.println("asdf");
 		
@@ -85,7 +89,7 @@ public class StudyController {
 	}*/
 	
 	
-	@RequestMapping(value="answerCheck")
+	@RequestMapping(value="my_answer")
 	public void answerCheck(ProblemDTO problemDTO)throws Exception{
 		problemDTO.setId("iu");
 		studyService.answerCheck(problemDTO);

@@ -8,7 +8,7 @@ public class ProblemDTO {
 	private int chapter_m;
 	private int chapter_s;
 	private int type;
-	private int anwser;
+	private int answer;
 	private String answerlist;
 	private String contents;
 	private int rate;
@@ -65,11 +65,12 @@ public class ProblemDTO {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public int getAnwser() {
-		return anwser;
+
+	public int getAnswer() {
+		return answer;
 	}
-	public void setAnwser(int anwser) {
-		this.anwser = anwser;
+	public void setAnswer(int answer) {
+		this.answer = answer;
 	}
 	public String getAnswerlist() {
 		return answerlist;

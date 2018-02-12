@@ -1,19 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home</title>
+<title>Insert title here</title>
 </head>
-
-
 <body>
-<h1>
-	Hello world!  
-</h1>
- 
-<P>  The time on the server is ${serverTime}. </P>
-<a href="study/studyPage">학습하기</a>
+<c:forEach items="${Answer}" var="problem" varStatus="i">
+a
+</c:forEach>
+
 </body>
 </html>

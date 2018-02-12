@@ -63,5 +63,4 @@ public class StudyDAO {
 		return sqlSession.update(NAMESPACE+"UpdateCount", pnum);
 	}
 	
-	
 }
