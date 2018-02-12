@@ -57,10 +57,13 @@ public class StudyController {
 	
 	@RequestMapping(value="AnswerCheck", method=RequestMethod.POST)
 	public void study1(String[] pnum,String[] answer,String ma)throws Exception{
-		/*for(int i=0; i<pnum.length; i++){
-		System.out.println(pnum[i]);
-		System.out.println(answer[i]);
-		}*/
+		for(int i=0; i<10; i++){
+			if(answer[i].equals(ma.charAt(i)+""))
+				System.out.println("a");
+			
+			else
+				System.out.println("b");
+			}
 		System.out.println(ma);
 		}
 	

@@ -20,14 +20,13 @@ $(function(){
 		var check = $(".answer");
 		var aa ="";
 		var num =0;
-		alert(check.length);
 		for(var i=0; i<check.length; i++){
 			if(check[i].checked){
-				aa = aa+check[i].value+"";
+				aa = aa+check[i].value;
 				num=num+1;
 			}
 		}
-		alert(aa);
+		$("#ma").val(aa);
 		if(num==10){
 		window.open("","AnswerCheck","width=1000,height=1000");
 		frm.submit();
@@ -39,11 +38,11 @@ $(function(){
 <body>
 <h1>문제페이지</h1>
 <form name="frm" action="./AnswerCheck" method="POST" target="AnswerCheck">
+<input type="text" id="ma" name="ma">
 <c:forEach items="${ar}" var="problem" varStatus="i">
 		<p>${i.index+1 }문제  ${problem.contents }</p>
 		<input type="text" name="pnum" value="${problem.pnum }">
 		<input type="text" name="answer" value="${problem.answer }">
-		<input type="text" id="ma" name="ma">
 		<c:forEach items="${problem.answerlist.split(',')}" var="answerlist" varStatus="a">
 		<input type="radio"<c:if test="${problem.my_answer == a.index+1}">  checked="checked"</c:if> class="answer" title="${problem.pnum }" name="answer${i.index+1}" value="${a.index+1}">${answerlist }
 		</c:forEach>
