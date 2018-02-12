@@ -260,7 +260,7 @@
     appId      : '1591748667546890',
     cookie     : true,  // 쿠키가 세션을 참조할 수 있도록 허용
     xfbml      : true,  // 소셜 플러그인이 있으면 처리
-    version    : 'v2.1' // 버전 2.1 사용
+    version    : 'v2.12' // 버전 2.1 사용
   });
 
   // 자바스크립트 SDK를 초기화 했으니, FB.getLoginStatus()를 호출한다.
