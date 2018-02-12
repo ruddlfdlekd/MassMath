@@ -9,7 +9,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#id").keyup(function() {
+		var email="";
+		var data2="";
+		$("#id").change(function() {
 			var id = $(this).val();
 			$.ajax({
 				url : "./memberIdCheck",
@@ -24,6 +26,7 @@
 						$("#result").css('color', 'red');
 					}
 					$("#result").html(data);
+					data2=$.trim(data);
 				}
 						
 			});						
@@ -52,24 +55,31 @@
 		});
 		
 		$("#btn").click(function() {
-			if(email==$("#email").val() && $("#check").val()=="t"){
-		  		alert($("#email").val());
-		  		alert(email);
+			if( $("#pw").val() != $("#pw2").val()){
+				alert("비밀번호를 확인해주세요");
 			}else{
-				alert("이메일 인증을 다시 해주세요.");
-			} 		
-			if ($("#id").val() && $("#pw").val() && $("#pw2").val() && $("#name").val() && $("#goal").val() && $("#birth").val() && $("#phone").val() && $("#postal_code").val().length > 0) {
-				frm.submit();
-				alert("회원가입 완료");
-			} else {
-				alert("필수입력사항을 입력해주세요");
+				if(email==$("#id").val() && $("#check").val()=="t"){
+					if ($("#id").val() && $("#pw").val() && $("#pw2").val() && $("#name").val() && $("#goal").val() && $("#birth").val() && $("#phone").val() && $("#postal_code").val().length > 0) {
+						frm.submit();
+						alert("회원가입 완료");
+					} else {
+						alert("모든 사항을 입력해주세요.");
+					}
+				}else{
+					alert("이메일 인증을 해주세요.");
+				}
 			}
 		});
-		var email="";
+		
   		$("#btn2").click(function(){
-  			email = $("#email input").val();
-  			window.open("./sendMail?id="+$("#email input").val(),"","top=300, left=750, width=410, height=450");
+  			if(data2=="사용 가능한 ID 입니다."){
+	  			email = $("#email input").val();
+	  			window.open("./sendMail?id="+$("#email input").val(),"","top=300, left=750, width=410, height=450");
+  			}else{
+  				alert("이메일을 다시 확인해주세요.");
+  			}
   		});
+
 		
 	});
 
@@ -83,15 +93,13 @@
 	
 
 	<div id="email">
-		<label>이메일:</label> 
-   		<input type="text" name="email" placeholder="필수항목">
-		<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+		<label>ID :</label> 
+   		<input type="email" id="id" name="id" placeholder="이메일 형식만 가능"> <input type="button" value="인증번호 발급" id="btn2">
     </div>
-    	<input type="button" value="인증번호 발급" id="btn2">
 
 	<div id="result"></div>
 	
-	<p>PW : <input type="text" name="check" id="check" value="f">
+	<input type="hidden" name="check" id="check" value="f">
 	
 	<p>PW : <input type="password" name="pw" id="pw"><p id="pwcheck"></p>
 	<p>PW_CHECK : <input type="password" id="pw2"><p id="pwcheck2"></p>
