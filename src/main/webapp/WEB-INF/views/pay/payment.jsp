@@ -23,16 +23,22 @@
 <script src="https://service.iamport.kr/js/iamport.payment.proxy.js"></script>
 <script type="text/javascript">
 
+
 $(function(){
 	var method ="";
 
 $("#select1").click(function(){
-	
+	select1.style.background = 'black';
+	select2.style.background = 'rgba(62, 62, 62, 0.2)';
+	select1.style.color = 'white';
 	method=$(this).attr("title");
 	
 	alert(method);
 });
 $("#select2").click(function(){
+	select2.style.background = 'red';
+	select1.style.background = 'rgba(62, 62, 62, 0.2)';
+	select2.style.color = 'white';
 	method=$(this).attr("title");
 	alert(method);
 });

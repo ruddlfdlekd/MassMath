@@ -10,4 +10,8 @@ public class IndexController {
 public void index(){
 	
 }
+@RequestMapping(value="indexex")
+public void indexex(){
+	
+}
 }

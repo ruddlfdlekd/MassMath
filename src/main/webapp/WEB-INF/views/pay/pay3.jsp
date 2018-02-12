@@ -14,8 +14,11 @@
 <link href="../resources/css/pay3.css" rel="stylesheet" >
   <style type="text/css">
  
+ 
+ 
     
-}
+    
+
 
 
 
