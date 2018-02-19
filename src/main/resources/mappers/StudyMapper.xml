@@ -37,7 +37,7 @@
  		
  		
  		<select id="Commentary" parameterType="int" resultType="String">
-		select commentary from problem where pnum=#{pnum2}
+		select commentary from problem where pnum=#{pnum}
 		</select>
 		
 		<select id="MyNoteCheck" parameterType="ProblemDTO" resultType="ProblemDTO">
@@ -46,14 +46,24 @@
 		
 		
 		<insert id="MyNote" parameterType="ProblemDTO">
-		insert into mynote values (#{id}, #{pnum}, #{my_answer}, 'wrong', sysdate)
+		insert into mynote values (#{id}, #{pnum}, #{my_answer}, #{reason}, sysdate)
 		</insert>
 		
 		<update id="MyNote2" parameterType="ProblemDTO">
-		update mynote set my_answer=#{my_answer}, reason = 'miss', reg_date = sysdate where id = #{id} and pnum = #{pnum}
+		update mynote set my_answer=#{my_answer}, reason = #{reason}, reg_date = sysdate where id = #{id} and pnum = #{pnum}
 		</update>
 		
+		<delete id="DeleteProblem" parameterType="ProblemDTO">
+		delete problem_data_save where id=#{id} and book=#{book} and chapter=#{chapter} and chapter_m=#{chapter_m} and chapter_s=#{chapter_s} and type=#{type}
+		</delete>
 		
+		<update id="Right" parameterType="int">
+		update problem set rightcount = rightcount+1 where pnum=#{pnum}
+		</update>
+		
+		<select id="SelectChapter" parameterType="int" resultType="ProblemDTO">
+		select * from problem where pnum=#{pnum}
+		</select>
   		<!-- <delete id="Delete" parameterType="MemberDTO">
   			delete member where id=#{id}
   		</delete>

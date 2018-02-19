@@ -8,15 +8,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	$(".btn").click(function(){
-		var answer = $(this).val();
-		var num = $(this).attr("title");
-		$.get("./mynote?pnum="+num+"&my_answer="+answer,function(data){
+		$(window).bind("beforeunload", function (){
+		var a = new Array();
+		var reason = $(".reason");
+		var answer = $(".answer");
+		for(var i=0; i<reason.length; i++){
+		a.push(reason[i].value);
+		a.push(answer[i].title);
+		a.push(answer[i].value);
+		}
+		$.ajax({
+			url : "./myNote",
+		
+			type : 'POST',
+		
+			data : {"a" : a},
+			traditional : true,
+				
+			success:function(data){   
+			alert("aa");
+			},  
 		});
-	
+	/* 	메인페이지로 가지게 설정 */
 	});
 });
-
 </script>
 </head>
 <body>
@@ -24,7 +39,11 @@ $(function(){
 <p>${i.index+1 }번문제 ${a} 정답 : ${answer[i.index]} 내답:${my_answer[i.index]}
 <c:if test="${a eq 'X' }" >
 해설 : ${c[i.index]}
-<button class="btn" title="${pnum[i.index] }" value="${my_answer[i.index] }">오답노트로</button>
+<select class="reason">
+<option value="wrong">Wrong</option>
+<option value="miss">Miss</option>
+</select>
+<input type="hidden" class="answer" value="${pnum[i.index] }" title="${my_answer[i.index] }">
 </c:if>
 </p>
 </c:forEach>

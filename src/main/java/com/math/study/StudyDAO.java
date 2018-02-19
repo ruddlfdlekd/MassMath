@@ -65,8 +65,7 @@ public class StudyDAO {
 	}
 	
 	public String commentary(String pnum)throws Exception{
-		int pnum2 = Integer.parseInt(pnum);
-		return sqlSession.selectOne(NAMESPACE+"Commentary", pnum2);
+		return sqlSession.selectOne(NAMESPACE+"Commentary", Integer.parseInt(pnum));
 	}
 	
 	public ProblemDTO myNoteCheck(ProblemDTO problemDTO)throws Exception{
@@ -78,7 +77,14 @@ public class StudyDAO {
 	public void myNote2(ProblemDTO problemDTO)throws Exception{
 		sqlSession.update(NAMESPACE+"MyNote2",problemDTO);
 	}
+	public ProblemDTO SelectChapter(int pnum)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"SelectChapter", pnum);
+	}
 	
-	
-	
+	public void deleteProblem(ProblemDTO problemDTO)throws Exception{
+		sqlSession.delete(NAMESPACE+"DeleteProblem",problemDTO);
+	}
+	public void right(String pnum)throws Exception{
+		sqlSession.update(NAMESPACE+"Right", Integer.parseInt(pnum));
+	}
 }

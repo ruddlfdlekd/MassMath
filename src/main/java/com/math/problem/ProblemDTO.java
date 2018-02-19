@@ -14,9 +14,15 @@ public class ProblemDTO {
 	private int rate;
 	private String commentary;
 	private int my_answer;
+	private String reason;
 	
 	
-	
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
 	public String getId() {
 		return id;
 	}

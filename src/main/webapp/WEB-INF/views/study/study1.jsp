@@ -28,9 +28,11 @@ $(function(){
 		}
 		$("#ma").val(aa);
 		if(num==10){
-		window.open("","AnswerCheck","width=1000,height=1000");
+		window.open("","AnswerCheck","width=600,height=600");
 		frm.submit();
 		}
+		else
+			alert("정답 다 체크해");
 	});
 });
 </script>

@@ -50,15 +50,23 @@ public class StudyService {
 	public String commentary(String pnum)throws Exception{
 		return studyDAO.commentary(pnum);
 	}
-	public ProblemDTO myNoteCheck(ProblemDTO problemDTO)throws Exception{
-		return studyDAO.myNoteCheck(problemDTO);
+	
+	public void myNote(List<ProblemDTO> ar)throws Exception{
+		for(int i=0; i<ar.size(); i++){
+		ProblemDTO problemDTO =ar.get(i);	
+		ProblemDTO problemDTO2=studyDAO.myNoteCheck(problemDTO);
+		if(problemDTO2 == null)
+			studyDAO.myNote(problemDTO);
+		else
+			studyDAO.myNote2(problemDTO);
+		
+		}
+		ProblemDTO problemDTO3 = studyDAO.SelectChapter(ar.get(0).getPnum());
+		problemDTO3.setId("iu");
+		studyDAO.deleteProblem(problemDTO3);
+		
+	}	 
+	public void right(String pnum)throws Exception{
+		studyDAO.right(pnum);
 	}
-	public void myNote(ProblemDTO problemDTO)throws Exception{
-		studyDAO.myNote(problemDTO);
-	}
-	public void myNote2(ProblemDTO problemDTO)throws Exception{
-		studyDAO.myNote2(problemDTO);
-	}
-
-
 }

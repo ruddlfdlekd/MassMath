@@ -1,4 +1,5 @@
 package com.math.m1;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,7 @@ public class StudyController {
 		for(int i=0; i<10; i++){
 			if(answer[i].equals(ma.charAt(i)+"")){
 				check[i]="O";
+				studyService.right(pnum[i]);
 			}
 			else{
 				check[i]="X";
@@ -108,14 +110,17 @@ public class StudyController {
 	}
 	
 	
-	@RequestMapping(value="mynote")
-	public void mynote(ProblemDTO problemDTO)throws Exception{
+	@RequestMapping(value="myNote", method=RequestMethod.POST)
+	public void myNote(String[] a)throws Exception{
+		ArrayList<ProblemDTO> ar = new ArrayList<>();
+		for(int i =0; i<a.length; i+=3){
+		ProblemDTO problemDTO = new ProblemDTO();
 		problemDTO.setId("iu");
-		ProblemDTO problemDTO2=studyService.myNoteCheck(problemDTO);
-		if(problemDTO2 == null)
-			studyService.myNote(problemDTO);
-		else
-			studyService.myNote2(problemDTO);
-	}
-	
+		problemDTO.setReason(a[i]);
+		problemDTO.setMy_answer(Integer.parseInt(a[i+1]));
+		problemDTO.setPnum(Integer.parseInt(a[i+2]));
+		ar.add(problemDTO);
+		}
+		studyService.myNote(ar);
+}
 }
