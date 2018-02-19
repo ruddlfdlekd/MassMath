@@ -1,10 +1,5 @@
 package com.math.m1;
-
-
-
-
 import java.util.List;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,16 +51,30 @@ public class StudyController {
 	
 	
 	@RequestMapping(value="AnswerCheck", method=RequestMethod.POST)
-	public void study1(String[] pnum,String[] answer,String ma)throws Exception{
+	public ModelAndView study1(String[] pnum,String[] answer,String ma)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String[] check = new String[10];
+		String[] commentary = new String[10];
+		String[] my_answer = new String[10];
 		for(int i=0; i<10; i++){
-			if(answer[i].equals(ma.charAt(i)+""))
-				System.out.println("a");
-			
-			else
-				System.out.println("b");
+			if(answer[i].equals(ma.charAt(i)+"")){
+				check[i]="O";
 			}
-		System.out.println(ma);
+			else{
+				check[i]="X";
+				commentary[i]=studyService.commentary(pnum[i]);
+			} 
+			my_answer[i] = ma.charAt(i)+"";
 		}
+		mv.addObject("check", check);
+		mv.addObject("c", commentary);
+		mv.addObject("pnum", pnum);
+		mv.addObject("answer", answer);
+		mv.addObject("my_answer", my_answer);
+		mv.setViewName("./study/AnswerCheck");
+		return mv;
+	}
+	
 	
 	/*@RequestMapping(value="study2")
 	public ModelAndView study2(String chapter)throws Exception{
@@ -98,5 +107,15 @@ public class StudyController {
 		studyService.answerCheck(problemDTO);
 	}
 	
+	
+	@RequestMapping(value="mynote")
+	public void mynote(ProblemDTO problemDTO)throws Exception{
+		problemDTO.setId("iu");
+		ProblemDTO problemDTO2=studyService.myNoteCheck(problemDTO);
+		if(problemDTO2 == null)
+			studyService.myNote(problemDTO);
+		else
+			studyService.myNote2(problemDTO);
+	}
 	
 }

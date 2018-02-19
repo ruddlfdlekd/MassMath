@@ -31,10 +31,29 @@
  		update problem set count=count+1 where pnum = #{pnum}
  		</update>
  		
- 		<update id="answerCheck" parameterType="ProblemDTO">
+ 		<update id="AnswerCheck" parameterType="ProblemDTO">
  		update problem_data_save set my_answer=#{my_answer} where pnum = #{pnum} and id = #{id}
  		</update>
-
+ 		
+ 		
+ 		<select id="Commentary" parameterType="int" resultType="String">
+		select commentary from problem where pnum=#{pnum2}
+		</select>
+		
+		<select id="MyNoteCheck" parameterType="ProblemDTO" resultType="ProblemDTO">
+		select * from mynote where id=#{id} and pnum=#{pnum}
+		</select>
+		
+		
+		<insert id="MyNote" parameterType="ProblemDTO">
+		insert into mynote values (#{id}, #{pnum}, #{my_answer}, 'wrong', sysdate)
+		</insert>
+		
+		<update id="MyNote2" parameterType="ProblemDTO">
+		update mynote set my_answer=#{my_answer}, reason = 'miss', reg_date = sysdate where id = #{id} and pnum = #{pnum}
+		</update>
+		
+		
   		<!-- <delete id="Delete" parameterType="MemberDTO">
   			delete member where id=#{id}
   		</delete>

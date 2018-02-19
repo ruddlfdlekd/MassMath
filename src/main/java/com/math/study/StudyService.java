@@ -20,17 +20,18 @@ public class StudyService {
 	 public List<ProblemDTO> CheckProblem(String chapter,String id)throws Exception{
 		 List<ProblemDTO> ar = new ArrayList<>();
 		 List<ProblemDTO> list = null;
+		 ProblemDTO problemDTO = null;
 		 list = studyDAO.CheckProblem(chapter, id);
 		 if(list.size()!=0){
 			 for(int i=0; i<list.size(); i++){
-				 ProblemDTO problemDTO = new ProblemDTO();
+				 problemDTO = new ProblemDTO();
 				 ar.add(studyDAO.SelectProblem(list.get(i).getPnum()));
 			 }
 		 }
 		 else{
 			 ar=studyDAO.SelectConcept(chapter);
 			 for(int i=0; i<ar.size(); i++){
-				 ProblemDTO problemDTO = ar.get(i);
+				 problemDTO = ar.get(i);
 				 studyDAO.SaveProblem(problemDTO);
 			 }
 		 }
@@ -45,7 +46,19 @@ public class StudyService {
 	public int answerCheck(ProblemDTO problemDTO)throws Exception{
 		return studyDAO.answerCheck(problemDTO);
 	}
-
+	
+	public String commentary(String pnum)throws Exception{
+		return studyDAO.commentary(pnum);
+	}
+	public ProblemDTO myNoteCheck(ProblemDTO problemDTO)throws Exception{
+		return studyDAO.myNoteCheck(problemDTO);
+	}
+	public void myNote(ProblemDTO problemDTO)throws Exception{
+		studyDAO.myNote(problemDTO);
+	}
+	public void myNote2(ProblemDTO problemDTO)throws Exception{
+		studyDAO.myNote2(problemDTO);
+	}
 
 
 }

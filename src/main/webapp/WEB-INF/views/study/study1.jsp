@@ -38,16 +38,17 @@ $(function(){
 <body>
 <h1>문제페이지</h1>
 <form name="frm" action="./AnswerCheck" method="POST" target="AnswerCheck">
-<input type="text" id="ma" name="ma">
+<input type="hidden" id="ma" name="ma">
 <c:forEach items="${ar}" var="problem" varStatus="i">
 		<p>${i.index+1 }문제  ${problem.contents }</p>
-		<input type="text" name="pnum" value="${problem.pnum }">
-		<input type="text" name="answer" value="${problem.answer }">
+		<input type="hidden" name="pnum" value="${problem.pnum }">
+		<input type="hidden" name="answer" value="${problem.answer }">
 		<c:forEach items="${problem.answerlist.split(',')}" var="answerlist" varStatus="a">
 		<input type="radio"<c:if test="${problem.my_answer == a.index+1}">  checked="checked"</c:if> class="answer" title="${problem.pnum }" name="answer${i.index+1}" value="${a.index+1}">${answerlist }
 		</c:forEach>
 </c:forEach>
 <br>
+
 <input type="button" id="btn" value="제출">
 </form>
 

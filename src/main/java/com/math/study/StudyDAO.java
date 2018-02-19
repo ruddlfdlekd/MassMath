@@ -1,5 +1,6 @@
 package com.math.study;
 
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,11 +57,28 @@ public class StudyDAO {
 	
 	
 	public int answerCheck(ProblemDTO problemDTO)throws Exception{
-		return sqlSession.update(NAMESPACE+"answerCheck",problemDTO);
+		return sqlSession.update(NAMESPACE+"AnswerCheck",problemDTO);
 	}
 	
 	public int UpdateCount(int pnum)throws Exception{
 		return sqlSession.update(NAMESPACE+"UpdateCount", pnum);
 	}
+	
+	public String commentary(String pnum)throws Exception{
+		int pnum2 = Integer.parseInt(pnum);
+		return sqlSession.selectOne(NAMESPACE+"Commentary", pnum2);
+	}
+	
+	public ProblemDTO myNoteCheck(ProblemDTO problemDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"MyNoteCheck",problemDTO);
+	}
+	public void myNote(ProblemDTO problemDTO)throws Exception{
+		sqlSession.insert(NAMESPACE+"MyNote",problemDTO);
+	}
+	public void myNote2(ProblemDTO problemDTO)throws Exception{
+		sqlSession.update(NAMESPACE+"MyNote2",problemDTO);
+	}
+	
+	
 	
 }
