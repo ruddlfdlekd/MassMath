@@ -3,8 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
-  <configuration>
-  	<typeAliases>
-  	</typeAliases>
   
+  <configuration>
+
+
+
+
+
+  <typeAliases>
+
+
+  <typeAlias type="java.util.Map" alias="Map"/>
+  <typeAlias type="com.math.qna.QnaDTO" alias="QnaDTO"/>
+  <typeAlias type="com.math.util.ListData" alias="listData"/>
+  <typeAlias type="com.math.file.FileDTO" alias="FileDTO"/>
+ 
+  </typeAliases>
   </configuration>

@@ -11,6 +11,7 @@
 <a href="pay/pay3">pay</a>
 <a href="index/index3">index</a>
 <a href="index/indexex">indexex</a>
+<a href="qna/qnaList">Qna</a>
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
