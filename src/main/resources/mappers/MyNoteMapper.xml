@@ -2,12 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyNoteMapper">
 	
-	<select id="myNoteList" parameterType="String" resultType="MyNoteDTO">
-		select * from mynote where id=#{id}
+	<!-- 
+	여기서부터 시작해야됩미다
+	가져와야하는 자료들이 무엇인지 확인하고
+	제이슨 파싱해서 테이블을 만들어주는 작업 시작!
+	 -->
+	
+	<select id="myNoteFilter" parameterType="MyNoteListData" resultType="MyNoteDTO">
+		select * from
+		(select rownum R, N.* from
+		(select * from mynote M, problem P
+		where M.id = #{id} and P.pnum = M.num
+		<if test="reason.equals('wrong')">
+			and M.reason = 'wrong'
+		</if>
+		<if test="reason.equals('miss')">
+			and m.reason = 'miss'
+		</if>
+		<if test="books != null">
+			and P.book in 
+			<foreach item="bs" index="index" collection="books" open="(" separator="," close=")">
+				#{bs}
+			</foreach>
+		</if>
+		order by reg_date desc) N)
+		where R between #{startRow} and #{lastRow}
+		
+	</select>
+	 
+	<select id="totalCount" parameterType="MyNoteListData" resultType="int">
+		select nvl(count(num),0) from mynote M, problem P
+		where M.id = #{id} and P.pnum = M.num
+	</select>
+	
+	<select id="myNoteList" parameterType="MyNoteListData" resultType="MyNoteDTO">
+		SELECT * from mynote M, problem P
+		where M.num = P.pnum and M.id=#{id}
+		order by reg_date desc
 	</select>
 	
 	<delete id="myNoteDelete" parameterType="MyNoteDTO">
-		delete from mynote where id=#{id} and pnum=#{pnum}
+		delete from mynote where id=#{id} and num=#{num}
 	</delete>
 	
 	<insert id="myNoteInsert" parameterType="MyNoteDTO">

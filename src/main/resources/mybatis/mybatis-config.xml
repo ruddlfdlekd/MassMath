@@ -7,5 +7,6 @@
   	<typeAliases>
   		<typeAlias type="com.math.member.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.math.myNote.MyNoteDTO" alias="MyNoteDTO"/>
+		<typeAlias type="com.math.util.MyNoteListData" alias="MyNoteListData"/>	
   	</typeAliases>
   </configuration>
