@@ -108,7 +108,14 @@
 				<input type="text" placeholder="도로명주소" name="street" id="street" class="join_in"><br>
 				<input type="text" placeholder="나머지주소" name="street2" id="street2" class="join_in">
 	</p>
-	<p>GOAL : <input type="text" name="goal" id="goal"></p>
+	<p>GOAL : <select name="goal" id="goal">
+				<script>
+					for(i=1;i<101;i++){
+						document.write("<option value="+i+">"+i+"</option>");
+					}
+				</script>	
+			 </select>
+	</p>
 	<p>BIRTH : <input type="date" name="birth" id="birth"></p>
 	<p>PHONE : <input type="text" name="phone" id="phone"></p>
 	<input type="hidden" name="auto_payment" value="0">	 <!-- 0이면 X, 1이면 O -->

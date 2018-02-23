@@ -19,7 +19,7 @@ public class MemberService {
 		return memberDAO.memberJoin(memberDTO);
 	}
 	
-	// kakao Login
+	// api Login
 	public int memberJoin2(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberJoin2(memberDTO);
 	}

@@ -83,7 +83,14 @@ $(function() {
 				<input type="text" placeholder="도로명주소" name="street" id="street" class="join_in"><br>
 				<input type="text" placeholder="나머지주소" name="street2" id="street2" class="join_in">
 	</p>
-	<p>GOAL : <input type="text" name="goal" id="goal" value="${member.goal}"></p>
+	<p>GOAL : <select name="goal" id="goal">
+				<script>
+					for(i=1;i<101;i++){
+						document.write("<option value="+i+">"+i+"</option>");
+					}
+				</script>	
+			 </select>
+	</p>
 	<p>BIRTH : <input type="text" name="birth" id="birth" value="${member.birth}"></p>
 	<p>PHONE : <input type="text" name="phone" id="phone" value="${member.phone}"></p>
 	<p><input type="button" value="UP" id="btn"></p>

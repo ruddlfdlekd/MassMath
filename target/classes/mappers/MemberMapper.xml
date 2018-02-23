@@ -8,7 +8,8 @@
 	<insert id="memberJoin" parameterType="MemberDTO">
 		insert into member values(#{id},#{pw},#{name},#{address},#{goal},#{birth},0,#{phone},sysdate,sysdate,#{auto_payment})
 	</insert>
-	<!-- Kakao Login -->
+	
+	<!-- Api Login -->
 	<insert id="memberJoin2" parameterType="MemberDTO">
 		insert into member (id, pw, name) values (#{id},#{pw},#{name})
 	</insert>
@@ -20,11 +21,6 @@
 
 	<!-- Login -->
 	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
-		select * from member where id=#{id} and pw=#{pw}
-	</select>
-	
-	<!-- kakao Login -->
-	<select id="kakaoLogin" parameterType="MemberDTO" resultType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
 

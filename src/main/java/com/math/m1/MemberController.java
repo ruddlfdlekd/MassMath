@@ -32,18 +32,22 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
-	// kakao Login
-	@RequestMapping(value = "kakaoLogin", method = RequestMethod.GET)
-	public ModelAndView kakaoLogin(MemberDTO memberDTO, HttpSession session, HttpServletRequest request) throws Exception {
+	// api Login
+	@RequestMapping(value = "apiLogin", method = RequestMethod.GET)
+	public ModelAndView apiLogin(MemberDTO memberDTO, int api, HttpSession session, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		memberDTO.setPw("kakao");
 		int result=0;
 		MemberDTO memberDTO2 = memberService.memberLogin(memberDTO);
 		if(memberDTO2==null){		
-			session.setAttribute("member", memberDTO);
+			if(api==0){
+				memberDTO.setPw("kakao");
+			}else if(api==1){
+				memberDTO.setPw("facebook");
+			}
 			result = memberService.memberJoin2(memberDTO);
 			mv.addObject("path", "apiMemberUpdate");
 			if (result > 0) {
+				session.setAttribute("member", memberDTO);
 				mv.addObject("message", "로그인 성공");
 			} else {
 				mv.addObject("message", "로그인 실패");
