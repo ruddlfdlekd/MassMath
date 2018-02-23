@@ -31,7 +31,43 @@ public class MemberController {
 
 	@Inject
 	private MemberService memberService;
+	
+	// api Login
+	@RequestMapping(value = "apiLogin", method = RequestMethod.GET)
+	public ModelAndView apiLogin(MemberDTO memberDTO, int api, HttpSession session, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result=0;
+		MemberDTO memberDTO2 = memberService.memberLogin(memberDTO);
+		if(memberDTO2==null){		
+			if(api==0){
+				memberDTO.setPw("kakao");
+			}else if(api==1){
+				memberDTO.setPw("facebook");
+			}
+			result = memberService.memberJoin2(memberDTO);
+			mv.addObject("path", "apiMemberUpdate");
+			if (result > 0) {
+				session.setAttribute("member", memberDTO);
+				mv.addObject("message", "로그인 성공");
+			} else {
+				mv.addObject("message", "로그인 실패");
+			}
+		}else {
+			session.setAttribute("member", memberDTO);
+			mv.addObject("message", "로그인 성공");
+			mv.addObject("path", "../");
+		}
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
 
+	// Api Member Update
+	@RequestMapping(value = "apiMemberUpdate", method = RequestMethod.GET)
+	public void apiMemberUpdate() {
+	}
+	
 	// Join
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void memberJoin() {
@@ -84,7 +120,7 @@ public class MemberController {
 		String checkmsg = "";
 		try {
 			System.out.println(memberDTO.getId());
-			mv.addObject("email", memberDTO.getId());
+			mv.addObject("id", memberDTO.getId());
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -193,10 +229,11 @@ public class MemberController {
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("message", message);
-		mv.addObject("path", "memberMyPage");
+		mv.addObject("path", "../");
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
 
 	// Delete
 	@RequestMapping(value = "memberDelete")

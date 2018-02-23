@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html">
 <html>
 <head>
@@ -19,6 +20,9 @@
 	<p>JOIN DATE : ${member.join_date}</p>
 
 	<p>
+	<c:if test="${member.pw eq 'kakao'}">
+		<a href="./apiMemberUpdate?id=${member.id}">UPDATE</a> 
+	</c:if>
 		<a href="./memberUpdate?id=${member.id}">UPDATE</a> 
 		<a href="./memberDelete">DELETE</a>
 	</p>

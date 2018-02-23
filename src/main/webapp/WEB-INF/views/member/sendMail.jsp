@@ -21,7 +21,7 @@ $(function(){
 		if(${number}==$("#un").val()){
 			alert("성공");
 			$("#form").submit();
-			window.opener.document.frm.email.value = "${email}";
+			window.opener.document.frm.id.value = "${id}";
 			window.opener.document.frm.check.value = "t";
 			window.self.close();	
 						
@@ -48,7 +48,7 @@ $(function(){
 		<div class="center-block" style="width: 100px; margin-top: 70px;">
 			<input type="button" class="btn btn-default btn-sm" value="인증확인" id="btn"> 
 		</div>
-		<input type="hidden" value="${email}" name="email"> 
+		<input type="hidden" value="${id}" name="id"> 
 		<input type="hidden" value="t" name="check">
 	</form>
 	</section>

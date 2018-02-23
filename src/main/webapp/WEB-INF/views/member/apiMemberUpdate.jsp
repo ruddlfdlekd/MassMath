@@ -9,42 +9,12 @@
 <script type="text/javascript">
 $(function() {
 
-	$("#id").keyup(function() {
-		var id = $(this).val();
-		$.ajax({
-			url : "./memberIdCheck",
-			type : "GET",
-			data : {
-				id : id
-			},
-			success : function(data) {
-				if($.trim(data) == "사용 가능한 ID 입니다."){
-					$("#result").css('color', 'blue');
-				}else{
-					$("#result").css('color', 'red');
-				}
-				$("#result").html(data);
-			}
-					
-		});						
-		
+	$("#btn").click(function() {
+		$("#frm").submit();	
 	});
-	
-	$("#pw").keyup(function() {
-		if ($("#pw").val().length > 7) {
-			$("#pwcheck").text("사용가능한 비밀번호 입니다");
-		} else {
-			$("#pwcheck").text("비밀번호는 8자리 이상이여야 합니다");
-		}
-	});
-	
-	$("#pw2").keyup(function() {
-		if ($("#pw").val() == $("#pw2").val()) {
-			$("#pwcheck2").text("비밀번호가 일치합니다");
-		} else {
-			$("#pwcheck2").text("비밀번호가 일치 하지 않습니다");
-		}
-	});
+});
+
+$(function() {
 	
 	$("#nn").click(function() {
 		//var addr = document.frm.addr.value;
@@ -52,16 +22,14 @@ $(function() {
 	});
 	
 	$("#btn").click(function() {
-		if($("#pw").val() == $("#pw2").val() ){			
-			if ($("#pw").val() && $("#pw2").val() && $("#name").val() && $("#goal").val() && $("#birth").val() && $("#phone").val() && $("#postal_code").val().length > 0) {
+			
+			if ($("#name").val() && $("#goal").val() && $("#birth").val() && $("#phone").val() && $("#postal_code").val().length > 0) {
 				frm.submit();
-				alert("정보 수정 완료");
+				alert("정보수정 완료");
 			} else {
 				alert("필수입력사항을 입력해주세요");
 			}
-		}else{
-			alert("비밀번호를 확인해주세요");
-		}
+		
 	});
 	
 	
@@ -75,8 +43,7 @@ $(function() {
 
 	<form id="frm" action="memberUpdate" method="post" name="frm">
 	<p>ID : <input type="text" name="id" id="id" readonly="readonly" value="${member.id}">${member.id}</p>
-	<p>PW : <input type="password" name="pw" id="pw" value="${member.pw}"></p>
-	<p>PW_CHECK : <input type="password" id="pw2"><p id="pwcheck2"></p>
+	<p>PW : <input type="hidden" name="pw" id="pw" value="${member.pw}"></p>
 	<p>NAME : <input type="text" name="name" id="name" value="${member.name}"></p>
 	<p>ADDRESS :<input type="text" readonly="readonly" name="address" value="${member.address}"> <input type="button" value="주소 변경" id="nn" class="btn btn-default"><br>
 				<input type="text" placeholder="우변번호" name="postal_code" id="postal_code" class="join_in"> <br>
@@ -91,7 +58,7 @@ $(function() {
 				</script>	
 			 </select>
 	</p>
-	<p>BIRTH : <input type="text" name="birth" id="birth" value="${member.birth}"></p>
+	<p>BIRTH : <input type="date" name="birth" id="birth" value="${member.birth}"></p>
 	<p>PHONE : <input type="text" name="phone" id="phone" value="${member.phone}"></p>
 	<p><input type="button" value="UP" id="btn"></p>
 	</form>

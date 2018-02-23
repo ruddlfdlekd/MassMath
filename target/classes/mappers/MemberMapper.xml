@@ -8,6 +8,11 @@
 	<insert id="memberJoin" parameterType="MemberDTO">
 		insert into member values(#{id},#{pw},#{name},#{address},#{goal},#{birth},0,#{phone},sysdate,sysdate,#{auto_payment})
 	</insert>
+	
+	<!-- Api Login -->
+	<insert id="memberJoin2" parameterType="MemberDTO">
+		insert into member (id, pw, name) values (#{id},#{pw},#{name})
+	</insert>
 	 
 	<!-- ID Check -->
 	<select id="memberIdCheck" parameterType="String" resultType="MemberDTO">

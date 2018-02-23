@@ -18,6 +18,11 @@ public class MemberDAO {
 	public int memberJoin(MemberDTO memberDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 	}
+	
+	//kakao Login
+	public int memberJoin2(MemberDTO memberDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"memberJoin2", memberDTO);
+	}
 
 	//IdCheck
 	public MemberDTO memberIdCheck(String id) throws Exception{

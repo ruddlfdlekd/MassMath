@@ -18,6 +18,11 @@ public class MemberService {
 	public int memberJoin(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberJoin(memberDTO);
 	}
+	
+	// api Login
+	public int memberJoin2(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberJoin2(memberDTO);
+	}
 
 	// ID Check
 	public MemberDTO memberIdCheck(String id) throws Exception {
