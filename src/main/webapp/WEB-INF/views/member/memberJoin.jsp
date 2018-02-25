@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JOIN</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="/m1/resources/join.css" rel="stylesheet">
 <script type="text/javascript">
 	$(function() {
 		var email="";
@@ -87,28 +88,38 @@
 </script>
 </head>
 <body>
-	<h1> Member Join </h1>
-	
-	<form action="./memberJoin" method="post" name="frm">
+<div class="join-center">
+	<h2> 회원가입 </h2>
+	<h6> 가입 버튼을 누르면 이용약관과 정책에 동의한 것으로 간주합니다</h6>
+	<form action="memberJoin" method="post" name="frm">
 	
 
 	<div id="email">
-		<label>ID :</label> 
-   		<input type="email" id="id" name="id" placeholder="이메일 형식만 가능"> <input type="button" value="인증번호 발급" id="btn2">
+		<label>ID </label>
+		<p><input type="email" id="id" name="id" placeholder="  이메일 형식만 가능"><input type="button" value="인증번호 발급" id="btn2"></p>
     </div>
 
 	<div id="result"></div>
 	
 	<input type="hidden" name="check" id="check" value="f">
 	
-	<p>PW : <input type="password" name="pw" id="pw"><p id="pwcheck"></p>
-	<p>PW_CHECK : <input type="password" id="pw2"><p id="pwcheck2"></p>
-	<p>NAME : <input type="text" name="name" id="name"></p>
-	<p>ADDRESS : <input type="text" placeholder="우변번호" name="postal_code" id="postal_code" class="join_in"> <input type="button" value="우편번호 찾기" id="nn" class="btn btn-default"><br>
+	<label>PW </label>
+	<p class="p"><input type="password" placeholder="  비밀번호를 입력해주세요" name="pw" id="pw"><p id="pwcheck"></p>
+	
+	<label>PW_CHECK </label>
+	<p class="p"><input type="password" placeholder="  비밀번호를 확인해주세요" id="pw2"><p id="pwcheck2"></p>
+	
+	<label>NAME </label>
+	<p class="p"><input type="text" placeholder="  이름을 입력해주세요" name="name" id="name"></p>
+	
+	<label>ADDRESS </label>
+	<p class="p"><input type="text" placeholder="우변번호" name="postal_code" id="postal_code" class="join_in"> <input type="button" value="우편번호 찾기" id="nn" class="btn btn-default"><br>
 				<input type="text" placeholder="도로명주소" name="street" id="street" class="join_in"><br>
 				<input type="text" placeholder="나머지주소" name="street2" id="street2" class="join_in">
 	</p>
-	<p>GOAL : <select name="goal" id="goal">
+	
+	<label>GOAL </label>
+	<p><select name="goal" id="goal">
 				<script>
 					for(i=1;i<101;i++){
 						document.write("<option value="+i+">"+i+"</option>");
@@ -116,11 +127,15 @@
 				</script>	
 			 </select>
 	</p>
-	<p>BIRTH : <input type="date" name="birth" id="birth"></p>
-	<p>PHONE : <input type="text" name="phone" id="phone"></p>
+	
+	<label>BIRTH </label>
+	<p class="p"><input type="date" name="birth" id="birth"></p>
+	
+	<label>PHONE </label>
+	<p class="p"><input type="text" placeholder="  휴대폰 번호를 입력해주세요" name="phone" id="phone"></p>
 	<input type="hidden" name="auto_payment" value="0">	 <!-- 0이면 X, 1이면 O -->
 	<p><input type="button" id="btn" value="JOIN"></p>	
 	</form>
-	
+</div>
 </body>
 </html>

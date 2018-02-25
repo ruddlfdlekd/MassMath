@@ -24,6 +24,11 @@
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
 
+	<!-- Login2 -->
+	<select id="memberLogin2" parameterType="MemberDTO" resultType="MemberDTO">
+		select * from member where id=#{id}
+	</select>
+
 	<!-- My Page -->
 	<select id="memberMyPage" parameterType="String" resultType="MemberDTO">
 		select * from member where id=#{id}

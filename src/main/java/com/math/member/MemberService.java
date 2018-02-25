@@ -33,6 +33,10 @@ public class MemberService {
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberLogin(memberDTO);
 	}
+	// Login
+	public MemberDTO memberLogin2(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberLogin2(memberDTO);
+	}
 
 	// MyPage
 	public MemberDTO memberMyPage(String id) throws Exception {

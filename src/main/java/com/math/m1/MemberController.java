@@ -37,12 +37,14 @@ public class MemberController {
 	public ModelAndView apiLogin(MemberDTO memberDTO, int api, HttpSession session, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result=0;
-		MemberDTO memberDTO2 = memberService.memberLogin(memberDTO);
+		System.out.println(memberDTO.getId());
+		MemberDTO memberDTO2 = memberService.memberLogin2(memberDTO);
 		if(memberDTO2==null){		
 			if(api==0){
 				memberDTO.setPw("kakao");
 			}else if(api==1){
 				memberDTO.setPw("facebook");
+				System.out.println(memberDTO.getPw());
 			}
 			result = memberService.memberJoin2(memberDTO);
 			mv.addObject("path", "apiMemberUpdate");
@@ -55,7 +57,7 @@ public class MemberController {
 		}else {
 			session.setAttribute("member", memberDTO);
 			mv.addObject("message", "로그인 성공");
-			mv.addObject("path", "../");
+			mv.addObject("path", "../login");
 		}
 		
 		mv.setViewName("common/result");
@@ -66,6 +68,10 @@ public class MemberController {
 	// Api Member Update
 	@RequestMapping(value = "apiMemberUpdate", method = RequestMethod.GET)
 	public void apiMemberUpdate() {
+	}
+	
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public void login() {
 	}
 	
 	// Join
@@ -87,7 +93,7 @@ public class MemberController {
 			mv.addObject("message", "회원가입 실패");
 		}
 
-		mv.addObject("path", "../");
+		mv.addObject("path", "../login");
 		mv.setViewName("common/result");
 
 		return mv;

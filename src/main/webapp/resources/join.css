@@ -1,4 +1,132 @@
 @CHARSET "UTF-8";
-#logo{
+body{
+	background-color: #49aee4;
+}
+.login-center{
+	width: 20%;
+	margin-left: 40%;
+	margin-right: 40%;
+	margin-top: 15%;
+	text-align: center;
+}
+.facebook{
+	margin-top: 45px;
+}
+.kakao, .facebook{
+	width: 100%;
+	margin-bottom: 2%;
+}
+.email-login{
+	margin-top: 20px;
+}
+#email-join{
+	background-color: white;
+	padding-left: 40px;
+	padding-top:10px;
+	padding-bottom: 10px;
+	padding-right: 40px;
+	border-radius: 1em;
+	font-size: medium;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+}
+.email-login > a{
+	font-size: small;
+	text-decoration: none;	
+	color: white;
+}
+.email-login > p{
+	margin-top: 30px;
+	color: black;
+	font-size: small;
+	font-weight: bold;
+}
+
+/************JOIN************/
+.join-center{
+	width: 25%;
 	margin: 0 auto;
+	padding-top: 5%;
+}
+.join-center > h2, h6{
+	text-align: center;
+	color: white;
+}
+.join-center > h2{
+	font-weight: bold;
+}
+.join-center > h6{
+	font-weight: lighter;
+}
+form{
+	margin-top: 15%;
+}
+input{
+	background-color: transparent;
+	border-color: transparent;
+	outline:none;
+	color: white;
+	font-size: medium; 
+}
+::-webkit-input-placeholder {
+	color: #e6e6e6; 
+	font-size: small;
+}
+#btn2{
+	float: right;
+	color: black;
+}
+.p{
+	border-bottom-color: white;
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+}
+#id{
+	border-bottom-color: white;
+	border-bottom-width: thin;
+}
+.join_in{
+	border-bottom-color: white;
+	border-bottom-width: thin;
+}
+#street2{
+	border: none;
+}
+#btn2, #nn, #btn{
+ color : black;
+ margin-left: 10px; 
+ background-color: white;
+ border-radius: 1em;
+ border-color: transparent;
+ font-size: small;
+ padding: 2px 20px 2px 20px;
+}
+#goal{
+	width: 70px;
+	height: 25px;
+}
+#btn{
+	font-size: medium;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom : 30px;
+	float: right;
+}
+
+/************LOGIN************/
+.login-center2{
+	width: 25%;
+	margin: 0 auto;
+	padding-top: 5%;
+}
+.login-center2 > h2, h6{
+	text-align: center;
+	color: white;
+}
+.login-center2 > h2{
+	font-weight: bold;
+}
+.login-center2 > h6{
+	font-weight: lighter;
 }
