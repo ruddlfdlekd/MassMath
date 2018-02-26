@@ -57,7 +57,7 @@ public class MemberController {
 		}else {
 			session.setAttribute("member", memberDTO);
 			mv.addObject("message", "로그인 성공");
-			mv.addObject("path", "../login");
+			mv.addObject("path", "./login");
 		}
 		
 		mv.setViewName("common/result");
@@ -93,7 +93,7 @@ public class MemberController {
 			mv.addObject("message", "회원가입 실패");
 		}
 
-		mv.addObject("path", "../login");
+		mv.addObject("path", "./login");
 		mv.setViewName("common/result");
 
 		return mv;
@@ -205,11 +205,12 @@ public class MemberController {
 		} else {
 			mv.addObject("message", "로그인에 실패하였습니다.");
 		}
-		mv.addObject("path", "../");
+		mv.addObject("path", "./login");
 		mv.setViewName("common/result");
 		return mv;
 	}
-
+	
+	
 	// MyPage
 	@RequestMapping(value = "memberMyPage")
 	public void memberMyPage(HttpSession session) throws Exception {
@@ -235,7 +236,7 @@ public class MemberController {
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("message", message);
-		mv.addObject("path", "../");
+		mv.addObject("path", "./login");
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -253,18 +254,19 @@ public class MemberController {
 		} else {
 			mv.addObject("message", "삭제에 실패하였습니다.");
 		}
-		mv.addObject("path", "../");
+		mv.addObject("path", "./login");
 		mv.setViewName("common/result");
 		return mv;
 	}
 
+	
 	// LogOut
 	@RequestMapping(value = "memberLogOut")
 	public ModelAndView memberLogOut(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("message", "로그아웃 되었습니다.");
 		session.invalidate();
-		mv.addObject("path", "../");
+		mv.addObject("path", "./login");
 		mv.setViewName("common/result");
 		return mv;
 	}

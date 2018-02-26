@@ -3,11 +3,32 @@ body{
 	background-color: #49aee4;
 }
 .login-center{
-	width: 20%;
-	margin-left: 40%;
-	margin-right: 40%;
+	width: 25%;
+	margin: 0 auto;
 	margin-top: 15%;
 	text-align: center;
+}
+#logo-a{
+	width: 100%;
+	text-align: center;
+}
+#logo{
+	width: 350px;
+	height: 100px;
+	color: #78726d;
+	font-size: xx-large;
+	font-weight: bolder;
+	padding-top: 50px;
+	padding-right: 20px;
+	box-sizing: border-box;
+}
+#logo-m{
+	width: 95px;
+	height: 100px;
+	background-image: url("/m1/resources/img/logo.png");
+	background-repeat: no-repeat;
+    background-position: center;
+    float: left;
 }
 .facebook{
 	margin-top: 45px;
@@ -45,7 +66,7 @@ body{
 
 /************JOIN************/
 .join-center{
-	width: 25%;
+	width: 30%;
 	margin: 0 auto;
 	padding-top: 5%;
 }
@@ -58,6 +79,90 @@ body{
 }
 .join-center > h6{
 	font-weight: lighter;
+}
+
+.terms_border {
+   width: 100%;
+   margin: 0 auto;
+}
+
+.terms_border2 {
+   width: 100%;
+   margin: 0 auto;
+   border-top: 2px solid #ffffff;
+   border-bottom: 2px solid #ffffff;
+   font-weight: bold;
+   font-size: 15px;
+   font-family: "Malgun Gothic", "맑은 고딕", dotum, 돋움, sans-serif;
+}
+
+.all {
+   width: 100%;
+   font-size: 17px;
+   font-family: "Malgun Gothic", "맑은 고딕", dotum, 돋움, sans-serif;
+   padding-top: 15px;
+   padding-bottom: 15px;
+}
+
+.agree {
+   width: 100%;
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+
+.point {
+   color: red;
+   padding-left: 7px;
+   padding-right: 7px;
+}
+
+.see {
+   font-weight: normal;
+   font-size: 12px;
+   float: right;
+   color: #000000;
+   border: none;
+   background-color: white;
+   cursor: pointer;
+}
+
+#choice {
+   color: gray;
+   padding-left: 7px;
+   padding-right: 7px;
+}
+
+#sub {
+   padding-left: 70px;
+   color: gray;
+   font-weight: normal;
+   font-size: 12px;
+   font-family: "Malgun Gothic", "맑은 고딕", dotum, 돋움, sans-serif;
+   font-weight: normal;
+}
+
+.see1 {
+   width: 100%;
+   height: 200px;
+   font-size: 13px;
+   font-weight: normal;
+   overflow: scroll;
+   border: 1px solid #ffffff;
+   display: none;
+   font-family: "Malgun Gothic", "맑은 고딕", dotum, 돋움, sans-serif;
+   background-color: white;
+}
+
+.see2 {
+   width: 100%;
+   height: 200px;
+   font-size: 14px;
+   font-weight: normal;
+   overflow: scroll;
+   border: 1px solid #ffffff;
+   display: none;
+   font-family: "Malgun Gothic", "맑은 고딕", dotum, 돋움, sans-serif;
+   background-color: white;
 }
 form{
 	margin-top: 15%;
@@ -130,3 +235,55 @@ input{
 .login-center2 > h6{
 	font-weight: lighter;
 }
+
+/************MY PAGE************/
+.mypage-center{
+	width: 30%;
+	margin: 0 auto;
+	padding-top: 5%;
+}
+.mypage-center > h2{
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+.info{
+	margin-top: 20%;
+	color: white;
+}
+.btn3{
+	text-decoration: none;
+	font-size: medium;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom : 30px;
+	float: right;
+	 color : black;
+	 margin-left: 10px; 
+	 background-color: white;
+	 border-radius: 1em;
+	 border-color: transparent;
+	 padding: 2px 20px 2px 20px;
+}
+
+/************UPDATE************/
+.update-center{
+	width: 30%;
+	margin: 0 auto;
+	padding-top: 5%;
+}
+.update-center > h2{
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+.update-center > #frm{
+	margin-top: 20%;
+	color: white;
+}
+.update-center > #id{
+	border-bottom: none;
+}
+
+
+

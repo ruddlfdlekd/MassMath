@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="/m1/resources/join.css" rel="stylesheet">
 <title>UPDATE</title>
 <script type="text/javascript">
 $(function() {
@@ -71,19 +72,20 @@ $(function() {
 </script>
 </head>
 <body>
-	<h1> Member Update</h1>
+<div class="update-center">
+	<h2> Member Update</h2>
 
 	<form id="frm" action="memberUpdate" method="post" name="frm">
-	<p>ID : <input type="text" name="id" id="id" readonly="readonly" value="${member.id}">${member.id}</p>
-	<p>PW : <input type="password" name="pw" id="pw" value="${member.pw}"></p>
-	<p>PW_CHECK : <input type="password" id="pw2"><p id="pwcheck2"></p>
-	<p>NAME : <input type="text" name="name" id="name" value="${member.name}"></p>
-	<p>ADDRESS :<input type="text" readonly="readonly" name="address" value="${member.address}"> <input type="button" value="주소 변경" id="nn" class="btn btn-default"><br>
+	<p>ID : <input type="text" name="id" id="id" readonly="readonly" value="${member.id}"></p>
+	<p class="p">PW : <input type="password" name="pw" id="pw" value="${member.pw}"></p>
+	<p class="p">PW_CHECK : <input type="password" id="pw2"><p id="pwcheck2"></p>
+	<p class="p">NAME : <input type="text" name="name" id="name" value="${member.name}"></p>
+	<p class="p">ADDRESS :<input type="text" readonly="readonly" name="address" value="${member.address}"> <input type="button" value="주소 변경" id="nn" class="btn btn-default"><br>
 				<input type="text" placeholder="우변번호" name="postal_code" id="postal_code" class="join_in"> <br>
 				<input type="text" placeholder="도로명주소" name="street" id="street" class="join_in"><br>
 				<input type="text" placeholder="나머지주소" name="street2" id="street2" class="join_in">
 	</p>
-	<p>GOAL : <select name="goal" id="goal">
+	<p class="p">GOAL : <select name="goal" id="goal">
 				<script>
 					for(i=1;i<101;i++){
 						document.write("<option value="+i+">"+i+"</option>");
@@ -91,10 +93,10 @@ $(function() {
 				</script>	
 			 </select>
 	</p>
-	<p>BIRTH : <input type="text" name="birth" id="birth" value="${member.birth}"></p>
-	<p>PHONE : <input type="text" name="phone" id="phone" value="${member.phone}"></p>
-	<p><input type="button" value="UP" id="btn"></p>
+	<p class="p">BIRTH : <input type="text" name="birth" id="birth" value="${member.birth}"></p>
+	<p class="p">PHONE : <input type="text" name="phone" id="phone" value="${member.phone}"></p>
+	<p><input type="button" value="UPDATE" id="btn"></p>
 	</form>
-
+</div>
 </body>
 </html>

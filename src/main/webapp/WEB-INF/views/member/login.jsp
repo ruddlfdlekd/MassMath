@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="login-center">
-		<div id="logo">M MASS MATH</div>
+		<div id="logo-a"><div id="logo-m"></div> <div id="logo">MASS MATH</div></div>
 		<div id="hd">
 			<p>오직 너만을 위한</p>
 			<p>인공지능 학습, 시작해볼까?</p>
@@ -28,7 +28,7 @@
 
 				<script>
 					// SDK를 비동기적으로 호출
-					(function(d, s, id) {
+					(function(d, s, id) { 
 						var js, fjs = d.getElementsByTagName(s)[0];
 						if (d.getElementById(id))
 							return;
