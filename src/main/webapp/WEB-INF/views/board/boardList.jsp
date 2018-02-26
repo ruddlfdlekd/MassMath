@@ -5,8 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
+
 	$(function() {
 		var message='${message}';
 		if(message != ''){
@@ -29,29 +40,29 @@
 </style>
 </head>
 <body>
-	<h1>${board}List</h1>
+	<h1>질문게시판</h1>
 
 	<div>
 		<form name="frm" action="./${board}List">
 			<input type="hidden" name="curPage" value="1">
 			<select name="kind">
-				<option value="title">TITLE</option>
-				<option value="writer">WRITER</option>
-				<option value="contents">CONTENTS</option>
+				<option value="title">제목</option>
+				<option value="writer">글쓴이</option>
+				<option value="contents">내용</option>
 			</select>
 			<input type="text" name="search">
 			<input id="btn" type="submit" value="SEARCH">
 		</form>
 	</div>
 
-	<table>
+	<table class="table">
 		<tr>
-			<td>NUM</td>
-			<td>TITLE</td>
-			<td>WRITER</td>
-			<td>CONTENTS</td>
-			<td>DATE</td>
-			<td>HIT</td>
+			<td>글번호</td>
+			<td>제목</td>
+			<td>글쓴이</td>
+			<td>내용</td>
+			<td>날짜</td>
+			<td>조회수</td>
 		</tr>
 		<c:forEach items="${list}" var="dto">
 			<tr>
@@ -85,7 +96,8 @@
 	</div>
 	
 	<div>
-		<a href="./${board}Write">Write</a>
+		<a href="./${board}Write" >Write</a>
+	
 	</div>
 	
 </body>

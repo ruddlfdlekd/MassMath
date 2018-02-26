@@ -63,5 +63,8 @@ public class QnaDAO implements BoardDAO {
 
 		return sqlSession.insert(NAMESPACE+"replyInsert", map);
 	}
+	public int replyInsert2(BoardDTO boardDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"replyInsert2", boardDTO);
+	}
 
 }

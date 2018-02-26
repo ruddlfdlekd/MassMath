@@ -66,17 +66,21 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int update(BoardDTO boardDTO) throws Exception {
+	
 		return qnaDAO.update(boardDTO);
 	}
 
 	@Override
 	public int delete(int num, HttpSession session) throws Exception {
+		fileDAO.deleteFnum(num);
 		return qnaDAO.delete(num);
+		
+		
 	}
 
-	public int replyInsert(BoardDTO boardDTO) throws Exception{
-		qnaDAO.replyUpdate(boardDTO);
-		return qnaDAO.replyInsert(boardDTO, boardDTO);
+	public int replyInsert2(BoardDTO boardDTO) throws Exception{
+		
+		return qnaDAO.replyInsert2(boardDTO);
 	}
 
 	

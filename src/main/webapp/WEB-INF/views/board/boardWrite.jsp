@@ -86,11 +86,11 @@ $(function(){
 </head>
 <body>
 <!--  -->
-	<h1>${board}</h1>
+	<h1>글쓰기</h1>
 	<form id="frm" action="./${board}Write" method="post" enctype="multipart/form-data">
-		<p>Title : <input type="text" name="title"></p>
-		<p>Writer : <input type="text" name="writer"></p>
-		<p>contents : <textarea rows="" cols="" name="contents" id="contents"></textarea></p>
+		<p>제목 : <input type="text" name="title"></p>
+		<p>글쓴이 : <input type="text" name="writer"></p>
+		<p>내용 : <textarea rows="" cols="" name="contents" id="contents"></textarea></p>
 		<p><input type="button" value="FileAdd" id="add"></p>
 		<div id="result">
 		</div>	

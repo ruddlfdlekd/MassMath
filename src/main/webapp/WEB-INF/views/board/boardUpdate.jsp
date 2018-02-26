@@ -31,8 +31,8 @@
 		});	
 		
 		
-	
-	 	var i=${fn:length(view.files)};
+
+		var i=${fn:length(view.files)};
 	 	alert(i);
 	 	/*$("#btn").click(function() {
 			if(i<5){
@@ -41,7 +41,7 @@
 			}else{
 				alert("최대 5개만 가능합니다");
 			}
-		}); */
+		});*/ 
 
 		$("#btn").click(function() {
 			if(i<5){

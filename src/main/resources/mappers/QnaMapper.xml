@@ -5,10 +5,13 @@
   
   
   <mapper namespace="QnaMapper">
+ 
+  
   	<select id="totalCount" resultType="int" parameterType="listData">
   	
   		select nvl(count(num),0) from qna
   		<if test="kind=='title'">
+  		
   			where title LIKE '%'|| #{search}||'%'
   		</if>
   		<if test="kind=='writer'">
@@ -55,8 +58,8 @@
   		where R between #{startRow} and #{lastRow} order by ref desc, step asc
   	</select>
   	
-  	<insert id="replyInsert" parameterType="Map" >
-  		insert into qna values(qna_seq.nextval,#{qna.title},#{qna.writer},#{qna.contents},0,sysdate,#{parent.ref},#{parent.step}+1,#{parent.depth}+1)
+  	<insert id="replyInsert2" parameterType="QnaDTO" >
+  		insert into qna values(qna_seq.nextval,fff,ddd,#{qna.contents},0,sysdate,#{num},1,1)
   	</insert>
   	
   	<update id="replyUpdate" parameterType="QnaDTO">
