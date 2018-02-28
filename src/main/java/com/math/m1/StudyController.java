@@ -1,7 +1,6 @@
 package com.math.m1;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +18,9 @@ public class StudyController {
 	 @Autowired
 	StudyService studyService;		
 	
+	@RequestMapping(value = "studyLevel")
+	public void Level(String chapter,String id){
+	}
 	
 	@RequestMapping(value ="studyPage")
 	public void Page() {
@@ -30,22 +32,52 @@ public class StudyController {
 		mv.addObject("chapter", chapter);
 		return mv;
 	}
-	
-	
 	@RequestMapping(value="study1")
-	public ModelAndView study1(String chapter,String id)throws Exception{
+	public void study1(){
 		
-		chapter +="1";
+	}
+	
+	@RequestMapping(value="study2")
+	public ModelAndView study2(String chapter,String id, String level, String type)throws Exception{
+		chapter +=type+"2";
 		id="iu";
+		String rate = "B";
+		switch(level){
+		case "1":
+			if(rate!="A")
+			rate = ((char)(rate.charAt(0)-1))+"";
+			
+			break;
+			
+		case "2":
+			break;
+			
+		case "3":
+			rate = ((char)(rate.charAt(0)+1))+"";
+			break;
+		
+			default:
+				break;
+		}
 		List<ProblemDTO> ar = null;
-		ar = studyService.CheckProblem(chapter, id);
-	/*	if(ar!=null){
-			for(int i=0; i<ar.size(); i++)
-			studyService.UpdateCount(ar.get(i).getPnum());
-		}*/
+		ar = studyService.CheckProblem(chapter, id, rate);
+	
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ar", ar);
 		return mv;
+	}
+	@RequestMapping(value="study3")
+	public ModelAndView study3(String chapter,String id)throws Exception{
+		chapter +="01";
+		id="iu";
+		String rate = "B";
+		List<ProblemDTO> ar = null;
+		ar = studyService.CheckProblem(chapter, id, rate);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("ar", ar);
+		return mv;
+		
 	}
 	
 	
@@ -78,30 +110,7 @@ public class StudyController {
 	}
 	
 	
-	/*@RequestMapping(value="study2")
-	public ModelAndView study2(String chapter)throws Exception{
-		chapter +="2";
-		System.out.println(chapter);
-		List<ProblemDTO> ar = new .ArrayList<>();
-		ar = studyService.SelectConcept(chapter);
-		System.out.println("asdf");
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("chapter", chapter);
-		return mv;
-	}
-	@RequestMapping(value="study3")
-	public ModelAndView study3(String chapter)throws Exception{
-		chapter +="3";
-		System.out.println(chapter);
-		List<ProblemDTO> ar = new ArrayList<>();
-		ar = studyService.SelectConcept(chapter);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("chapter", chapter);
-		return mv;
-	}*/
-	
+
 	
 	@RequestMapping(value="my_answer")
 	public void answerCheck(ProblemDTO problemDTO)throws Exception{

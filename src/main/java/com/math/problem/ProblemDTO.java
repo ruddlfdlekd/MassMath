@@ -11,12 +11,19 @@ public class ProblemDTO {
 	private int answer;
 	private String answerlist;
 	private String contents;
-	private int rate;
+	private String rate;
 	private String commentary;
 	private int my_answer;
 	private String reason;
+	private int test;
 	
 	
+	public int getTest() {
+		return test;
+	}
+	public void setTest(int test) {
+		this.test = test;
+	}
 	public String getReason() {
 		return reason;
 	}
@@ -90,10 +97,10 @@ public class ProblemDTO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public int getRate() {
+	public String getRate() {
 		return rate;
 	}
-	public void setRate(int rate) {
+	public void setRate(String rate) {
 		this.rate = rate;
 	}
 	public String getCommentary() {

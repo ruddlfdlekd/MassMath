@@ -17,23 +17,41 @@ public class StudyService {
 	 @Autowired
 	StudyDAO studyDAO;
 	 
-	 public List<ProblemDTO> CheckProblem(String chapter,String id)throws Exception{
+	 public List<ProblemDTO> CheckProblem(String chapter,String id,String rate)throws Exception{
 		 List<ProblemDTO> ar = new ArrayList<>();
 		 List<ProblemDTO> list = null;
 		 ProblemDTO problemDTO = null;
 		 list = studyDAO.CheckProblem(chapter, id);
-		 if(list.size()!=0){
-			 for(int i=0; i<list.size(); i++){
-				 problemDTO = new ProblemDTO();
-				 ar.add(studyDAO.SelectProblem(list.get(i).getPnum()));
+		 if(chapter.charAt(5)=='1'){
+			 if(list.size()!=0){
+				 for(int i=0; i<list.size(); i++){
+				 ar.add(studyDAO.SelectProblemTest(list.get(i).getPnum()));
+				 }
+			 }
+			 else{
+				 ar=studyDAO.SelectTest(chapter,rate);
+				 for(int i=0; i<ar.size(); i++){
+					 problemDTO = ar.get(i);
+					 problemDTO.setTest(1);
+					 studyDAO.SaveProblemTest(problemDTO);
+				 }
 			 }
 		 }
 		 else{
-			 ar=studyDAO.SelectConcept(chapter);
-			 for(int i=0; i<ar.size(); i++){
-				 problemDTO = ar.get(i);
-				 studyDAO.SaveProblem(problemDTO);
+			 if(list.size()!=0){
+				 for(int i=0; i<list.size(); i++){
+					 ar.add(studyDAO.SelectProblem(list.get(i).getPnum()));
+				 }
 			 }
+			 else{
+				 ar=studyDAO.SelectConcept(chapter,rate);
+				 for(int i=0; i<ar.size(); i++){
+					 problemDTO = ar.get(i);
+					 problemDTO.setTest(2);
+					 studyDAO.SaveProblem(problemDTO);
+				 }
+			 }
+			
 		 }
 		 return ar;
 		}

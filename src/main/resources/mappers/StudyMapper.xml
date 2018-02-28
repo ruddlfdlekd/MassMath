@@ -10,21 +10,69 @@
  	</select>
  	
  		<select id="CheckProblem" parameterType="Map" resultType="ProblemDTO">
- 		<![CDATA[select * from PROBLEM_DATA_SAVE where id=#{id} and book=#{problem.book} and chapter=#{problem.chapter} and chapter_m=#{problem.chapter_m} and chapter_s=#{problem.chapter_s}]]>
+ 		<![CDATA[select * from PROBLEM_DATA_SAVE where id=#{id} and book=#{problem.book} and chapter=#{problem.chapter} and chapter_m=#{problem.chapter_m} and chapter_s=#{problem.chapter_s} and type=#{problem.type} and test=#{problem.test}]]>
  		 </select>
  		 
  		<select id="SelectProblem" parameterType="int" resultType="ProblemDTO">
-		select a.*, b.my_answer from problem a,problem_data_save b where a.pnum = #{pnum} and b.pnum=#{pnum}
+		select a.*, b.my_answer from problem a,problem_data_save b where a.pnum = #{pnum} and b.pnum=#{pnum} and test=2
+ 		</select>
+ 		<select id="SelectProblemTest" parameterType="int" resultType="ProblemDTO">
+		select a.*, b.my_answer from problem a,problem_data_save b where a.pnum = #{pnum} and b.pnum=#{pnum} and test=1
  		</select>
  		
  		<select id="SelectConcept" parameterType="ProblemDTO" resultType="ProblemDTO">
- 		<![CDATA[select * from 
- 		(select * from problem where book=#{book} and chapter=#{chapter} and chapter_m=#{chapter_m} and chapter_s=#{chapter_s} and rightcount/count between 0 and 0.2 order by dbms_random.value)
- 		 where rownum<11]]>
+ 	<![CDATA[ 	select * from 
+ 		(select * from problem where book=#{book} and chapter=#{chapter} and chapter_m=#{chapter_m} and chapter_s=#{chapter_s} and type=#{type} and rightcount/count between]]>
+			<choose>
+		 	 <when test='rate =="A"'>
+		 	0 and 0.2
+		 	</when>
+		    <when test='rate =="B"'>
+		 	0.2 and 0.4
+		 	</when>
+		 	<when test='rate =="C"'>
+		 	0.4 and 0.6
+		 	</when>
+		    <when test='rate =="D"'>
+		 	0.6 and 0.8
+		 	</when>
+		 	<otherwise>
+		 	0.8 and 10
+		  	</otherwise>
+		 	</choose>
+ 		 order by dbms_random.value)
+ 		<![CDATA[ where rownum<11]]>
+ 		 </select>
+ 		 
+ 		 <select id="SelectTest" parameterType="ProblemDTO" resultType="ProblemDTO">
+ 	<![CDATA[ 	select * from 
+ 		(select * from problem where book=#{book} and chapter=#{chapter} and rightcount/count between]]>
+			<choose>
+		 	 <when test='rate =="A"'>
+		 	0 and 0.2
+		 	</when>
+		    <when test='rate =="B"'>
+		 	0.2 and 0.4
+		 	</when>
+		 	<when test='rate =="C"'>
+		 	0.4 and 0.6
+		 	</when>
+		    <when test='rate =="D"'>
+		 	0.6 and 0.8
+		 	</when>
+		 	<otherwise>
+		 	0.8 and 10
+		  	</otherwise>
+		 	</choose>
+ 		 order by dbms_random.value)
+ 		<![CDATA[ where rownum<11]]>
  		 </select>
  		
  		<insert id="SaveProblem" parameterType="ProblemDTO">
- 			insert into problem_data_save values ('iu', #{pnum}, #{my_answer}, #{chapter}, #{chapter_m}, #{chapter_s}, #{type}, #{book},#{answer},#{commentary})
+ 			insert into problem_data_save values ('iu', #{pnum}, #{my_answer}, #{chapter}, #{chapter_m}, #{chapter_s}, #{type}, #{book},#{answer},#{commentary},#{test})
+ 		</insert>
+ 		<insert id="SaveProblemTest" parameterType="ProblemDTO">
+ 			insert into problem_data_save values ('iu', #{pnum}, #{my_answer}, #{chapter},0, 0, 0, #{book},#{answer},#{commentary},#{test})
  		</insert>
  		
  		<update id="UpdateCount" parameterType="ProblemDTO">
@@ -64,26 +112,6 @@
 		<select id="SelectChapter" parameterType="int" resultType="ProblemDTO">
 		select * from problem where pnum=#{pnum}
 		</select>
-  		<!-- <delete id="Delete" parameterType="MemberDTO">
-  			delete member where id=#{id}
-  		</delete>
-  		
-  		<select id="Login" parameterType="MemberDTO" resultType="MemberDTO">
-  			select * from member where id=#{id} and pw=#{pw}
-  		</select>
-  		
-  		
-  		<insert id="Join" parameterType="MemberDTO">
-  			insert into member values(#{id},#{pw},#{name},#{email},#{phone},#{age},#{job})
-  		</insert>
-  		
-  		<update id="Update" parameterType="MemberDTO">
-  		 	update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone}, age=#{age}, job=#{job} where id=#{id}
-  		</update>
-  		
-  		
-  		<select id="Check" parameterType="String" resultType="String">
-  			select id from member where id=#{id}
-  		</select> -->
+  
   		
   	</mapper>

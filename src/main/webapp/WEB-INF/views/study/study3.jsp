@@ -8,16 +8,10 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-$(function() {
-		$(".btn").click(function(){
-			window.open("./studyPage", "", "top=500,left=500,width=400,height=400");
-/* 			location.href("study/studyView?chapter=$(this).val()"); */
-		});});
+
 </script>
 </head>
 <body>
-<button class="btn">개념</button>
-<button class="btn">문제풀기</button>
-<button class="btn">맞춤형테스트</button>
+시험테스트
 </body>
 </html>

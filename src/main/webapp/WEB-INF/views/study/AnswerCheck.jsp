@@ -12,6 +12,7 @@ $(function(){
 		var a = new Array();
 		var reason = $(".reason");
 		var answer = $(".answer");
+		opener.parent.location.href="./asdf";
 		for(var i=0; i<reason.length; i++){
 		a.push(reason[i].value);
 		a.push(answer[i].title);
@@ -26,11 +27,15 @@ $(function(){
 			traditional : true,
 				
 			success:function(data){   
-			alert("aa");
+			
 			},  
 		});
-	/* 	메인페이지로 가지게 설정 */
 	});
+		$("#btn").click(function(){
+			window.opener.location.href="../";
+			window.close();
+		});
+		
 });
 </script>
 </head>
@@ -47,5 +52,6 @@ $(function(){
 </c:if>
 </p>
 </c:forEach>
+<button id="btn">오답노트에 저장</button>
 </body>
 </html>
