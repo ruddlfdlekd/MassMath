@@ -11,7 +11,7 @@ public class FileSaver {
 	
 	public List<String> saver(MultipartFile [] f1, String filepath)throws Exception{
 		List<String> fileNames = new ArrayList<String>();
-		for(MultipartFile f: f1){
+		for(MultipartFile f: f1){	
 			String fileName=this.saver(f, filepath);
 			fileNames.add(fileName);
 		}
@@ -21,6 +21,7 @@ public class FileSaver {
 	public String saver(MultipartFile f1, String filepath)throws Exception{
 		//1. 저장할 파일명 생성
 		//iu.jpg
+		System.out.println("String saver");
 		String fileName= f1.getOriginalFilename();
 		if(f1.getOriginalFilename()!=""){
 		fileName=fileName.substring(fileName.lastIndexOf("."));

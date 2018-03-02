@@ -24,3 +24,4 @@ target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/m2e-wtp/web-resources/META-INF/maven/com.math/m1/pom.properties
 target/classes/mybatis/db.properties
 target/m2e-wtp/web-resources/META-INF/maven/com.math/m1/pom.properties
+/target/

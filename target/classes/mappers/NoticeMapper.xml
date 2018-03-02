@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="NoticeMapper">
-	
-	<select id="select_1" parameterType="String" resultType="com.math.member.MemberDTO">
-		select * from member where id=#{id}
-	</select>
 
-</mapper>
-
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  	<mapper namespace="NoticeMapper">
+  		<update id="hitUpdate" parameterType="BoardDTO">
+  			update notice set hit=#{hit}+1 where num=#{num}
+  		</update>
+  	
+ 		<select id="selectList" parameterType="ListData" resultType="BoardDTO">
+ 			select * from
+  			(select rownum R, N.* from
+  			(select * from notice
+  			<if test="kind == 'title'">
+				where title LIKE '%'|| #{search}||'%'
+			</if>
+			<if test="kind == 'writer'">
+				where writer LIKE '%'|| #{search}||'%'
+			</if>
+			<if test="kind == 'contents'">
+				where contents LIKE '%'|| #{search}||'%'
+			</if>			
+  			order by num desc) N)
+  			where R between #{startRow} and #{lastRow} <!-- Map의 key를 써줌 -->
+  		</select>
+ 		
+  		<insert id="insert" parameterType="BoardDTO">
+  			insert into notice values(notice_seq.nextval,#{email},#{writer},#{title},#{contents},sysdate,0)
+  		</insert>
+  		
+  		<select id="selectOne" parameterType="int" resultType="BoardDTO">
+  			select * from notice where num=#{num}
+  		</select>
+  	
+  		<delete id="delete" parameterType="BoardDTO">
+  			delete notice where num=#{num}
+  		</delete>
+  		
+  		<update id="update" parameterType="BoardDTO">
+  			update notice set title=#{title}, contents=#{contents} where num=#{num}
+  		</update>
+  		
+  		<select id="totalCount" resultType="int" parameterType="listData">
+  			select nvl(count(num),0) from notice
+			<if test="kind == 'title'">
+				where title LIKE '%'|| #{search}||'%'
+			</if>
+			<if test="kind == 'writer'">
+				where writer LIKE '%'|| #{search}||'%'
+			</if>
+			<if test="kind == 'contents'">
+				where contents LIKE '%'|| #{search}||'%'
+			</if>
+  		</select>
+  	</mapper>
