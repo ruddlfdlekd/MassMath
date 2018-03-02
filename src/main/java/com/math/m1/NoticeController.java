@@ -1,5 +1,7 @@
 package com.math.m1;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -91,8 +93,14 @@ public class NoticeController {
 	}
 	@RequestMapping(value="noticeList")
 	public ModelAndView selectList(ListData listData) throws Exception{
+		Date date = new Date();
+		SimpleDateFormat simpleDate = new SimpleDateFormat("yy/MM/dd");
+		String today = simpleDate.format(date);
+		
 		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> ar = noticeService.selectList(listData);
+		
+		mv.addObject("today", today);
 		mv.addObject("list", ar);
 		mv.addObject("page",listData);
 		mv.addObject("board", "notice");
