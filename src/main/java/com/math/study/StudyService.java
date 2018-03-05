@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.math.problem.ProblemDTO;
+import com.math.data.ProblemDTO;
 
 @Service
 public class StudyService {

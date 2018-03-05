@@ -3,6 +3,7 @@ package com.math.data;
 public class ProblemDTO {
 	
 	private int pnum;
+	private int chapter;
 	private String contents;
 	private String chapter;
 	private String chapter_m;

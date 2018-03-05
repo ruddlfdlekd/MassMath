@@ -1,6 +1,6 @@
 package com.math.myNote;
 
-import com.math.problem.ProblemDTO;
+import com.math.data.ProblemDTO;
 
 public class MyNoteDTO extends ProblemDTO {
 	private int num;
