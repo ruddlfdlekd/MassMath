@@ -7,8 +7,8 @@
 }
 </style>
 <c:forEach items="${result}" var="list">
-	<div class="container" id="del${list.num}">
-		<table class="table" style="width:60%; margin: 0 auto;">
+	<div id="del${list.num}">
+		<table class="table" style="width:100%; margin: 0 auto;">
 			<thead>
 				<tr>
 					<th>${list.num}(num)</th>
