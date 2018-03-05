@@ -7,9 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
    <title>Home</title>
-   <link rel="stylesheet" href="/m1/resources/style.css">
 </head>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -28,6 +26,7 @@
   </script>
 
 <body>
+<%@ include file="./temp/header.jsp"%>
 <h1>
    Hello world!  
 </h1>
@@ -218,7 +217,7 @@
  </div>
 
 
-
+<%@ include file="./temp/footer.jsp"%>
 
 </body>
 </html>
