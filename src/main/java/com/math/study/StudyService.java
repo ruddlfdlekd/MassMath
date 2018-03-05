@@ -29,11 +29,14 @@ public class StudyService {
 				 }
 			 }
 			 else{
-				 ar=studyDAO.SelectTest(chapter,rate);
+				 ar=studyDAO.SelectTest(chapter,rate,id);
 				 for(int i=0; i<ar.size(); i++){
 					 problemDTO = ar.get(i);
 					 problemDTO.setTest(1);
+					 problemDTO.setId(id);
 					 studyDAO.SaveProblemTest(problemDTO);
+					 studyDAO.CountUp(problemDTO);
+					 studyDAO.MProblem(problemDTO);
 				 }
 			 }
 		 }
@@ -44,16 +47,27 @@ public class StudyService {
 				 }
 			 }
 			 else{
-				 ar=studyDAO.SelectConcept(chapter,rate);
+				 ar=studyDAO.SelectConcept(chapter,rate,id);
 				 for(int i=0; i<ar.size(); i++){
 					 problemDTO = ar.get(i);
 					 problemDTO.setTest(2);
+					 problemDTO.setId(id);
 					 studyDAO.SaveProblem(problemDTO);
+					 studyDAO.CountUp(problemDTO);
+					 studyDAO.MProblem(problemDTO);
 				 }
 			 }
 			
 		 }
 		 return ar;
+		}
+	 public String rateUp(String rate)throws Exception{
+			rate = studyDAO.rateUp(rate);
+			return rate;
+		}
+		public String rateDown(String rate)throws Exception{
+			rate = studyDAO.rateDown(rate);
+			return rate;
 		}
 	 
 	

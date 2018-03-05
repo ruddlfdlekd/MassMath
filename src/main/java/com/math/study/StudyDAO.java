@@ -18,8 +18,9 @@ public class StudyDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="StudyMapper.";
 	
-	public List<ProblemDTO> SelectConcept(String chapter,String rate)throws Exception{
+	public List<ProblemDTO> SelectConcept(String chapter,String rate,String id)throws Exception{
 		ProblemDTO problemDTO= new ProblemDTO();
+		problemDTO.setId(id);
 		problemDTO.setBook(Integer.parseInt(chapter.charAt(0)+""));
 		problemDTO.setChapter(Integer.parseInt(chapter.charAt(1)+""));
 		problemDTO.setChapter_m(Integer.parseInt(chapter.charAt(2)+""));
@@ -28,8 +29,9 @@ public class StudyDAO {
 		problemDTO.setRate(rate);
 		return sqlSession.selectList(NAMESPACE+"SelectConcept", problemDTO);
 	}
-	public List<ProblemDTO> SelectTest(String chapter,String rate)throws Exception{
+	public List<ProblemDTO> SelectTest(String chapter,String rate,String id)throws Exception{
 		ProblemDTO problemDTO= new ProblemDTO();
+		problemDTO.setId(id);
 		problemDTO.setBook(Integer.parseInt(chapter.charAt(0)+""));
 		problemDTO.setChapter(Integer.parseInt(chapter.charAt(1)+""));
 		problemDTO.setTest(Integer.parseInt(chapter.charAt(5)+""));
@@ -104,5 +106,23 @@ public class StudyDAO {
 	}
 	public void right(String pnum)throws Exception{
 		sqlSession.update(NAMESPACE+"Right", Integer.parseInt(pnum));
+	}
+	public String rateUp(String rate)throws Exception{
+		if(rate!="A")
+		rate = ((char)(rate.charAt(0)-1))+"";
+		sqlSession.update(NAMESPACE+"rateUp", rate);
+		return rate;
+	}
+	public String rateDown(String rate)throws Exception{
+		if(rate!="E")
+		rate = ((char)(rate.charAt(0)+1))+"";
+		sqlSession.update(NAMESPACE+"rateDown", rate);
+		return rate;
+	}
+	public void CountUp(ProblemDTO problemDTO)throws Exception{
+		sqlSession.update(NAMESPACE+"CountUp",problemDTO);
+	}
+	public void MProblem(ProblemDTO problemDTO)throws Exception{
+		sqlSession.insert(NAMESPACE+"MProblem", problemDTO);
 	}
 }
