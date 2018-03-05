@@ -8,7 +8,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	alert("당신의 rate는 ${rate} 입니다")
 		$(window).bind("beforeunload", function (){
 		var a = new Array();
 		var reason = $(".reason");

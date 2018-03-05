@@ -61,11 +61,11 @@ public class StudyController {
 		}
 		List<ProblemDTO> ar = null;
 		ar = studyService.CheckProblem(chapter, id, rate);
+	
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ar", ar);
 		return mv;
 	}
-	
 	@RequestMapping(value="study3")
 	public ModelAndView study3(String chapter,String id)throws Exception{
 		chapter +="01";
@@ -84,18 +84,15 @@ public class StudyController {
 	
 	
 	@RequestMapping(value="AnswerCheck", method=RequestMethod.POST)
-	public ModelAndView study1(String[] pnum,String[] answer,String ma,String test)throws Exception{
+	public ModelAndView study1(String[] pnum,String[] answer,String ma)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		String rate = "B";
 		String[] check = new String[10];
 		String[] commentary = new String[10];
 		String[] my_answer = new String[10];
-		int count = 0;
 		for(int i=0; i<10; i++){
 			if(answer[i].equals(ma.charAt(i)+"")){
 				check[i]="O";
 				studyService.right(pnum[i]);
-				count++;
 			}
 			else{
 				check[i]="X";
@@ -103,14 +100,6 @@ public class StudyController {
 			} 
 			my_answer[i] = ma.charAt(i)+"";
 		}
-		if(test!=null){
-			if(count>=9)
-				rate = studyService.rateUp(rate);
-			else if(count<=7)
-				rate = studyService.rateDown(rate);
-			mv.addObject("rate", rate);
-		}
-
 		mv.addObject("check", check);
 		mv.addObject("c", commentary);
 		mv.addObject("pnum", pnum);
