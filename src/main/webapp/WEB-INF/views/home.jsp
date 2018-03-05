@@ -210,7 +210,7 @@
 <button id="make_btn">GoMake</button>
 <a href="./problem/makeProblem">Make Problem<a>
 <a href="./problem/problemView">select One</a>
-
+<a href="study/studyPage">학습하기</a>
  <div>
  
 
