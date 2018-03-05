@@ -3,7 +3,6 @@ package com.math.data;
 public class ProblemDTO {
 	
 	private int pnum;
-	private int chapter;
 	private String contents;
 	private String chapter;
 	private String chapter_m;
@@ -20,9 +19,19 @@ public class ProblemDTO {
 	private String book;
 	private int rate;
 	private int test;
+	private String reason;
 	
 	
 	
+	
+	
+	
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
 	public int getTest() {
 		return test;
 	}

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import com.math.problem.ProblemDTO;
+import com.math.data.ProblemDTO;
 import com.math.study.StudyService;
 
 @Controller
