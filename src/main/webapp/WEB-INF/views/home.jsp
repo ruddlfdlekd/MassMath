@@ -1,19 +1,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
+<!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 	<title>Home</title>
 	<link rel="stylesheet" href="/m1/resources/style.css">
+	<link rel="stylesheet" href="/math/resources/join.css">
 	<style type="text/css">
-		
 	</style>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+	<c:if test="${empty member}">
+		<a href="./member/memberJoin">Join</a>
+		<a href="./member/memberLogin">Login</a>
+	</c:if>
+	<c:if test="${not empty member}">
+		<a href="./member/memberMyPage?id=${member.id}">My Page</a>
+		<a href="./member/memberLogOut">Logout</a>
+	</c:if>
+	<h1>
+		Hello world!  
+	</h1>
 	<a href="./myNote/myNoteList?id=${member.id}">MY NOTE</a>
+	<a href="./main/mainPage">메인으로</a>
 	
 	<form action="./myNote/myNoteInsert" method="get">
 		<p>id : <input type="text" name="id" value="jw"></p>
@@ -29,14 +39,6 @@
 		<p>reason : <input type="text" name="reason" value="wrong"></p>
 		<button>등록</button>
 	</form>
-<P>  The time on the server is ${serverTime}. </P>
-=======
-<title>Home</title>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<link href="/math/resources/join.css" rel="stylesheet">
-</head>
-<body>
-
 	
 	<div id="logo">M MASS MATH</div>
 	<div id="hd">
@@ -53,7 +55,7 @@
 	<script type='text/javascript'>
 		// 사용할 앱의 JavaScript 키를 설정해 주세요.
 		Kakao.init('80bc1cd77bbd75031f8f8ee90be76739');
->>>>>>> suin
+
 
 		// 카카오 로그인 버튼을 생성합니다.
 		Kakao.Auth.createLoginButton({
@@ -176,14 +178,7 @@
 	</script>
 
 
-	<c:if test="${empty member}">
-		<a href="./member/memberJoin">Join</a>
-		<a href="./member/memberLogin">Login</a>
-	</c:if>
-	<c:if test="${not empty member}">
-		<a href="./member/memberMyPage?id=${member.id}">My Page</a>
-		<a href="./member/memberLogOut">Logout</a>
-	</c:if>
+
 
 </body>
 </html>

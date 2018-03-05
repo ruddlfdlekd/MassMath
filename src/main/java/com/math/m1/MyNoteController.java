@@ -46,9 +46,14 @@ public class MyNoteController {
 	@RequestMapping(value="myNoteList")
 	public ModelAndView myNoteList(MyNoteListData myNoteListData, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<MyNoteDTO> myNoteList = myNoteService.myNoteList(myNoteListData);
-		mv.addObject("result", myNoteList);
-		mv.setViewName("myNote/myNoteList");
+		if(session.getId()!=null){
+			
+			List<MyNoteDTO> myNoteList = myNoteService.myNoteList(myNoteListData);
+			mv.addObject("result", myNoteList);
+			mv.setViewName("myNote/myNoteList");
+		}else{
+			mv.setViewName("member/memberLogin");
+		}
 		
 		return mv;
 	}
