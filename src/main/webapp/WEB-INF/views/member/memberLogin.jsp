@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LOG IN</title>
-<link href="/m1/resources/join.css" rel="stylesheet">
+<link href="/m1/resources/css/join.css" rel="stylesheet">
 </head>
 <body>
 <div class="login-center2">
@@ -21,7 +21,11 @@
     <label>PW </label>
 	<p class="p"><input type="password" placeholder="  비밀번호를 입력해주세요" name="pw" id="pw"></p>
 	
-	<p><button id="btn">LOGIN</button></p>
+	<p id="btn-group">
+		<button id="btn">LOGIN</button>
+		<a href="./login" class="btn">CANCEL</a>
+	</p>	
+	
 	</form>
 </div>
 </body>

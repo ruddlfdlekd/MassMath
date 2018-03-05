@@ -8,7 +8,8 @@
 <title>JOIN</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="/m1/resources/join.css" rel="stylesheet">
+<link href="/m1/resources/css/join.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript">
 	$(function() {
 		var email="";
@@ -139,7 +140,7 @@
 
 </script>
 </head>
-<body>
+<body class="body">
 	<div class="join-center">
 		<h2>회원가입</h2>
 		<!-- <h6>가입 버튼을 누르면 이용약관과 정책에 동의한 것으로 간주합니다</h6> -->
@@ -244,8 +245,9 @@
 				</p>
 				<input type="hidden" name="auto_payment" value="0">
 				<!-- 0이면 X, 1이면 O -->
-				<p>
-					<input type="button" id="btn" value="JOIN">
+				<p id="btn-group">
+					<input type="button" class="btn" id="btn" value="JOIN">
+					<a href="./login" class="btn">CANCEL</a>
 				</p>
 			</form>
 		</article>

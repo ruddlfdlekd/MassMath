@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="/m1/resources/join.css" rel="stylesheet">
+<link href="/m1/resources/css/join.css" rel="stylesheet">
 </head>
 <body>
 <div class="sidenav">

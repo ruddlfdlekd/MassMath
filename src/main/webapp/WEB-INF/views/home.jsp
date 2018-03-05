@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" href="/m1/resources/style.css">
+	<link rel="stylesheet" href="/m1/resources/css/style.css">
 	<style type="text/css">
 		
 	</style>

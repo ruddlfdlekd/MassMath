@@ -56,6 +56,7 @@ body{
 	font-size: small;
 	text-decoration: none;	
 	color: white;
+	margin-top: 20px;
 }
 .email-login > p{
 	margin-top: 30px;
@@ -65,6 +66,9 @@ body{
 }
 
 /************JOIN************/
+.body{
+	background-color: #49aee4;
+}
 .join-center{
 	width: 30%;
 	margin: 0 auto;
@@ -198,7 +202,7 @@ input{
 #street2{
 	border: none;
 }
-#btn2, #nn, #btn{
+#btn2, #nn, #btn-group > .btn, #btn{
  color : black;
  margin-left: 10px; 
  background-color: white;
@@ -206,12 +210,13 @@ input{
  border-color: transparent;
  font-size: small;
  padding: 2px 20px 2px 20px;
+ text-decoration: none;
 }
 #goal{
 	width: 70px;
 	height: 25px;
 }
-#btn{
+#btn-group > .btn, #btn{
 	font-size: medium;
 	font-weight: bold;
 	margin-top: 20px;
@@ -237,16 +242,33 @@ input{
 }
 
 /***********PW FIND************/
+#pw-center{
+	width: 30%;
+	height: 700px;
+}
+#pw-center > h2{
+	color: black;	
+}
 #pw-center > h3{
-	margin-top: 20%;
+	margin-top: 2%;
 	font-size: large;
-	
 }
 #pw-center > div{
 	margin-top: 20%;
 }
-
-
+.p2{
+	border-bottom-color: black;
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+}
+.p2 > ::-webkit-input-placeholder {
+	color: black;
+}
+#pw-center > p> #btn{
+	margin-top: 20%;
+	color: white;
+	background-color: black;
+}
 /************MY PAGE************/
 .sidenav {
     width: 130px;

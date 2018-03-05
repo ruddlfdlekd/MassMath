@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-<link href="/m1/resources/join.css" rel="stylesheet">
+<link href="/m1/resources/css/join.css" rel="stylesheet">
 </head>
 <body>
 	<div class="login-center">
@@ -157,9 +157,9 @@
 				<c:if test="${empty member}">
 				<div>
 					<a id="email-join" href="./memberJoin">이메일 계정으로 시작</a>
-				</div><br>
-					<a href="./memberLogin">이미 회원이신가요? 로그인</a>
-					<a href="./pwFind">비밀번호 찾기</a>
+				</div><br><br>
+					<a href="./memberLogin">이미 회원이신가요? 로그인</a><br><br>
+					<a href="./pwFind">아이디/비밀번호 찾기</a>
 				</c:if>
 				<c:if test="${not empty member}">
 					<a href="./memberMyPage?id=${member.id}">My Page</a>

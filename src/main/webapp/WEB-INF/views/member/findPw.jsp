@@ -14,12 +14,15 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
-	
 	$("#btn").click(function(){	
-		opener.parent.location.href = "./login";
-		window.self.close();			
+		var checkmsg="${checkmsg}";
+		if(checkmsg=="해당 아이디가 없습니다."){
+			alert("ㅋ");
+		}
+		 opener.parent.location.href = "./login";
+		window.self.close();		
 	});
-	
+
 });
 </script>
 </head>
