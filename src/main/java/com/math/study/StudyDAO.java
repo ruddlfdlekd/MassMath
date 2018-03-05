@@ -21,19 +21,19 @@ public class StudyDAO {
 	public List<ProblemDTO> SelectConcept(String chapter,String rate,String id)throws Exception{
 		ProblemDTO problemDTO= new ProblemDTO();
 		problemDTO.setId(id);
-		problemDTO.setBook(Integer.parseInt(chapter.charAt(0)+""));
-		problemDTO.setChapter(Integer.parseInt(chapter.charAt(1)+""));
-		problemDTO.setChapter_m(Integer.parseInt(chapter.charAt(2)+""));
-		problemDTO.setChapter_s(Integer.parseInt(chapter.charAt(3)+""));
-		problemDTO.setType(Integer.parseInt(chapter.charAt(4)+""));
+		problemDTO.setBook(chapter.charAt(0)+"");
+		problemDTO.setChapter(chapter.charAt(1)+"");
+		problemDTO.setChapter_m(chapter.charAt(2)+"");
+		problemDTO.setChapter_s(chapter.charAt(3)+"");
+		problemDTO.setType(chapter.charAt(4)+"");
 		problemDTO.setRate(rate);
 		return sqlSession.selectList(NAMESPACE+"SelectConcept", problemDTO);
 	}
 	public List<ProblemDTO> SelectTest(String chapter,String rate,String id)throws Exception{
 		ProblemDTO problemDTO= new ProblemDTO();
 		problemDTO.setId(id);
-		problemDTO.setBook(Integer.parseInt(chapter.charAt(0)+""));
-		problemDTO.setChapter(Integer.parseInt(chapter.charAt(1)+""));
+		problemDTO.setBook(Integer.parseInt(chapter.charAt(0)+"")+"");
+		problemDTO.setChapter(Integer.parseInt(chapter.charAt(1)+"")+"");
 		problemDTO.setTest(Integer.parseInt(chapter.charAt(5)+""));
 		problemDTO.setRate(rate);
 		return sqlSession.selectList(NAMESPACE+"SelectTest", problemDTO);
@@ -41,11 +41,11 @@ public class StudyDAO {
 	
 	public List<ProblemDTO> CheckProblem(String chapter,String id)throws Exception{
 		ProblemDTO problemDTO= new ProblemDTO();
-		problemDTO.setBook(Integer.parseInt(chapter.charAt(0)+""));
-		problemDTO.setChapter(Integer.parseInt(chapter.charAt(1)+""));
-		problemDTO.setChapter_m(Integer.parseInt(chapter.charAt(2)+""));
-		problemDTO.setChapter_s(Integer.parseInt(chapter.charAt(3)+""));
-		problemDTO.setType(Integer.parseInt(chapter.charAt(4)+""));
+		problemDTO.setBook(chapter.charAt(0)+"");
+		problemDTO.setChapter(chapter.charAt(1)+"");
+		problemDTO.setChapter_m(chapter.charAt(2)+"");
+		problemDTO.setChapter_s(chapter.charAt(3)+"");
+		problemDTO.setType(chapter.charAt(4)+"");
 		problemDTO.setTest(Integer.parseInt(chapter.charAt(5)+""));
 		HashMap<String, Object> map =  new HashMap<>();
 		 map.put("problem", problemDTO);

@@ -17,9 +17,13 @@ public class ProblemDTO {
 	private String id;
 	private int my_answer;
 	private String book;
-	private int rate;
+	private String rate;
 	private int test;
 	private String reason;
+
+
+	
+
 	
 	
 	
@@ -56,10 +60,10 @@ public class ProblemDTO {
 	public void setBook(String book) {
 		this.book = book;
 	}
-	public int getRate() {
+	public String getRate() {
 		return rate;
 	}
-	public void setRate(int rate) {
+	public void setRate(String rate) {
 		this.rate = rate;
 	}
 	public double getRightCount() {
