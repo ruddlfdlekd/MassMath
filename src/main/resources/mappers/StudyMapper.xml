@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  	<mapper namespace="StudyMapper">
+ 
+ 	<select id="select" parameterType="String" >
+ 		select level_l from member where id=#{id}
+ 	</select>
+ 	
+ 		<select id="CheckProblem" parameterType="Map" resultType="ProblemDTO">
+ 		<![CDATA[select * from PROBLEM_DATA_SAVE where id=#{id} and book=#{problem.book} and chapter=#{problem.chapter} and chapter_m=#{problem.chapter_m} and chapter_s=#{problem.chapter_s} and type=#{problem.type} and test=#{problem.test}]]>
+ 		 </select>
+ 		 
+ 		<select id="SelectProblem" parameterType="int" resultType="ProblemDTO">
+		select a.*, b.my_answer from problem a,problem_data_save b where a.pnum = #{pnum} and b.pnum=#{pnum} and test=2
+ 		</select>
+ 		<select id="SelectProblemTest" parameterType="int" resultType="ProblemDTO">
+		select a.*, b.my_answer from problem a,problem_data_save b where a.pnum = #{pnum} and b.pnum=#{pnum} and test=1
+ 		</select>
+ 		
+ 		<select id="SelectConcept" parameterType="ProblemDTO" resultType="ProblemDTO">
+ 	<![CDATA[ 	select * from 
+ 		(select * from problem where book=#{book} and chapter=#{chapter} and chapter_m=#{chapter_m} and chapter_s=#{chapter_s} and type=#{type} and rightcount/count between]]>
+			<choose>
+		 	 <when test='rate =="A"'>
+		 	0 and 0.2
+		 	</when>
+		    <when test='rate =="B"'>
+		 	0.2 and 0.4
+		 	</when>
+		 	<when test='rate =="C"'>
+		 	0.4 and 0.6
+		 	</when>
+		    <when test='rate =="D"'>
+		 	0.6 and 0.8
+		 	</when>
+		 	<otherwise>
+		 	0.8 and 10
+		  	</otherwise>
+		 	</choose>
+ 		 and pnum not in(select pnum from mproblem where id = #{id}) order by dbms_random.value)
+ 		<![CDATA[ where rownum<11]]>
+ 		 </select>
+ 		 
+ 		 <select id="SelectTest" parameterType="ProblemDTO" resultType="ProblemDTO">
+ 	<![CDATA[ 	select * from 
+ 		(select * from problem where book=#{book} and chapter=#{chapter} and rightcount/count between]]>
+			<choose>
+		 	 <when test='rate =="A"'>
+		 	0 and 0.2
+		 	</when>
+		    <when test='rate =="B"'>
+		 	0.2 and 0.4
+		 	</when>
+		 	<when test='rate =="C"'>
+		 	0.4 and 0.6
+		 	</when>
+		    <when test='rate =="D"'>
+		 	0.6 and 0.8
+		 	</when>
+		 	<otherwise>
+		 	0.8 and 10
+		  	</otherwise>
+		 	</choose>
+ 		and pnum not in(select pnum from mproblem where id = #{id}) order by dbms_random.value)
+ 		<![CDATA[ where rownum<11]]>
+ 		 </select>
+ 		
+ 		<insert id="SaveProblem" parameterType="ProblemDTO">
+ 			insert into problem_data_save values ('iu', #{pnum}, #{my_answer}, #{chapter}, #{chapter_m}, #{chapter_s}, #{type}, #{book},#{answer},#{commentary},#{test})
+ 		</insert>
+ 		<insert id="SaveProblemTest" parameterType="ProblemDTO">
+ 			insert into problem_data_save values ('iu', #{pnum}, #{my_answer}, #{chapter},0, 0, 0, #{book},#{answer},#{commentary},#{test})
+ 		</insert>
+ 		
+ 		<update id="UpdateCount" parameterType="ProblemDTO">
+ 		update problem set count=count+1 where pnum = #{pnum}
+ 		</update>
+ 		
+ 		<update id="AnswerCheck" parameterType="ProblemDTO">
+ 		update problem_data_save set my_answer=#{my_answer} where pnum = #{pnum} and id = #{id}
+ 		</update>
+ 		
+ 		
+ 		<select id="Commentary" parameterType="int" resultType="String">
+		select commentary from problem where pnum=#{pnum}
+		</select>
+		
+		<select id="MyNoteCheck" parameterType="ProblemDTO" resultType="ProblemDTO">
+		select * from mynote where id=#{id} and pnum=#{pnum}
+		</select>
+		
+		
+		<insert id="MyNote" parameterType="ProblemDTO">
+		insert into mynote values (#{id}, #{pnum}, #{my_answer}, #{reason}, sysdate)
+		</insert>
+		
+		<update id="MyNote2" parameterType="ProblemDTO">
+		update mynote set my_answer=#{my_answer}, reason = #{reason}, reg_date = sysdate where id = #{id} and pnum = #{pnum}
+		</update>
+		
+		<delete id="DeleteProblem" parameterType="ProblemDTO">
+		delete problem_data_save where id=#{id} and book=#{book} and chapter=#{chapter} and chapter_m=#{chapter_m} and chapter_s=#{chapter_s} and type=#{type}
+		</delete>
+		
+		<update id="Right" parameterType="int">
+		update problem set rightcount = rightcount+1 where pnum=#{pnum}
+		</update>
+		
+		<select id="SelectChapter" parameterType="int" resultType="ProblemDTO">
+		select * from problem where pnum=#{pnum}
+		</select>
+		
+  		<update id="CountUp">
+		update problem set count = count+1 where pnum=#{pnum}
+		</update>
+		
+		<insert id="MProblem">
+		insert into mproblem values (#{id}, #{pnum})		
+		</insert>
+  		
+  	</mapper>

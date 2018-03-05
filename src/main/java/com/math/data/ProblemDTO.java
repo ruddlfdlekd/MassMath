@@ -14,7 +14,44 @@ public class ProblemDTO {
 	private int answer;
 	private String commentary;
 	private double percentage;
+	private String id;
+	private int my_answer;
+	private String book;
+	private int rate;
+	private int test;
 	
+	
+	
+	public int getTest() {
+		return test;
+	}
+	public void setTest(int test) {
+		this.test = test;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getMy_answer() {
+		return my_answer;
+	}
+	public void setMy_answer(int my_answer) {
+		this.my_answer = my_answer;
+	}
+	public String getBook() {
+		return book;
+	}
+	public void setBook(String book) {
+		this.book = book;
+	}
+	public int getRate() {
+		return rate;
+	}
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
 	public double getRightCount() {
 		return rightCount;
 	}

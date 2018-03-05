@@ -29,3 +29,4 @@ public class SqlTest {
 		memberDAO.memberJoin(memberDTO);
 	}
 }
+
