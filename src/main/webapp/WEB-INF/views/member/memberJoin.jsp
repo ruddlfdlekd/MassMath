@@ -130,6 +130,8 @@
   				alert("이메일을 다시 확인해주세요.");
   			}
   		});
+  		
+
 
 		
 	});
@@ -186,11 +188,14 @@
 							type="button" value="인증번호 발급" id="btn2">
 					</p>
 				</div>
+				
+				<input type="button" value="비밀번호 찾기" id="btn3">
 
 				<div id="result"></div>
 
-				<input type="hidden" name="check" id="check" value="f"> <label>PW
-				</label>
+				<input type="hidden" name="check" id="check" value="f"> 
+				
+				<label>PW</label>
 				<p class="p">
 					<input type="password" placeholder="  비밀번호를 입력해주세요" name="pw"
 						id="pw">

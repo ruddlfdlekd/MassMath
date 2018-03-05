@@ -29,6 +29,11 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberIdCheck", id);
 	}
 
+	//FindPW
+	public MemberDTO findPw(String id) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"findPw", id);
+	}
+	
 	//Login
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
