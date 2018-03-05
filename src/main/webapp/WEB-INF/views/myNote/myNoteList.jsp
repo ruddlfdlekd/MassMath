@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<style type="text/css">
+
+</style>
 <script type="text/javascript">
 
 $(function (){
@@ -87,95 +90,109 @@ $(function (){
 </script>
 </head>
 <body>
-		<div class="pull-left" style="padding:20px 30px; position: fixed; background-color: white; border: 1px solid black">
-			<h1>MyNote</h1>
-			<h4>필터 적용하기</h4>
-			<form class="frm">
-				<p><input type="hidden" id="id" name="id" value="${member.id}"></p>
-				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
-				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="wrong">모르는 문제</p>
-				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="miss">실수한 문제</p>
-				<hr>
-				<div >
-					<label><input name="book" class="book" id="b1" type="checkbox" value="b1">고등수학(상)</label>
-				</div>
-				<div>
-					<label><input name="book" class="book" id="b2" type="checkbox" value="b2">고등수학(하)</label>
-				</div>
-				<div>
-					<label><input name="book" class="book" id="b3" type="checkbox" value="b3">수학 1</label>
-				</div>
-				<div>
-					<label><input name="book" class="book" id="b4" type="checkbox" value="b4">수학 2</label>
-				</div>
-				<div>
-					<label><input name="book" class="book" id="b5" type="checkbox" value="b5">미적분</label>
-				</div>
-				<div>
-					<label><input name="book" class="book" id="b6" type="checkbox" value="b6">확률</label>
-				</div>
-				<div>
-					<label><input name="book" class="book" id="b7" type="checkbox" value="b7">통계</label>
-				</div>
-				<input class="btn btn-default" type="button" id="btn" value="적용하기">
-			</form>
-		</div>
-	<div id="myNoteList">
-		<c:forEach items="${result}" var="list">
-			<div class="container" id="del${list.num}">
-				<table class="table" style="width:60%; margin: 0 auto;">
-					<thead>
-						<tr>
-							<th>${list.num}(num)</th>
-							<th>${list.chapter}(단원)</th>
-							<th>${list.chapter_m}(중단원)</th>
-							<th>${list.reg_date}</th>
-							<th>${list.reason}</th>
-							<th style="text-align: right">
-								<button type="button" class="btn btn-danger btn-sm del" value="${list.num}">삭제하기<span class="glyphicon glyphicon-remove"></span></button>
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td colspan="6">
-							문제${list.contents }<br>
-							내용내용내용내용
-							내용내용내용내용내용내용내용내용내용내용내용내용
-							내용내용내용내용내용내용내용내용내용내용내용내용
-							내용내용내용내용내용내용내용내용내용내용내용내용
-							내용내용내용내용내용내용내용내용내용내용내용내용
-							내용내용내용내용내용내용내용내용내용내용내용내용
-							내용내용내용내용내용내용내용내용내용내용내용내용
-							내용내용내용내용내용내용내용내용내용내용내용내용
-							<br>
-							보기 : <br>
-							1<br>
-							2<br>
-							3<br>
-							4<br>
-							5<br>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="6" style="text-align: center;">
-								<button type="button" class="btn btn-primary btn-sm" id="checkAnswer" value="${list.num}">정답 확인</button>
-								<button type="button" class="btn btn-default btn-sm" value="${list.num}">질문 하기</button>
-							</td>
-						</tr>
-						<tr id="commentary${list.num}" style="display: none">
-							<td colspan="6">
-								해설<br>${list.commentary}
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<br>
-				<hr>
-				<br>
-			</div>
-		</c:forEach>
-	</div>
+	<%@ include file="../temp/header.jsp"%>
+	
+	<!-- 필터 -->
 
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<div class="pull-left" style="width:100%; padding: 50px 40px; background-color: white; border: 1px solid black">
+				<form class="frm">
+					<h4 class="text-center"><b>종류 선택</b></h4><br>
+					<p><input type="hidden" id="id" name="id" value="${member.id}"></p>
+					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
+					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="wrong">모르는 문제</p>
+					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="miss">실수한 문제</p>
+					<hr>
+					<h4 class="text-center"><b>책 선택</b></h4><br>
+					<div >
+						<label><input name="book" class="book" id="b1" type="checkbox" value="b1">고등수학(상)</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b2" type="checkbox" value="b2">고등수학(하)</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b3" type="checkbox" value="b3">수학 1</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b4" type="checkbox" value="b4">수학 2</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b5" type="checkbox" value="b5">미적분</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b6" type="checkbox" value="b6">확률</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b7" type="checkbox" value="b7">통계</label>
+					</div>
+					<div class="text-center" style="margin-top: 20px;">
+						<input class="btn btn-default center" type="button" id="btn" value="적용하기">
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div id="myNoteList">
+				<c:forEach items="${result}" var="list">
+					<div id="del${list.num}">
+						<table class="table" style="width:100%; margin: 0 auto;">
+							<thead>
+								<tr>
+									<th>${list.num}(num)</th>
+									<th>${list.chapter}(단원)</th>
+									<th>${list.chapter_m}(중단원)</th>
+									<th>${list.reg_date}</th>
+									<th>${list.reason}</th>
+									<th style="text-align: right">
+										<button type="button" class="btn btn-danger btn-sm del" value="${list.num}">삭제하기<span class="glyphicon glyphicon-remove"></span></button>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td colspan="6">
+									문제${list.contents }<br>
+									내용내용내용내용
+									내용내용내용내용내용내용내용내용내용내용내용내용
+									내용내용내용내용내용내용내용내용내용내용내용내용
+									내용내용내용내용내용내용내용내용내용내용내용내용
+									내용내용내용내용내용내용내용내용내용내용내용내용
+									내용내용내용내용내용내용내용내용내용내용내용내용
+									내용내용내용내용내용내용내용내용내용내용내용내용
+									내용내용내용내용내용내용내용내용내용내용내용내용
+									<br>
+									보기 : <br>
+									1<br>
+									2<br>
+									3<br>
+									4<br>
+									5<br>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="6" style="text-align: center;">
+										<button type="button" class="btn btn-primary btn-sm" id="checkAnswer" value="${list.num}">정답 확인</button>
+										<button type="button" class="btn btn-default btn-sm" value="${list.num}">질문 하기</button>
+									</td>
+								</tr>
+								<tr id="commentary${list.num}" style="display: none">
+									<td colspan="6">
+										해설<br>${list.commentary}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<br>
+						<hr>
+						<br>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>
