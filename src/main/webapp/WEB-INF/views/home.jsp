@@ -1,29 +1,16 @@
-<%@ page session="true"%>
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-   <title>Home</title>
-=======
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
-	<link rel="stylesheet" href="/m1/resources/style.css">
-	<link rel="stylesheet" href="/math/resources/join.css">
-	<style type="text/css">
-	</style>
-	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
->>>>>>> JW4
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>home</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <script type="text/javascript">
   $(function(){
       $("#go_btn").click(function(){

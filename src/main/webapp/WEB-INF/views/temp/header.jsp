@@ -34,25 +34,6 @@
 								<li><a href="study/studyView?chapter=7111">기하</a></li>
 							</ul>
 						</li>
-						<li class="active"><a href="#">마이노트</a></li>
-					</ul>
-					<a class="navbar-brand" href="/m1/main/mainPage">MassMath</a>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li><a href="/m1/main/mainPage">메인<span class="sr-only"></span></a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">학습하기<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">고등수학 상</a></li>
-								<li><a href="#">고등수학 하</a></li>
-								<li><a href="#">수학 1</a></li>
-								<li><a href="#">수학 2</a></li>
-								<li><a href="#">미적분</a></li>
-								<li><a href="#">확률과 통계</a></li>
-								<li><a href="#">기하</a></li>
-							</ul>
-						</li>
 						<li class="active"><a href="../myNote/myNoteList?id=${member.id}">마이노트</a></li>
 						<li><a href="#">질문하기</a></li>
 					</ul>
