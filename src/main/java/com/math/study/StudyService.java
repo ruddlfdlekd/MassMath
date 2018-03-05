@@ -21,6 +21,7 @@ public class StudyService {
 		 List<ProblemDTO> ar = new ArrayList<>();
 		 List<ProblemDTO> list = null;
 		 ProblemDTO problemDTO = null;
+		 System.out.println(chapter);
 		 list = studyDAO.CheckProblem(chapter, id);
 		 if(chapter.charAt(5)=='1'){
 			 if(list.size()!=0){

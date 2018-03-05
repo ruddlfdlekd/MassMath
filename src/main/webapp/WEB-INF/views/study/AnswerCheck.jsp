@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	alert("당신의 rate는 ${rate} 입니다")
 		$(window).bind("beforeunload", function (){
 		var a = new Array();
 		var reason = $(".reason");
 		var answer = $(".answer");
-		opener.parent.location.href="./asdf";
 		for(var i=0; i<reason.length; i++){
 		a.push(reason[i].value);
 		a.push(answer[i].title);
@@ -33,7 +32,7 @@ $(function(){
 		});
 	});
 		$("#btn").click(function(){
-			window.opener.location.href="../";
+			window.opener.location.href="../../../m1/home.jsp";
 			window.close();
 		});
 		
