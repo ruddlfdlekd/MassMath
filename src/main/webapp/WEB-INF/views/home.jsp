@@ -55,7 +55,7 @@
 </head>
 <body>
 
-   
+   <a href="study/studyPage">학습하기</a>
    <div id="logo">M MASS MATH</div>
    <div id="hd">
       <p>오직 너만을 위한</p>
