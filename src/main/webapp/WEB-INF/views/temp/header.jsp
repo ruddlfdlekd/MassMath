@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/m1/resources/css/navbar.css">
 <body>
 	<!-- navi -->
  	<nav class="navbar navbar-default">
@@ -24,13 +25,13 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">학습하기<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="study/studyView?chapter=1111">고등수학 상</a></li>
-								<li><a href="study/studyView?chapter=2111">고등수학 하</a></li>
-								<li><a href="study/studyView?chapter=3111">수학 1</a></li>
-								<li><a href="study/studyView?chapter=4111">수학 2</a></li>
-								<li><a href="study/studyView?chapter=5111">미적분</a></li>
-								<li><a href="study/studyView?chapter=6111">확률과 통계</a></li>
-								<li><a href="study/studyView?chapter=7111">기하</a></li>
+								<li><a href="#">고등수학 상</a></li>
+								<li><a href="#">고등수학 하</a></li>
+								<li><a href="#">수학 1</a></li>
+								<li><a href="#">수학 2</a></li>
+								<li><a href="#">미적분</a></li>
+								<li><a href="#">확률과 통계</a></li>
+								<li><a href="#">기하</a></li>
 							</ul>
 						</li>
 						<li class="active"><a href="#">마이노트</a></li>
