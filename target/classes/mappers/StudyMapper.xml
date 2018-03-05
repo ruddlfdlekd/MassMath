@@ -40,7 +40,7 @@
 		 	0.8 and 10
 		  	</otherwise>
 		 	</choose>
- 		 order by dbms_random.value)
+ 		and pnum not in(select pnum from mproblem where id = #{id}) order by dbms_random.value)
  		<![CDATA[ where rownum<11]]>
  		 </select>
  		 
@@ -64,7 +64,7 @@
 		 	0.8 and 10
 		  	</otherwise>
 		 	</choose>
- 		 order by dbms_random.value)
+ 		and pnum not in (select pnum from mproblem where id = #{id}) order by dbms_random.value)
  		<![CDATA[ where rownum<11]]>
  		 </select>
  		
@@ -112,6 +112,14 @@
 		<select id="SelectChapter" parameterType="int" resultType="ProblemDTO">
 		select * from problem where pnum=#{pnum}
 		</select>
+		
+		<update id="CountUp">
+		update problem set count = count+1 where pnum=#{pnum}
+		</update>
+		
+		<insert id="MProblem">
+		insert into mproblem values (#{id}, #{pnum})		
+		</insert>
   
   		
   	</mapper>
