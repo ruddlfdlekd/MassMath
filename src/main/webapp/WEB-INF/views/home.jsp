@@ -30,5 +30,6 @@
    Hello world!  
 </h1>
    <a href="./myNote/myNoteList?id=${member.id}">MY NOTE</a>
+   <%@ include file="./temp/footer.jsp"%>
 </body>
 </html>
