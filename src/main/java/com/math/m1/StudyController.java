@@ -22,12 +22,8 @@ public class StudyController {
 	public void Level(String chapter,String id){
 	}
 	
-	@RequestMapping(value ="studyPage")
-	public void Page() {
-	
-	}
 	@RequestMapping(value="studyView")
-	public ModelAndView View(int chapter){
+	public ModelAndView View(String chapter){
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("chapter", chapter);
 		return mv;
@@ -53,6 +49,7 @@ public class StudyController {
 			break;
 			
 		case "3":
+			if(rate!="E")
 			rate = ((char)(rate.charAt(0)+1))+"";
 			break;
 		

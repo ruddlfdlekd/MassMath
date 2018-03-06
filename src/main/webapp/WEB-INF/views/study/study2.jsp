@@ -6,7 +6,10 @@
 <html>
 <head>
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 $(function(){
 	$(".answer").click(function(){
@@ -38,6 +41,7 @@ $(function(){
 </script>
 </head>
 <body>
+<%@ include file="../temp/header.jsp"%>
 <h1>문제페이지</h1>
 <form name="frm" action="./AnswerCheck" method="POST" target="AnswerCheck">
 <input type="hidden" id="ma" name="ma">
@@ -48,11 +52,12 @@ $(function(){
 		<c:forEach items="${problem.answerlist.split(',')}" var="answerlist" varStatus="a">
 		<input type="radio"<c:if test="${problem.my_answer == a.index+1}">  checked="checked"</c:if> class="answer" title="${problem.pnum }" name="answer${i.index+1}" value="${a.index+1}">${answerlist }
 		</c:forEach>
+		<br><br>
 </c:forEach>
 <br>
 
 <input type="button" id="btn" value="제출">
 </form>
-
+<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>
