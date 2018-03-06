@@ -32,7 +32,7 @@ $(function(){
 		});
 	});
 		$("#btn").click(function(){
-			window.opener.location.href="../../../m1/home.jsp";
+			window.opener.location.href="../../../m1";
 			window.close();
 		});
 		
