@@ -5,32 +5,39 @@
 
 <script>
 	$(function(){
+		<c:if test="${not empty page.curPage}">
 		var a = ${page.curPage};
 				$(".badge").css({width:"", height:""});
 				$("#p"+a).css({width:"30px", height:"25px"});	
+		</c:if>
+		
 	});
 </script>
 
 
 			
-	<div style="width:990px;">
-	 <div style="padding: 15px; padding-top:30px; width:870px; margin-left:110px; position: relative;">
+	<div style="width:50%; margin : 0 auto;">
+	 <div style="padding: 15px; padding-top:30px; width:870px; position: relative;">
 	
 	
 			
 	 <div class="container">
-		<c:if test="${dto.size() == 0}">
-			<h1>해당데이터없음</h1>
+	 
+		<c:if test="${empty dto}">
+			<div>
+				<h1>해당데이터없음<img alt="" src="/m1/resources/images/오류.jpg" style="width:10%; height:10%;"></h1>		
+			</div>
 		</c:if>
 		
-		<c:if test="${dto.size() != 0}">
+		<c:if test="${not empty dto}">
 		
 		<input type="hidden" value="${page.kind}">
 		<input type="hidden" value="${page.search}">
-		<table class="table table-hover" style="width:850px">
+		<table class="table table-hover" style="width:80%; height:800px;">
 			<tr class="warning">
 			 <td>Num</td>
 			 <td>Contents</td>
+			 <td>Book</td>
 			 <td>Chapter</td>
 			 <td>Chapter_m</td>
 			 <td>Type</td>
@@ -50,16 +57,14 @@
 						</c:if>
 					</c:forEach>
 				</td>
+				<td>${dto[view.index].book}</td>
 				<td>${dto[view.index].chapter}</td>
 				<td>${dto[view.index].chapter_m}</td>
 				<td>${dto[view.index].type}</td>
 				<fmt:formatNumber var="percent" value="${dto[view.index].percentage}" pattern=".00"/>
-				<c:if test="${empty percent}">
-					<td>가나다라마</td>
-				</c:if>
-				<c:if test="${not empty percent}">
+		
 				<td>${percent}%</td>
-				</c:if>
+				
 			</tr>
 		</c:forEach>
 		</table>

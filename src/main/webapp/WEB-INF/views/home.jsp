@@ -28,9 +28,12 @@
 <body>
 
 <%@ include file="./temp/header.jsp"%>
-	<a href="./member/login">login</a>
-
-	<a href="./myNote/myNoteList?id=${member.id}">MY NOTE</a>
+   <a href="./member/login">login</a>
+   <a href="./myNote/myNoteList?id=${member.id}">MY NOTE</a>
+   <a href="./problem/test1">test</a>
+	<a href="./notice/noticeList">Notice</a>
+<button id="go_btn">GoList</button>
+<button id="make_btn">GoMake</button>
 
 </body>
 </html>

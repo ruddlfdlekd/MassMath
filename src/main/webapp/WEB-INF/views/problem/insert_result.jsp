@@ -12,6 +12,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../resources/css/problemView.css">
 </head>
 
 <script type="text/x-mathjax-config">
@@ -19,14 +21,82 @@
     tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script>
+<script>
+function loading() {
+	$("#a").css("display", "none");
+	b.style.visibility="visible";
+	$("html").css("background-color","white");
+	$("body").css("background-color","white");
+}
+</script>
 <script type="text/javascript">
   $(function(){
 		$("#insert").click(function(){
-			location.href="./result2";
-		})
+			location.href="./makeProblem";
 		});
+		$("#go_list").click(function(){
+			location.href="./problemList"
+		});
+		$(".boton").wrapInner('<div class=botontext></div>');
+		    
+		    $(".botontext").clone().appendTo( $(".boton") );
+		    
+		    $(".boton").append('<span class="twist"></span><span class="twist"></span><span class="twist"></span><span class="twist"></span>');
+		    $(".twist").css("width", "25%").css("width", "+=3px");
+		
+	});
   </script>
 <style type="text/css">
+html,
+body {
+  background-color: #404456;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2.7em;
+  margin-left: -2.7em;
+  width: 5.4em;
+  height: 5.4em;
+  background-color: #404456;
+}
+
+#hill {
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  top: 1.7em;
+  left: 1.7em;
+  background-color: transparent;
+  border-left: .25em solid whitesmoke;
+  transform: rotate(45deg);
+}
+
+#hill:after {
+  content: '';
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  left: 0;
+  background-color: #404456;
+}
+
+#box {
+  position: absolute;
+  left: 0;
+  bottom: -.1em;
+  width: 1em;
+  height: 1em;
+  background-color: transparent;
+  border: .25em solid whitesmoke;
+  border-radius: 15%;
+  transform: translate(0, -1em) rotate(-45deg);
+  animation: push 2.5s cubic-bezier(.79, 0, .47, .97) infinite;
+}
+
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -95,50 +165,81 @@
 animation: blink 1s step-end infinite;
  -webkit-animation: blink 1s step-end infinite;
 }
+@keyframes push {
+  0% {
+    transform: translate(0, -1em) rotate(-45deg);
+  }
+  5% {
+    transform: translate(0, -1em) rotate(-50deg);
+  }
+  20% {
+    transform: translate(1em, -2em) rotate(47deg);
+  }
+  25% {
+    transform: translate(1em, -2em) rotate(45deg);
+  }
+  30% {
+    transform: translate(1em, -2em) rotate(40deg);
+  }
+  45% {
+    transform: translate(2em, -3em) rotate(137deg);
+  }
+  50% {
+    transform: translate(2em, -3em) rotate(135deg);
+  }
+  55% {
+    transform: translate(2em, -3em) rotate(130deg);
+  }
+  70% {
+    transform: translate(3em, -4em) rotate(217deg);
+  }
+  75% {
+    transform: translate(3em, -4em) rotate(220deg);
+  }
+  100% {
+    transform: translate(0, -1em) rotate(-225deg);
+  }
 </style>
 </head>
-<body>
-
-	<nav class="navbar navbar-inverse">
+<body onLoad="setTimeout('loading()',2500)">
+	<div id="a" style="visibility: visible;">
+	 <div id="loader">
+	  <div id="box"></div>
+	  <div id="hill"></div>
+	 </div>
+	</div>
+	<div id="b" name="b" style="visibility:hidden;">
+	<nav class="navbar navbar-inverse" style="border-color: white">
 		<div class="container-fluid">
-			<div class="navbar-header"></div>
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="#"><img alt="" src="../resources/images/logo.png" style="width:30px; height:30px"></a>
+		  </div>
+		  <ul class="nav navbar-nav">
+		  	<li id="nav_pro" class="active"  data-toggle="modal" data-target="#pro_info"><a href="#">Make Problem?</a></li>
+		  	<li id="nav_ans"  data-toggle="modal" data-target="#ans_info"><a href="#">Answer List?</a></li>
+		  	<li id="nav_com"  data-toggle="modal" data-target="#com_info"><a href="#">Make Commentary?</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+		  	<li><a class="navbar-brand" href="./problemList">List<span class="glyphicon glyphicon-list"></span></a></li>
+		  </ul>
 		</div>
 	</nav>
 
 <div class="container-fluid text-center">
 	<div class="row content">
 	  <div class="col-sm-2 sidenav">
-			<div class="icon_div">
-				<div class="sik" title="{x}^{a}"><img src="http://latex.codecogs.com/gif.latex?{x}^{a}"/></div>
-				<div class="sik" title="{x}_{a}"><img src="http://latex.codecogs.com/gif.latex?{x}_{a}"/></div>
-				<div class="sik" title="\frac{a}{b}"><img src="http://latex.codecogs.com/gif.latex?\frac{a}{b}"/></div>
-				<div class="sik" title="{x_{a}}^{b}"><img src="http://latex.codecogs.com/gif.latex?{x_{a}}^{b}"/></div>
-				<div class="sik" title="x_{a}^{b}"><img src="http://latex.codecogs.com/gif.latex?x_{a}^{b}"/><br></div>
-				<div class="sik" title="\lim_{x \to 0}"><img src="http://latex.codecogs.com/gif.latex?\lim_{x \to 0}"/></div>
-			</div>
-			<div class="icon_div">
-				<div class="sik" title="\sqrt [n]{x}"><img src="http://latex.codecogs.com/gif.latex?\sqrt [n]{x}"/></div>
-				<div class="sik" title="\int_{a}^{b}"><img src="http://latex.codecogs.com/gif.latex?\int_{a}^{b}"/></div>
-				<div class="sik"  title="\left \{ contents\right contents\}"><img src="http://latex.codecogs.com/gif.latex?\left \{\right\}"/></div>
-				<div class="sik"  title="\frac{a^2}{ax^2}"><img src="http://latex.codecogs.com/gif.latex?\frac{a^2}{ax^2}"/></div>
-				<div class="sik" title="\alpha"><img src="http://latex.codecogs.com/gif.latex?\alpha"/></div>
-				<div class="sik"  title="\beta"><img src="http://latex.codecogs.com/gif.latex?\beta"/></div>
-			</div>
-			<div class="icon_div">
-				<div class="sik"  title="\gamma"><img src="http://latex.codecogs.com/gif.latex?\gamma"/></div>
-				<div class="sik"  title="\sum"><img src="http://latex.codecogs.com/gif.latex?\sum"/></div>
-				<div class="sik" title="\therefore "><img src="http://latex.codecogs.com/gif.latex?\therefore"/></div>
-			</div>
+			
 
 		</div>
-			<div class="col-sm-8 text-left">
-			
+			<div class="col-sm-8 text-center">
+		<div class="container">
+		
 	<h3>PNUM:${view.pnum}</h3>
 	<h3>TYPE:${view.type}</h3>
 	<h3>CHAPTER:${view.chapter}</h3>
 	<h3>CHAPTER_M:${view.chapter_m}</h3>
 	<h3>ANSWER:${view.answer}</h3>
-	<h3>Contents:
+	<h3>Problem:
 	</h3>
 		<c:forEach begin="0" end="${contents.size()}" items="${contents}" var="i" varStatus="index">
 			<c:if test="${index.index % 2 eq 0}">
@@ -163,7 +264,8 @@ animation: blink 1s step-end infinite;
 			<img src="http://latex.codecogs.com/gif.latex?${i}"/>
 			</c:if>
 		</c:forEach>
-				<button id="go_list">list</button> <button id="insert">Insert</button>
+				<a href="#" class="boton" id="insert"> Make Problem! </a>
+		</div>
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well" id="well1">
@@ -184,9 +286,77 @@ animation: blink 1s step-end infinite;
 			</div>
 		</div>
 	</div>
+	</div>
 	
-	
-	
+	<!-- 문제입력 사용 -->
+	<div class="modal fade" id="pro_info" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">문제입력시 주의사항</h4>
+        </div>
+        <div class="modal-body">
+          <p>1. 시작하시기전에 스페이스바를 한번 *꼭* 눌러주세요</p>
+          <p>2. 문제입력시 한글과 수식은 같이 입력될수 없어, 구분점으로 시작과 끝을  * 으로 지어줘야합니다.</p>
+          <p>3. *(수식)* 수식이 들어갈 내용에는 한글 입력하지 마세요.</p>
+          <p>4. 식이 잘못되거나, * 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- 보기입력 사용 -->
+	<div class="modal fade" id="ans_info" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">보기입력시 주의사항</h4>
+        </div>
+        <div class="modal-body">
+          <p>1. 보기입력시 한글입력은 안됩니다. 오로지 숫자와 식만 가능합니다.</p>
+          <p>2. 식이 잘못되거나, 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- 해설입력 사용 -->
+	<div class="modal fade" id="com_info" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">해설입력시 주의사항</h4>
+        </div>
+        <div class="modal-body">
+          <p>1. 시작하시기전에 스페이스바를 한번 *꼭* 눌러주세요</p>
+          <p>2. 문제입력시 한글과 수식은 같이 입력될수 없어, 구분점으로 시작과 끝을  * 으로 지어줘야합니다.</p>
+          <p>3. *(수식)* 수식이 들어갈 내용에는 한글 입력하지 마세요.</p>
+          <p>4. 식이 잘못되거나, * 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 </body>
 </html>

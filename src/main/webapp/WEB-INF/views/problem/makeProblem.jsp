@@ -21,8 +21,10 @@
 </script>
 <script>
 function loading() {
-$("#a").css("display", "none");
-b.style.visibility="visible";
+	$("#a").css("display", "none");
+	b.style.visibility="visible";
+	$("html").css("background-color","white");
+	$("body").css("background-color","white");
 }
 </script>
 <script type="text/javascript">
@@ -193,15 +195,63 @@ b.style.visibility="visible";
 		});
   </script>
 <style type="text/css">
+html,
+body {
+  background-color: #404456;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2.7em;
+  margin-left: -2.7em;
+  width: 5.4em;
+  height: 5.4em;
+  background-color: #404456;
+}
+
+#hill {
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  top: 1.7em;
+  left: 1.7em;
+  background-color: transparent;
+  border-left: .25em solid whitesmoke;
+  transform: rotate(45deg);
+}
+
+#hill:after {
+  content: '';
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  left: 0;
+  background-color: #404456;
+}
+
+#box {
+  position: absolute;
+  left: 0;
+  bottom: -.1em;
+  width: 1em;
+  height: 1em;
+  background-color: transparent;
+  border: .25em solid whitesmoke;
+  border-radius: 15%;
+  transform: translate(0, -1em) rotate(-45deg);
+  animation: push 2.5s cubic-bezier(.79, 0, .47, .97) infinite;
+}
+
+
 .modal-header, h4, .close {
       background-color: rgb(0, 150, 255);
       color:white !important;
       text-align: center;
       font-size: 30px;
   }
-  .modal-footer {
-    
-  }
+ 
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -269,16 +319,7 @@ b.style.visibility="visible";
 #drop_btn{
  margin-bottom: 20px;
 }
-@keyframes blink {
- 0% {color: black;}
- 50% {color: red;}
-}
- 
-/* for Chrome, Safari */
-@-webkit-keyframes blink {
-  0% {background-color: black;}
- 50% {background-color: red;}
-}
+
 #nextIcon {
  animation: blink 1s step-end infinite;
  -webkit-animation: blink 1s step-end infinite;
@@ -307,10 +348,65 @@ animation: blink 1s step-end infinite;
 	
 }
 
+ @keyframes blink {
+ 0% {color: black;}
+ 50% {color: red;}
+}
+ 
+/* for Chrome, Safari */
+@-webkit-keyframes blink {
+  0% {background-color: black;}
+ 50% {background-color: red;}
+}
+
+@keyframes push {
+  0% {
+    transform: translate(0, -1em) rotate(-45deg);
+  }
+  5% {
+    transform: translate(0, -1em) rotate(-50deg);
+  }
+  20% {
+    transform: translate(1em, -2em) rotate(47deg);
+  }
+  25% {
+    transform: translate(1em, -2em) rotate(45deg);
+  }
+  30% {
+    transform: translate(1em, -2em) rotate(40deg);
+  }
+  45% {
+    transform: translate(2em, -3em) rotate(137deg);
+  }
+  50% {
+    transform: translate(2em, -3em) rotate(135deg);
+  }
+  55% {
+    transform: translate(2em, -3em) rotate(130deg);
+  }
+  70% {
+    transform: translate(3em, -4em) rotate(217deg);
+  }
+  75% {
+    transform: translate(3em, -4em) rotate(220deg);
+  }
+  100% {
+    transform: translate(0, -1em) rotate(-225deg);
+  }
+  
+ 
+
 </style>
 </head>
-<body onLoad="setTimeout('loading()',500)">
+<body onLoad="setTimeout('loading()',2500)">
+	<div id="a" style="visibility: visible;">
+	 <div id="loader">
+	  <div id="box"></div>
+	  <div id="hill"></div>
+	 </div>
+	</div>
 	
+	<div id="b" name="b" style="visibility:hidden;">
 	<nav class="navbar navbar-inverse" style="border-color: white">
 		<div class="container-fluid">
 		  <div class="navbar-header">
@@ -380,6 +476,16 @@ animation: blink 1s step-end infinite;
 				<hr>
 				<h3>문제입력</h3>
 				<form action="./write" method="post" name="frm">
+		Book:<select id="book" name="book">
+			<option value="상">상</option>
+			<option value="하">하</option>
+			<option value="수1">수1</option>
+			<option value="수2">수2</option>
+			<option value="미적분">미적분</option>
+			<option value="확률과 통계">확률과 통계</option>
+			<option value="기하">기하</option>
+		</select>
+		
 		Type:<select id="type" name="type">
 			<option value="A">A</option>
 			<option value="B">B</option>
@@ -408,12 +514,9 @@ animation: blink 1s step-end infinite;
 		<input type="hidden" id="answerlist" name="answerlist">
 		<div>
 					<textarea name="contents" rows="10" cols="60" id="contents" placeholder="스페이스바 한번 누르세요."></textarea>		
-				<div id="a" name="a" style="visibility: visible; float: right;">
-					<img alt="" src="../resources/images/test.gif" style="margin-right: 100px;">
-				</div>
+				
 				<div id="result">
-			<div id="b" name="b" style="visibility:hidden;">	
-			</div>
+				
 				</div>
 		</div>
 					<input class="btn btn-primary" type="button" value="보기입력" id="btn2" style="margin-top:30px;margin-left:15%; width:500px;">
@@ -421,7 +524,7 @@ animation: blink 1s step-end infinite;
 					
 			</div>
 			<div class="col-sm-2 sidenav">
-			 <div id="well_div" style="position: relative">
+			 <div id="well_div">
 				<div class="well" id="well1">
 					<h3>문제입력</h3>
 				</div>
@@ -441,6 +544,7 @@ animation: blink 1s step-end infinite;
 			</div>
 		</div>
 	</div>
+   </div>
 	
 	
 	
@@ -504,7 +608,8 @@ animation: blink 1s step-end infinite;
       </div>
       
     </div>
-  </div> 
+  </div>
+  
 
 <!-- 문제입력 사용 -->
 	<div class="modal fade" id="pro_info" role="dialog">

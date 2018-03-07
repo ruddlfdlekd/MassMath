@@ -25,6 +25,19 @@ public class ProblemController {
 	@Inject
 	private ProblemService problemService;
 	
+	@RequestMapping(value="problemDelete")
+		public String delete(int pnum, RedirectAttributes rs) throws Exception{
+		int result=problemService.delete(pnum);
+		if(result>0){
+			rs.addFlashAttribute("message", "삭제성공");
+		}else{
+			rs.addFlashAttribute("message", "삭제실패");
+		}
+		
+		return "redirect:./problemList";
+		
+	}
+	
 	@RequestMapping(value="problemUpdate", method=RequestMethod.POST)
 		public ModelAndView update1(ProblemDTO problemDTO, boolean check) throws Exception{
 			ModelAndView mv = new ModelAndView();
@@ -64,7 +77,7 @@ public class ProblemController {
 		
 	}
 	
-	@RequestMapping(value="test", method=RequestMethod.GET)
+	@RequestMapping(value="test1", method=RequestMethod.GET)
 	public void test()throws Exception{
 	}
 	
@@ -72,6 +85,7 @@ public class ProblemController {
 	public ModelAndView problemList(ListData listData)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
+		
 		List<ProblemDTO> ar = problemService.selectList(listData);
 		
 		if(ar.size() != 0){
@@ -191,8 +205,8 @@ public class ProblemController {
 		return mv;
 	}
 	
-	@RequestMapping(value="result2")
-	public void result2(){}
+	@RequestMapping(value="makeProblem")
+	public void makeProblem(){}
 	
 	@RequestMapping(value="answerAjax", method=RequestMethod.GET)
 	public ModelAndView answerAjax(String answerlist) throws Exception{
@@ -297,7 +311,7 @@ public class ProblemController {
 		return mv;
 	}
 	
-	@RequestMapping(value="result")
+	@RequestMapping(value="problemList")
 	public void selectList()throws Exception{
 	}
 

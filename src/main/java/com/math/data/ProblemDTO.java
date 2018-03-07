@@ -20,68 +20,18 @@ public class ProblemDTO {
 	private String rate;
 	private int test;
 	private String reason;
+	private String chapter_name;
+	private String chapter_m_name;
+	private String book_name;
+	private String type_name;
 
-
 	
-
-	
-	
-	
-	
-	
-	
-	public String getReason() {
-		return reason;
+	public int getPnum() {
+		return pnum;
 	}
-	public void setReason(String reason) {
-		this.reason = reason;
+	public void setPnum(int pnum) {
+		this.pnum = pnum;
 	}
-	public int getTest() {
-		return test;
-	}
-	public void setTest(int test) {
-		this.test = test;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public int getMy_answer() {
-		return my_answer;
-	}
-	public void setMy_answer(int my_answer) {
-		this.my_answer = my_answer;
-	}
-	public String getBook() {
-		return book;
-	}
-	public void setBook(String book) {
-		this.book = book;
-	}
-	public String getRate() {
-		return rate;
-	}
-	public void setRate(String rate) {
-		this.rate = rate;
-	}
-	public double getRightCount() {
-		return rightCount;
-	}
-	public double getPercentage() {
-		return percentage;
-	}
-	public void setPercentage(double percentage) {
-		if(Double.isNaN(percentage)){
-			percentage = 0;
-		}
-		this.percentage = percentage;
-	}
-	public void setRightCount(int rightCount) {
-		this.rightCount = rightCount;
-	}
-	
 	public String getContents() {
 		return contents;
 	}
@@ -136,12 +86,82 @@ public class ProblemDTO {
 	public void setCommentary(String commentary) {
 		this.commentary = commentary;
 	}
-	public int getPnum() {
-		return pnum;
+	public String getId() {
+		return id;
 	}
-	public void setPnum(int pnum) {
-		this.pnum = pnum;
+	public void setId(String id) {
+		this.id = id;
 	}
+	public int getMy_answer() {
+		return my_answer;
+	}
+	public void setMy_answer(int my_answer) {
+		this.my_answer = my_answer;
+	}
+	public String getBook() {
+		return book;
+	}
+	public void setBook(String book) {
+		this.book = book;
+	}
+	public String getRate() {
+		return rate;
+	}
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+	public int getTest() {
+		return test;
+	}
+	public void setTest(int test) {
+		this.test = test;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public String getChapter_name() {
+		return chapter_name;
+	}
+	public void setChapter_name(String chapter_name) {
+		this.chapter_name = chapter_name;
+	}
+	public String getChapter_m_name() {
+		return chapter_m_name;
+	}
+	public void setChapter_m_name(String chapter_m_name) {
+		this.chapter_m_name = chapter_m_name;
+	}
+	public String getBook_name() {
+		return book_name;
+	}
+	public void setBook_name(String book_name) {
+		this.book_name = book_name;
+	}
+	public String getType_name() {
+		return type_name;
+	}
+	public void setType_name(String type_name) {
+		this.type_name = type_name;
+	}
+	public double getPercentage() {
+		return percentage;
+	}
+	public void setPercentage(double percentage) {
+		if(Double.isNaN(percentage)){
+			percentage = 0;
+		}
+		this.percentage = percentage;
+	}
+	public int getRightCount() {
+		return rightCount;
+	}
+	public void setRightCount(int rightCount) {
+		this.rightCount = rightCount;
+	}
+	
 	
 	
 

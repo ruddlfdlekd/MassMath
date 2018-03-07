@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+
+
 <div class="container">
 	<div class="table-responsive">
 		<table class="table">
@@ -8,8 +13,10 @@
 				<tr>
 					<th>NUM</th>
 					<th>Type</th>
+					<th>Book</th>
 					<th>Chapter</th>
-					<th>RightCount</th>
+					<th>Chapter_m</th>
+					<th>Percentage</th>
 					<th>Answer</th>
 					<th>AnswerList</th>
 				</tr>
@@ -18,8 +25,13 @@
 				<tr>
 					<td>${problem.pnum}</td>
 					<td>${problem.type}</td>
+					<td>${problem.book}</td>
 					<td>${problem.chapter}</td>
-					<td>${problem.rightCount}</td>
+					<td>${problem.chapter_m}</td>
+					<td>
+					<fmt:formatNumber var="percent" value="${problem.percentage}" pattern=".00"/>
+					${percent}%
+					</td>
 					<td>${problem.answer}</td>
 					<td>
 						<c:forEach items="${answerList}" begin="0"
@@ -48,6 +60,7 @@
 		<hr>
 
 	<h2>해설</h2>
+	<hr>
 		<div>
 			<c:forEach begin="0" end="${commentary.size()}" items="${commentary}"
 				var="i" varStatus="index">
@@ -59,13 +72,15 @@
 				</c:if>
 			</c:forEach>
 		</div>
-			<div class="container" style="margin-left: 500px; margin-top: 50px; padding: 10px;">
-				
-				<button class="btn btn-primary" id="update"
-					style="width: 100px; height: 30px">update</button>
-				<button class="btn btn-danger" id="delete"
-					style="width: 100px; height: 30px; margin-left: 30px;">delete</button>
-			</div>
+			
+		
+		
+			<button class="btn btn-primary" 
+					style="width: 100px; height: 30px" id="update">update</button>
+				<button class="btn btn-danger" 
+					style="width: 100px; height: 30px; margin-left: 30px;" id="delete">delete</button>
+		
+			
 
 	</div>
 
@@ -76,8 +91,6 @@
 
 <input type="hidden" id="pnum" name="pnum" value="${problem.pnum}">
 <input type="hidden" id="type" name="type" value="${problem.type}">
-<input type="hidden" id="rightCount" name="rightCount"
-	value="${problem.rightCount}">
 <input type="hidden" id="chapter" name="chapter"
 	value="${problem.chapter}">
 <input type="hidden" id="contents" name="contents"
@@ -89,4 +102,7 @@
 	value="${problem.chapter_m}">
 <input type="hidden" id="commentary" name="commentary"
 	value="${problem.commentary}">
+<input type="hidden" id="book" name="book"
+	value="${problem.book}">
+
 
