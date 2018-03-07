@@ -13,7 +13,16 @@
 </head>
 <body>
 <%@ include file="../temp/header.jsp"%>
-개념페이지
+
+
+
+
+
+
+
+
+
+
 <%@ include file="../temp/footer.jsp"%>
 </body>
 </html>
