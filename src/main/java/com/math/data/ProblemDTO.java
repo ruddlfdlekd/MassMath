@@ -14,7 +14,35 @@ public class ProblemDTO {
 	private int answer;
 	private String commentary;
 	private double percentage;
-	
+	private String book;
+	private String chapter_name;
+	private String chapter_m_name;
+	private String book_name;
+	private String type_name;
+	public String getType_name() {
+		return type_name;
+	}
+	public void setType_name(String type_name) {
+		this.type_name = type_name;
+	}
+	public String getChapter_name() {
+		return chapter_name;
+	}
+	public String getChapter_m_name() {
+		return chapter_m_name;
+	}
+	public void setChapter_m_name(String chapter_m_name) {
+		this.chapter_m_name = chapter_m_name;
+	}
+	public String getBook_name() {
+		return book_name;
+	}
+	public void setBook_name(String book_name) {
+		this.book_name = book_name;
+	}
+	public void setChapter_name(String chapter_name) {
+		this.chapter_name = chapter_name;
+	}
 	public double getRightCount() {
 		return rightCount;
 	}
@@ -31,6 +59,12 @@ public class ProblemDTO {
 		this.rightCount = rightCount;
 	}
 	
+	public String getBook() {
+		return book;
+	}
+	public void setBook(String book) {
+		this.book = book;
+	}
 	public String getContents() {
 		return contents;
 	}

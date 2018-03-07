@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Make Problem</title>
+<title>Update Problem</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,12 +19,26 @@
     tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script>
+<script>
+function loading() {
+	$("#a").css("display", "none");
+	b.style.visibility="visible";
+	$("html").css("background-color","white");
+	$("body").css("background-color","white");
+}
+</script>
 <script type="text/javascript">
   $(function(){
 	  var type = '${problemDTO.type}';
 	  var chapter = '${problemDTO.chapter}';
 	  var chapter_m = '${problemDTO.chapter_m}';
+	  var book = '${problemDTO.book}';
 	  
+	  $("#book option").each(function(){
+		 if($(this).val() == book){
+			 $(this).attr("selected","selected");
+		 } 
+	  });
 	  
 	  $("#type option").each(function(){
 		if($(this).val() == type){
@@ -78,9 +92,6 @@
 		  }
 		  
 	  })
-	  
-	  
-	  
 	  
 	  $("#answerList_btn").click(function(){
 		  var check;
@@ -240,15 +251,63 @@
 		});
   </script>
 <style type="text/css">
+html,
+body {
+  background-color: #404456;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2.7em;
+  margin-left: -2.7em;
+  width: 5.4em;
+  height: 5.4em;
+  background-color: #404456;
+}
+
+#hill {
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  top: 1.7em;
+  left: 1.7em;
+  background-color: transparent;
+  border-left: .25em solid whitesmoke;
+  transform: rotate(45deg);
+}
+
+#hill:after {
+  content: '';
+  position: absolute;
+  width: 7.1em;
+  height: 7.1em;
+  left: 0;
+  background-color: #404456;
+}
+
+#box {
+  position: absolute;
+  left: 0;
+  bottom: -.1em;
+  width: 1em;
+  height: 1em;
+  background-color: transparent;
+  border: .25em solid whitesmoke;
+  border-radius: 15%;
+  transform: translate(0, -1em) rotate(-45deg);
+  animation: push 2.5s cubic-bezier(.79, 0, .47, .97) infinite;
+}
+
+
 .modal-header, h4, .close {
-      background-color: #5cb85c;
+      background-color: rgb(0, 150, 255);
       color:white !important;
       text-align: center;
       font-size: 30px;
   }
-  .modal-footer {
-      background-color: #f9f9f9;
-  }
+ 
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -279,8 +338,8 @@
 }
 
 .icon_div{
-	width:45%;
-	line-height:6;
+	width:60%;
+	line-height:5;
 	
 }
 .sik{
@@ -316,16 +375,7 @@
 #drop_btn{
  margin-bottom: 20px;
 }
-@keyframes blink {
- 0% {color: black;}
- 50% {color: red;}
-}
- 
-/* for Chrome, Safari */
-@-webkit-keyframes blink {
-  0% {background-color: black;}
- 50% {background-color: red;}
-}
+
 #nextIcon {
  animation: blink 1s step-end infinite;
  -webkit-animation: blink 1s step-end infinite;
@@ -347,18 +397,84 @@ animation: blink 1s step-end infinite;
 	width:200px;
 }
 #result{
-	width:20%;
+	width:13%;
 	display:inline-block;
 	float: right;
+	margin-right: 140px;
+	
 }
+
+ @keyframes blink {
+ 0% {color: black;}
+ 50% {color: red;}
+}
+ 
+/* for Chrome, Safari */
+@-webkit-keyframes blink {
+  0% {background-color: black;}
+ 50% {background-color: red;}
+}
+
+@keyframes push {
+  0% {
+    transform: translate(0, -1em) rotate(-45deg);
+  }
+  5% {
+    transform: translate(0, -1em) rotate(-50deg);
+  }
+  20% {
+    transform: translate(1em, -2em) rotate(47deg);
+  }
+  25% {
+    transform: translate(1em, -2em) rotate(45deg);
+  }
+  30% {
+    transform: translate(1em, -2em) rotate(40deg);
+  }
+  45% {
+    transform: translate(2em, -3em) rotate(137deg);
+  }
+  50% {
+    transform: translate(2em, -3em) rotate(135deg);
+  }
+  55% {
+    transform: translate(2em, -3em) rotate(130deg);
+  }
+  70% {
+    transform: translate(3em, -4em) rotate(217deg);
+  }
+  75% {
+    transform: translate(3em, -4em) rotate(220deg);
+  }
+  100% {
+    transform: translate(0, -1em) rotate(-225deg);
+  }
 
 </style>
 </head>
-<body>
+<body onLoad="setTimeout('loading()',2500)">
+	<div id="a" style="visibility: visible;">
+	 <div id="loader">
+	  <div id="box"></div>
+	  <div id="hill"></div>
+	 </div>
+	</div>
 
-	<nav class="navbar navbar-inverse">
+	<div id="b" name="b" style="visibility:hidden;">
+	<nav class="navbar navbar-inverse" style="border-color: white">
 		<div class="container-fluid">
-			<div class="navbar-header"></div>
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="#"><img alt="" src="../resources/images/logo.png" style="width:30px; height:30px"></a>
+		  </div>
+		  <ul class="nav navbar-nav">
+		  	<li id="nav_pro" class="active"  data-toggle="modal" data-target="#pro_info"><a href="#">Make Problem?</a></li>
+		  	<li id="nav_ans"  data-toggle="modal" data-target="#ans_info"><a href="#">Answer List?</a></li>
+		  	<li id="nav_com"  data-toggle="modal" data-target="#com_info"><a href="#">Make Commentary?</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+		  	<li><a class="navbar-brand" href="javascript:history.back(-1)"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+			<li><a class="navbar-brand" href="javascript:history.go(1)"> <span class="glyphicon glyphicon-chevron-right"></span></a></li>
+		  </ul>
 		</div>
 	</nav>
 
@@ -374,18 +490,23 @@ animation: blink 1s step-end infinite;
 				<div class="sik" title="\frac{a}{b}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\frac{a}{b}"/></div>
 				<div class="sik" title="{x_{a}}^{b}"><img src="http://latex.codecogs.com/gif.latex?\large&space;{x_{a}}^{b}"/></div>
 				<div class="sik" title="x_{a}^{b}"><img src="http://latex.codecogs.com/gif.latex?\large&space;x_{a}^{b}"/><br></div>
-				<div class="sik" title="\lim_{x \to 0}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\lim_{x \to 0}"/></div>
+				
 			</div>
 			<div class="icon_div">
 				<div class="sik" title="\sqrt [n]{x}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\sqrt [n]{x}"/></div>
-				<div class="sik" title="\int_{a}^{b}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\int_{a}^{b}"/></div>
+				<div class="sik"  title="\sqrt[n]{a}^{x}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\sqrt[n]{a}^{x}"/></div>
 				<div class="sik"  title="\overline{AB}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\overline{AB} "/></div>
 				<div class="sik"  title="\frac{a^2}{ax^2}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\frac{a^2}{ax^2}"/></div>
+				<div class="sik" title="\int_{a}^{b}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\int_{a}^{b}"/></div>
+			</div>
+			<div class="icon_div">
+				<div class="sik" title="\lim_{x \to 0}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\lim_{x \to 0}"/></div>
+				<div class="sik" title="\int_{a}^{b}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\int_{a}^{b}"/></div>
+				<div class="sik"  title="\gamma"><img src="http://latex.codecogs.com/gif.latex?\large&space;\gamma"/></div>
 				<div class="sik" title="\alpha"><img src="http://latex.codecogs.com/gif.latex?\large&space;\alpha"/></div>
 				<div class="sik"  title="\beta"><img src="http://latex.codecogs.com/gif.latex?\large&space;\beta"/></div>
 			</div>
 			<div class="icon_div">
-				<div class="sik"  title="\gamma"><img src="http://latex.codecogs.com/gif.latex?\large&space;\gamma"/></div>
 				<div class="sik"  title="\sum"><img src="http://latex.codecogs.com/gif.latex?\large&space;\sum"/></div>
 				<div class="sik"  title="\sum_{a}^{b}"><img src="http://latex.codecogs.com/gif.latex?\sum_{a}^{b}" title="\sum_{a}^{b}" /></div>
 				<div class="sik"  title="\leq"><img src="http://latex.codecogs.com/gif.latex?\large&space;\leq"/></div>
@@ -393,8 +514,10 @@ animation: blink 1s step-end infinite;
 				<div class="sik"  title="\cdot"><img src="http://latex.codecogs.com/gif.latex?\large&space;\cdot"/></div>
 				<div class="sik"  title="\triangle"><img src="http://latex.codecogs.com/gif.latex?\triangle"/></div>
 				<div class="sik"  title="\times"><img src="http://latex.codecogs.com/gif.latex?\times"/></div>
-				<div class="sik"  title="\left AB \{\ x^{a}+ x^{a} \}"><img src="http://latex.codecogs.com/gif.latex?\large&space;\left AB \{\ x^{a}+ x^{a} \}"/></div>
-				<div class="sik"  title="(x^{2}&plus;x^{2})^{2}"><img src="http://latex.codecogs.com/gif.latex?\large&space;(x^{2}&plus;x^{2})^{2}"/></div>
+			</div>
+			<div class="icon_div">
+				<div class="sik"  title="\left AB \{\ x^{a}+ x^{a} \}"><img src="http://latex.codecogs.com/gif.latex?\left AB \{\ x^{a}+ x^{a} \}"/></div>
+				<div class="sik"  title="(x^{2}&plus;x^{2})^{2}"><img src="http://latex.codecogs.com/gif.latex?(x^{2}&plus;x^{2})^{2}"/></div>
 			</div>
 		 </div>
 		</div>
@@ -408,6 +531,16 @@ animation: blink 1s step-end infinite;
 				<hr>
 				<h3>문제수정</h3>
 				<form action="./problemUpdate" method="post" name="frm">
+		Book:<select id="book" name="book">
+			<option value="상">상</option>
+			<option value="하">하</option>
+			<option value="수1">수1</option>
+			<option value="수2">수2</option>
+			<option value="미적분">미적분</option>
+			<option value="확률과 통계">확률과 통계</option>
+			<option value="기하">기하</option>
+		</select>
+		
 		Type:<select id="type" name="type">
 			<option value="A">A</option>
 			<option value="B">B</option>
@@ -469,6 +602,7 @@ animation: blink 1s step-end infinite;
 			</div>
 		</div>
 	</div>
+   </div>
 	
 	
 	
@@ -532,7 +666,77 @@ animation: blink 1s step-end infinite;
       </div>
       
     </div>
-  </div> 
+  </div>
+  
+  <!-- 문제입력 사용 -->
+	<div class="modal fade" id="pro_info" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">문제입력시 주의사항</h4>
+        </div>
+        <div class="modal-body">
+          <p>1. 시작하시기전에 스페이스바를 한번 *꼭* 눌러주세요</p>
+          <p>2. 문제입력시 한글과 수식은 같이 입력될수 없어, 구분점으로 시작과 끝을  * 으로 지어줘야합니다.</p>
+          <p>3. *(수식)* 수식이 들어갈 내용에는 한글 입력하지 마세요.</p>
+          <p>4. 식이 잘못되거나, * 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- 보기입력 사용 -->
+	<div class="modal fade" id="ans_info" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">보기입력시 주의사항</h4>
+        </div>
+        <div class="modal-body">
+          <p>1. 보기입력시 한글입력은 안됩니다. 오로지 숫자와 식만 가능합니다.</p>
+          <p>2. 식이 잘못되거나, 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- 해설입력 사용 -->
+	<div class="modal fade" id="com_info" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">해설입력시 주의사항</h4>
+        </div>
+        <div class="modal-body">
+          <p>1. 시작하시기전에 스페이스바를 한번 *꼭* 눌러주세요</p>
+          <p>2. 문제입력시 한글과 수식은 같이 입력될수 없어, 구분점으로 시작과 끝을  * 으로 지어줘야합니다.</p>
+          <p>3. *(수식)* 수식이 들어갈 내용에는 한글 입력하지 마세요.</p>
+          <p>4. 식이 잘못되거나, * 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 </body>

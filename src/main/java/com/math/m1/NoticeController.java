@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,9 +74,12 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO=noticeService.selectOne(num);
 		noticeService.hitUpdate(boardDTO);
+	
 		mv.addObject("board", "notice");
 		mv.addObject("view", boardDTO);
 		mv.setViewName("board/boardView");
+		
+		
 		return mv;
 	}
 	

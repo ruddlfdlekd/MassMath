@@ -54,10 +54,14 @@
 
 </style>
 </head>
+	<%@ include file="../temp/header.jsp"%>
 <body>
-
+	
 	<section style="width:100%; height:900px;">
+	  <div class="container">
+	  
 		<div class="container-fluid text-center">
+			<div class="jumbotron" style="background-color: white;"><h2>공지사항</h2></div>
 			<div class="input-group" style="margin-left: 55%">
 				<form name="frm" action="./${board}List">
 					<input type="hidden" name="curPage" id="curPage" value="1">
@@ -120,10 +124,13 @@
 			</c:if>
 			</div>
 			<div>
-				<a class="btn btn-default" href="${board}Write">글쓰기</a>
+			 <c:if test="${member.id eq '관리자'}">
+				<a class="btn btn-default" href="${board}Write">글등록</a>			 
+			 </c:if>
 			</div>
 		</div>
+	  </div>
 	</section>
-
+<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>

@@ -18,6 +18,10 @@ public class ProblemService {
 	@Inject
 	private ProblemDAO problemDAO;
 	
+	public int delete(int pnum) throws Exception{
+		return problemDAO.delete(pnum);
+	}
+	
 	public int updatePer(ProblemDTO problemDTO) throws Exception{
 		return problemDAO.updatePer(problemDTO);
 	}

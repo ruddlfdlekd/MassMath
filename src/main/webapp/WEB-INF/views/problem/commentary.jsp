@@ -27,19 +27,13 @@ b.style.visibility="visible";
 </script>
 <script type="text/javascript">
   $(function(){
-	$("#li_pro").click(function(){
-		
-	})
-	  
-	$("#btn").click(function(){
-		$(".type").each(function(){
-			var a = $(this).val();
-			
-		})
-	})
 	  
 	  $("#btn2").click(function(){
+		  if($("#rightCount").val().length==0){
+			  alert("정답률입력해주세요.");
+		  }else{
 				 frm.submit();
+		  }
 	 });
 	  
 	  $("#chapter").click(function(){
@@ -247,11 +241,17 @@ animation: blink 1s step-end infinite;
 				<img alt="" src="../resources/images/test.png" style="width:300px; height:200px; margin-left: 40px">  
 				<hr>
 				<form action="./write" method="post" name="frm">
+				Book:<input type="text" name="book" value="${problemDTO.book}" readonly="readonly" style="width:20px;">
 				Type:<input type="text" name="type" value="${problemDTO.type}" readonly="readonly" style="width:20px;">
 				Chapter:<input type="text" name="chapter" value="${problemDTO.chapter}" readonly="readonly" style="width:80px;">
 				Chapter_m:<input type="text" name="chapter_m" value="${problemDTO.chapter_m}" readonly="readonly">
+				<input type="hidden" name="chapter_name" value="${problemDTO.chapter}">
+				<input type="hidden" name="chapter_m_name" value="${problemDTO.chapter_m}">
+				<input type="hidden" name="type_name" value="${problemDTO.type}">
+				<input type="hidden" name="book_name" value="${problemDTO.book}">
 				<input type="hidden" name="answerlist" value="${problemDTO.answerlist}" readonly="readonly">
 				<input type="hidden" name="contents" value="${problemDTO.contents}" readonly="readonly">
+				기본정답률:<input type="text" name="rightCount" id="rightCount" placeholder="기본설정 0~100 숫자만입력" style="width:100px;">
 				정답:<select id="answer" name="answer" style="width:60px">
 					        <option>1</option>
 					        <option>2</option>
