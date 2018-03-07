@@ -113,12 +113,19 @@
 		select * from problem where pnum=#{pnum}
 		</select>
 		
-  		<update id="CountUp">
+  		<update id="CountUp" parameterType="ProblemDTO">
 		update problem set count = count+1 where pnum=#{pnum}
 		</update>
 		
-		<insert id="MProblem">
+		<insert id="MProblem" parameterType="ProblemDTO">
 		insert into mproblem values (#{id}, #{pnum})		
 		</insert>
+		
+		<update id="rateChange" parameterType="ProblemDTO">
+		update member_level set rate = #{rate} where id=#{id} and chapter=#{chapter}
+		</update>
+
+		
+		
   		
   	</mapper>

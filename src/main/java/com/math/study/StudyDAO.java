@@ -107,16 +107,24 @@ public class StudyDAO {
 	public void right(String pnum)throws Exception{
 		sqlSession.update(NAMESPACE+"Right", Integer.parseInt(pnum));
 	}
-	public String rateUp(String rate)throws Exception{
+	public String rateUp(String rate, String chapter,String id)throws Exception{
 		if(rate!="A")
 		rate = ((char)(rate.charAt(0)-1))+"";
-		sqlSession.update(NAMESPACE+"rateUp", rate);
+		ProblemDTO problemDTO = new ProblemDTO();
+		problemDTO.setId(id);
+		problemDTO.setRate(rate);
+		problemDTO.setChapter(chapter);
+		sqlSession.update(NAMESPACE+"rateChange", problemDTO);
 		return rate;
 	}
-	public String rateDown(String rate)throws Exception{
+	public String rateDown(String rate, String chapter,String id)throws Exception{
 		if(rate!="E")
 		rate = ((char)(rate.charAt(0)+1))+"";
-		sqlSession.update(NAMESPACE+"rateDown", rate);
+		ProblemDTO problemDTO = new ProblemDTO();
+		problemDTO.setId(id);
+		problemDTO.setRate(rate);
+		problemDTO.setChapter(chapter);
+		sqlSession.update(NAMESPACE+"rateChange", problemDTO);
 		return rate;
 	}
 	public void CountUp(ProblemDTO problemDTO)throws Exception{

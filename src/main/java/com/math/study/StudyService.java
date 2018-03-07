@@ -62,12 +62,12 @@ public class StudyService {
 		 }
 		 return ar;
 		}
-	 public String rateUp(String rate)throws Exception{
-			rate = studyDAO.rateUp(rate);
+	 public String rateUp(String rate,String chapter,String id)throws Exception{
+			rate = studyDAO.rateUp(rate,chapter,id);
 			return rate;
 		}
-		public String rateDown(String rate)throws Exception{
-			rate = studyDAO.rateDown(rate);
+		public String rateDown(String rate,String chapter,String id)throws Exception{
+			rate = studyDAO.rateDown(rate,chapter,id);
 			return rate;
 		}
 	 
