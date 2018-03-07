@@ -4,7 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/m1/resources/css/navbar.css">
 <link rel="stylesheet" href="/m1/resources/css/footer.css">
-
+<script type="text/javascript">
+  $(function(){
+      
+      $("#make_btn").click(function(){
+         window.open("../../../m1/problem/makeProblem","","top=100px, left=200px, width=1100px, height=600px");         
+      })
+   });
+  </script>
 
 <body>
    <!-- navi -->
@@ -38,6 +45,10 @@
                      </ul>
                   </li>
                   <li class="active"><a href="../myNote/myNoteList?id=${member.id}">마이노트</a></li>
+                  <c:if test="${member.id eq 'admin@admin'}">
+                  	<li id="make_btn"><a href="#">문제등록</a></li>
+                    <li><a href="../../../m1/problem/problemList">문제리스트</a></li>
+                  </c:if>
                   <li><a href="#">질문하기</a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">

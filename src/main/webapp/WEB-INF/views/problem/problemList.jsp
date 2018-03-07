@@ -31,13 +31,11 @@ $(function(){
 	 location.href="/m1/member/memberLogin";
 	</c:if>
 	<c:if test="${not empty member}">
-		if('${member.id}' != '관리자'){
+		if('${member.id}' != 'admin@admin'){
 			alert("죄송합니다 관리자 페이지 입니다.");
 			location.href="/m1/";
 		}
 	</c:if>
-	<c:if test="${member.id eq '관리자'}">
-	
 	 var message='${message}';
 		if(message != ""){
 		alert('${message}');
@@ -87,9 +85,9 @@ $(function(){
 			answerlist = encodeURIComponent(answerlist);
 			commentary = encodeURIComponent(commentary);
 			
-			window.open("/m1/problem/problemUpdate?pnum="+pnum+"&&contents="+contents+"&&chapter="+chapter+"&&chapter_m="+chapter_m
+			window.open("../../../m1/problem/problemUpdate?pnum="+pnum+"&&contents="+contents+"&&chapter="+chapter+"&&chapter_m="+chapter_m
 					+"&&answer="+answer+"&&answerlist="+answerlist+"&&commentary="+commentary+"&&type="+type+"&&book="+book
-					,"","top=100px, left=200px, width=900px, heigth=700px");
+					,"","top=100px, left=200px, width=1100px, heigth=700px");
 		});
 		
 		$("#listView").on("click",".td_search",function(){
@@ -153,7 +151,6 @@ $(function(){
 			})
 		});
 
-	 </c:if>
 	
 	
 });

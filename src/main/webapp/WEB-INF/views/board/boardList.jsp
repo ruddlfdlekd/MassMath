@@ -124,7 +124,7 @@
 			</c:if>
 			</div>
 			<div>
-			 <c:if test="${member.id eq '관리자'}">
+			 <c:if test="${member.id eq 'admin@admin'}">
 				<a class="btn btn-default" href="${board}Write">글등록</a>			 
 			 </c:if>
 			</div>

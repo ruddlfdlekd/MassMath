@@ -25,10 +25,21 @@ function loading() {
 	b.style.visibility="visible";
 	$("html").css("background-color","white");
 	$("body").css("background-color","white");
+	<c:if test="${empty member}">
+		alert("죄송합니다 관리자 페이지 입니다.");
+		location.href="/m1/";
+	</c:if> 
+	<c:if test="${not empty member}">
+		if('${member.id}' != 'admin@admin'){
+			alert("죄송합니다 관리자 페이지 입니다.");
+			location.href="/m1/";
+		}
+	</c:if>
 }
 </script>
 <script type="text/javascript">
   $(function(){
+	  
 	  $('[data-toggle="popover"]').popover(); 
 	  $("#answerList_btn").click(function(){
 		  var check;
