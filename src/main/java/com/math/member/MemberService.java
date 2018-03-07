@@ -23,6 +23,11 @@ public class MemberService {
 	public int memberJoin2(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberJoin2(memberDTO);
 	}
+	
+	// Find PW
+	public MemberDTO findPw(String id) throws Exception {
+		return memberDAO.findPw(id);
+	}
 
 	// ID Check
 	public MemberDTO memberIdCheck(String id) throws Exception {
@@ -32,6 +37,10 @@ public class MemberService {
 	// Login
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberLogin(memberDTO);
+	}
+	// Login
+	public MemberDTO memberLogin2(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberLogin2(memberDTO);
 	}
 
 	// MyPage

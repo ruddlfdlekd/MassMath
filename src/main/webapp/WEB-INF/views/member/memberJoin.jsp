@@ -1,16 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JOIN</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="/m1/resources/css/join.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript">
 	$(function() {
 		var email="";
 		var data2="";
+		
+		   //약관 동의
+	      $("#all_check").click(function() {
+	         if ($(this).prop("checked")) {
+	            $(".box").prop("checked", true);
+	         } else {
+	            $(".box").prop("checked", false);
+	         }
+	      });
+	      $(".box").click(function() {
+	            if ($("#c1").prop("checked") && $("#c2").prop("checked")
+	                  && $("#c3").prop("checked")) {
+	               $("#all_check").prop("checked", true);
+	            } else {
+	               $("#all_check").prop("checked", false);
+	            }
+	      });
+	      
+	      //약관 동의서 보기
+	      var check = true;
+	      $("#ser_1").click(function() {
+	         if (check) {
+	            $("#ser_1").text("닫기▲");
+	            $(".see1").css("margin", "10px");
+	            check = false;
+	         } else {
+	            $("#ser_1").text("보기▼");
+	            check = true;
+	         }
+	         $(".see1").slideToggle("slow");
+	      });
+
+	      var check2 = true;
+	      $("#ser_2").click(function() {
+	         if (check2) {
+	            $("#ser_2").text("닫기▲");
+	            $(".see2").css("margin", "10px");
+	            check2 = false;
+	         } else {
+	            $("#ser_2").text("보기▼");
+	            check2 = true;
+	         }
+	         $(".see2").slideToggle("slow");
+	      });
+		
 		$("#id").change(function() {
 			var id = $(this).val();
 			$.ajax({
@@ -60,8 +108,12 @@
 			}else{
 				if(email==$("#id").val() && $("#check").val()=="t"){
 					if ($("#id").val() && $("#pw").val() && $("#pw2").val() && $("#name").val() && $("#goal").val() && $("#birth").val() && $("#phone").val() && $("#postal_code").val().length > 0) {
-						frm.submit();
-						alert("회원가입 완료");
+						if($("#c1").prop("checked") && $("#c2").prop("checked")){							
+							frm.submit();
+							alert("회원가입 완료");
+						}else{
+							alert("약관동의를 확인해주세요");
+						}
 					} else {
 						alert("모든 사항을 입력해주세요.");
 					}
@@ -79,6 +131,8 @@
   				alert("이메일을 다시 확인해주세요.");
   			}
   		});
+  		
+
 
 		
 	});
@@ -86,41 +140,117 @@
 
 </script>
 </head>
-<body>
-	<h1> Member Join </h1>
-	
-	<form action="./memberJoin" method="post" name="frm">
-	
+<body class="body">
+	<div class="join-center">
+		<h2>회원가입</h2>
+		<!-- <h6>가입 버튼을 누르면 이용약관과 정책에 동의한 것으로 간주합니다</h6> -->
+		<article id="agree_border">
+			<div class="terms_border">
+				<div class="terms_border2">
+					<div class="all">
+						<input type="checkbox" id="all_check"> 가입 전체약관 및 수신에
+						동의합니다.
+					</div>
+					<div class="tline"></div>
+					<div class="agree">
+						<input type="checkbox" class="box feel" id="c1"> <span
+							class="point">[필수]</span> 서비스 이용약관 동의
+						<button class="see" id="ser_1">보기▼</button>
+						<div class="see1">
+							<%@include file="./service_1.jsp"%>
+						</div>
+					</div>
+					<div class="agree">
+						<input type="checkbox" class="box feel" id="c2"> <span
+							class="point">[필수]</span> 개인정보 수집 및 이용 동의
+						<button class="see" id="ser_2">보기▼</button>
+						<div class="see2">
+							<%@include file="./service_2.jsp"%>
+						</div>
+					</div>
+					<div class="agree">
+						<input type="checkbox" class="box" id="c3"> <span
+							id="choice">[선택]</span> 개인정보 수집 및 이용 동의 <br> <span id="sub">(공고
+							소식 및 광고메일, 휴대폰 알림)</span>
+					</div>
+				</div>
+			</div>
 
-	<div id="email">
-		<label>ID :</label> 
-   		<input type="email" id="id" name="id" placeholder="이메일 형식만 가능"> <input type="button" value="인증번호 발급" id="btn2">
-    </div>
+		</article>
 
-	<div id="result"></div>
-	
-	<input type="hidden" name="check" id="check" value="f">
-	
-	<p>PW : <input type="password" name="pw" id="pw"><p id="pwcheck"></p>
-	<p>PW_CHECK : <input type="password" id="pw2"><p id="pwcheck2"></p>
-	<p>NAME : <input type="text" name="name" id="name"></p>
-	<p>ADDRESS : <input type="text" placeholder="우변번호" name="postal_code" id="postal_code" class="join_in"> <input type="button" value="우편번호 찾기" id="nn" class="btn btn-default"><br>
-				<input type="text" placeholder="도로명주소" name="street" id="street" class="join_in"><br>
-				<input type="text" placeholder="나머지주소" name="street2" id="street2" class="join_in">
-	</p>
-	<p>GOAL : <select name="goal" id="goal">
-				<script>
+
+		<article id="join_border">
+			<form action="memberJoin" method="post" name="frm">
+
+				<div id="email">
+					<label>ID </label>
+					<p>
+						<input type="email" id="id" name="id" placeholder="  이메일 형식만 가능"><input
+							type="button" value="인증번호 발급" id="btn2">
+					</p>
+				</div>
+				
+				<input type="button" value="비밀번호 찾기" id="btn3">
+
+				<div id="result"></div>
+
+				<input type="hidden" name="check" id="check" value="f"> 
+				
+				<label>PW</label>
+				<p class="p">
+					<input type="password" placeholder="  비밀번호를 입력해주세요" name="pw"
+						id="pw">
+				<p id="pwcheck"></p>
+
+				<label>PW_CHECK </label>
+				<p class="p">
+					<input type="password" placeholder="  비밀번호를 확인해주세요" id="pw2">
+				<p id="pwcheck2"></p>
+
+				<label>NAME </label>
+				<p class="p">
+					<input type="text" placeholder="  이름을 입력해주세요" name="name" id="name">
+				</p>
+
+				<label>ADDRESS </label>
+				<p class="p">
+					<input type="text" placeholder="우변번호" name="postal_code"
+						id="postal_code" class="join_in2"> <input type="button"
+						value="우편번호 찾기" id="nn" class="btn btn-default"><br>
+					<input type="text" placeholder="도로명주소" name="street" id="street"
+						class="join_in2"><br> <input type="text"
+						placeholder="나머지주소" name="street2" id="street2" class="join_in2">
+				</p>
+
+				<label>GOAL </label>
+				<p>
+					<select name="goal" id="goal">
+						<script>
 					for(i=1;i<101;i++){
 						document.write("<option value="+i+">"+i+"</option>");
 					}
-				</script>	
-			 </select>
-	</p>
-	<p>BIRTH : <input type="date" name="birth" id="birth"></p>
-	<p>PHONE : <input type="text" name="phone" id="phone"></p>
-	<input type="hidden" name="auto_payment" value="0">	 <!-- 0이면 X, 1이면 O -->
-	<p><input type="button" id="btn" value="JOIN"></p>	
-	</form>
-	
+				</script>
+					</select>
+				</p>
+
+				<label>BIRTH </label>
+				<p class="p">
+					<input type="date" name="birth" id="birth">
+				</p>
+
+				<label>PHONE </label>
+				<p class="p">
+					<input type="text" placeholder="  휴대폰 번호를 입력해주세요" name="phone"
+						id="phone">
+				</p>
+				<input type="hidden" name="auto_payment" value="0">
+				<!-- 0이면 X, 1이면 O -->
+				<p id="btn-group">
+					<input type="button" class="btn" id="btn" value="JOIN">
+					<a href="./login" class="btn">CANCEL</a>
+				</p>
+			</form>
+		</article>
+	</div>
 </body>
 </html>

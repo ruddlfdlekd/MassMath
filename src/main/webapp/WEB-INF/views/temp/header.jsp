@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/m1/resources/css/navbar.css">
+<link rel="stylesheet" href="/m1/resources/css/footer.css">
+
+
 <body>
 	<!-- navi -->
  	<nav class="navbar navbar-default">
@@ -39,15 +42,15 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">회원관리<span class="caret"></span></a>						
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>						
 							<ul class="dropdown-menu">
 								<c:if test="${empty member}">
-									<li><a href="/m1/member/memberLogin">로그인</a></li>
-									<li><a href="/m1/member/memberJoin">회원가입</a></li>
+									<li><a href="/m1/member/login">로그인</a></li>
+									<li><a href="/m1/member/login">회원가입</a></li>
 								</c:if>
 								<c:if test="${not empty member}">
 									<li><a href="/m1/member/memberLogOut">로그아웃</a></li>
-									<li><a href="/m1/member/memberMyPage">마이페이지</a></li>
+									<li><a href="/m1/member/memberMyPage?id=${member.id}">마이페이지</a></li>
 								</c:if>
 							</ul>
 						</li>

@@ -18,10 +18,20 @@
 	<select id="memberIdCheck" parameterType="String" resultType="MemberDTO">
 		select id from member where id=#{id}
 	</select>
+	
+	<!-- Find Pw -->
+	<select id="findPw" parameterType="String" resultType="MemberDTO">
+		select * from member where id=#{id}
+	</select>
 
 	<!-- Login -->
 	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
+	</select>
+
+	<!-- Login2 -->
+	<select id="memberLogin2" parameterType="MemberDTO" resultType="MemberDTO">
+		select * from member where id=#{id}
 	</select>
 
 	<!-- My Page -->
