@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>MY PAGE</title>
 <link href="/m1/resources/css/join.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -36,8 +37,8 @@
 	   });
 </script>
 </head>
-<body>
-
+<body class="body_w">
+<%@include file="../temp/header.jsp"%>
 <div class="sidenav">
   <a href="#services"  class="m_menu" id="m1">서비스 관리</a>
 	   <div class="s_menu m1">
@@ -68,24 +69,24 @@
 <div class="mypage-center">
 	<h2>My Page</h2>
 	<div class="info">
-		<p class="p">ID : ${member.id}</p>
-		<p class="p">NAME : ${member.name}</p>
-		<p class="p">ADDRESS : ${member.address}</p>
-		<p class="p">GOAL : ${member.goal}</p>
-		<p class="p">BIRTH : ${member.birth}</p>
-		<p class="p">LEVEL : ${member.level_avg}</p>
-		<p class="p">PHONE : ${member.phone}</p>
-		<p class="p">JOIN DATE : ${member.join_date}</p>
+		<p class="p2">ID : ${member.id}</p>
+		<p class="p2">NAME : ${member.name}</p>
+		<p class="p2">ADDRESS : ${member.address}</p>
+		<p class="p2">GOAL : ${member.goal}</p>
+		<p class="p2">BIRTH : ${member.birth}</p>
+		<p class="p2">LEVEL : ${member.level_avg}</p>
+		<p class="p2">PHONE : ${member.phone}</p>
+		<p class="p2">JOIN DATE : ${member.join_date}</p>
 	
 		<p>
-		<c:if test="${member.pw eq 'kakao' }">
+		<c:if test="${member.pw eq 'kakao'}">
 			<a href="./apiMemberUpdate?id=${member.id}" class="btn3">UPDATE</a> 
 		</c:if>
 			<a href="./memberUpdate?id=${member.id}" class="btn3">UPDATE</a> 
 			<a href="./memberDelete" class="btn3">DELETE</a>
 		</p>
-		<input type="button" value="문제 추가" id="nn" class="btn3">	
 	</div>
 </div>
+<%@include file="../temp/footer.jsp"%>
 </body>
 </html>

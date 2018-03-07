@@ -94,7 +94,7 @@
 						FB.api('/me', function(response) {
 							FB.api('/me', function(user) {
 								alert(response.name + '님 환영합니다.');
-								location.href = "./member/apiLogin?id="
+								location.href = "./apiLogin?id="
 										+ response.id + "&name="
 										+ response.name + "&api=1";
 

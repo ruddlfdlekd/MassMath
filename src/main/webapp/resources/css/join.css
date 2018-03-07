@@ -2,6 +2,9 @@
 body{
 	background-color: #49aee4;
 }
+.body_w{
+	background-color: white;
+}
 .login-center{
 	width: 25%;
 	margin: 0 auto;
@@ -9,8 +12,9 @@ body{
 	text-align: center;
 }
 #logo-a{
-	width: 100%;
+	width: 320px;
 	text-align: center;
+	margin: 0 auto;
 }
 #logo{
 	width: 350px;
@@ -195,8 +199,12 @@ input{
 	border-bottom-color: white;
 	border-bottom-width: thin;
 }
-.join_in{
+.join_in2{
 	border-bottom-color: white;
+	border-bottom-width: thin;
+}
+.join_in{
+	border-bottom-color: black;
 	border-bottom-width: thin;
 }
 #street2{
@@ -216,7 +224,7 @@ input{
 	width: 70px;
 	height: 25px;
 }
-#btn-group > .btn, #btn{
+#btn-group > .btn, #btn {
 	font-size: medium;
 	font-weight: bold;
 	margin-top: 20px;
@@ -272,7 +280,7 @@ input{
 /************MY PAGE************/
 .sidenav {
     width: 130px;
-    position: fixed;
+	position: absolute;
     z-index: 1;
     top: 200px;
     left: 200px;
@@ -304,28 +312,30 @@ input{
 
 .mypage-center{
 	width: 30%;
+	height: 700px;
 	margin: 0 auto;
 	padding-top: 5%;
 }
 .mypage-center > h2{
 	text-align: center;
-	color: white;
+	color: black;
 	font-weight: bold;
 }
 .info{
 	margin-top: 20%;
-	color: white;
+	color: black;
 }
-.btn3{
+
+.btn3, #btn4{
 	text-decoration: none;
 	font-size: medium;
 	font-weight: bold;
 	margin-top: 20px;
 	margin-bottom : 30px;
 	float: right;
-	 color : black;
+	 color : white;
 	 margin-left: 10px; 
-	 background-color: white;
+	 background-color: black;
 	 border-radius: 1em;
 	 border-color: transparent;
 	 padding: 2px 20px 2px 20px;
@@ -334,36 +344,41 @@ input{
 /************UPDATE************/
 .update-center{
 	width: 30%;
+	height: 700px;
 	margin: 0 auto;
 	padding-top: 5%;
 }
 .update-center > h2{
 	text-align: center;
-	color: white;
+	color: black;
 	font-weight: bold;
 }
 .update-center > #frm{
-	margin-top: 20%;
-	color: white;
+	margin-top: 15%;
+	color: black;
 }
 .update-center > #id{
 	border-bottom: none;
 }
-
+#nn{
+	color: white;
+	background-color: black;
+}
 /************DELETE************/
 .delete-center{
 	width: 25%;
+	height: 700px;
 	margin: 0 auto;
 	padding-top: 5%;
 }
 .delete-center > h2{
 	text-align: center;
-	color: white;
+	color: black;
 	font-weight: bold;
 }
 .delete-center > #frm{
 	margin-top: 30%;
-	color: white;
+	color: black;
 }
 
 

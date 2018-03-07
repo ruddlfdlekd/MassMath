@@ -215,11 +215,11 @@
 				<label>ADDRESS </label>
 				<p class="p">
 					<input type="text" placeholder="우변번호" name="postal_code"
-						id="postal_code" class="join_in"> <input type="button"
+						id="postal_code" class="join_in2"> <input type="button"
 						value="우편번호 찾기" id="nn" class="btn btn-default"><br>
 					<input type="text" placeholder="도로명주소" name="street" id="street"
-						class="join_in"><br> <input type="text"
-						placeholder="나머지주소" name="street2" id="street2" class="join_in">
+						class="join_in2"><br> <input type="text"
+						placeholder="나머지주소" name="street2" id="street2" class="join_in2">
 				</p>
 
 				<label>GOAL </label>

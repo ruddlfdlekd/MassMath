@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/m1/resources/css/footer.css">
+<link rel="stylesheet" href="/m1/resources/css/navbar.css">
 
 <body>
 	<!-- navi -->
@@ -43,8 +44,8 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>						
 							<ul class="dropdown-menu">
 								<c:if test="${empty member}">
-									<li><a href="../member/memberLogin.jsp">로그인</a></li>
-									<li><a href="../member/memberJoin.jsp">회원가입</a></li>
+									<li><a href="/m1/member/login">로그인</a></li>
+									<li><a href="/m1/member/login">회원가입</a></li>
 								</c:if>
 								<c:if test="${not empty member}">
 									<li><a href="#">로그아웃</a></li>

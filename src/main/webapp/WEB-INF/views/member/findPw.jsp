@@ -17,9 +17,10 @@ $(function(){
 	$("#btn").click(function(){	
 		var checkmsg="${checkmsg}";
 		if(checkmsg=="해당 아이디가 없습니다."){
-			alert("ㅋ");
-		}
+			
+		}else{
 		 opener.parent.location.href = "./login";
+		}
 		window.self.close();		
 	});
 
