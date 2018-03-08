@@ -16,13 +16,13 @@ $(function() {
 			
 			var v = <%= request.getParameter("chapter") %>;
 			if($(this).val()=="1"){
-				location.href="./study1?chapter="+v;
+				location.href="./studyConcept?chapter="+v;
 			}
 			if($(this).val()=="2"){
 				window.open("./studyLevel?chapter="+v, "", "top=500,left=500,width=400,height=400");
 			}
 			if($(this).val()=="3"){
-				location.href="./study3?chapter="+v;
+				location.href="./studyTest?chapter="+v;
 			}
 		});
 	});

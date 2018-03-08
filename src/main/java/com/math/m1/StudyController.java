@@ -28,13 +28,14 @@ public class StudyController {
 		mv.addObject("chapter", chapter);
 		return mv;
 	}
-	@RequestMapping(value="study1")
-	public void study1(){
-		
+	@RequestMapping(value="studyConcept")
+	public String studyConcept(String chapter){
+		String move = "study/study"+chapter;
+		return move;
 	}
 	
-	@RequestMapping(value="study2")
-	public ModelAndView study2(String chapter,String id, String level, String type)throws Exception{
+	@RequestMapping(value="studyCustom")
+	public ModelAndView studyCustom(String chapter,String id, String level, String type)throws Exception{
 		chapter +=type+"2";
 		id="iu";
 		String rate = "B";
@@ -63,8 +64,8 @@ public class StudyController {
 		mv.addObject("ar", ar);
 		return mv;
 	}
-	@RequestMapping(value="study3")
-	public ModelAndView study3(String chapter,String id)throws Exception{
+	@RequestMapping(value="studyTest")
+	public ModelAndView studyTest(String chapter,String id)throws Exception{
 		chapter +="01";
 		id="iu";
 		String rate = "B";
@@ -83,7 +84,9 @@ public class StudyController {
 	@RequestMapping(value="AnswerCheck", method=RequestMethod.POST)
 	public ModelAndView study1(String[] pnum,String[] answer,String ma,String test)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String chapter="1";
 		String rate = "B";
+		String id = "iu";
 		String[] check = new String[10];
 		String[] commentary = new String[10];
 		String[] my_answer = new String[10];
@@ -102,9 +105,9 @@ public class StudyController {
 		}
 		if(test!=null){
 			if(count>=9)
-				rate = studyService.rateUp(rate);
+				rate = studyService.rateUp(rate,chapter,id);
 			else if(count<=7)
-				rate = studyService.rateDown(rate);
+				rate = studyService.rateDown(rate,chapter,id);
 			mv.addObject("rate", rate);
 		}
 		mv.addObject("check", check);

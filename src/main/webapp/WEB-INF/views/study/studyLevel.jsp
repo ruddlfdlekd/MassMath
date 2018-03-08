@@ -15,7 +15,7 @@ $(function() {
 			var v = <%= request.getParameter("chapter") %>;
 			var level = $("#level").val();
 			var type = $("#type").val();
-			opener.location.href = "./study2?chapter="+v+"&level="+level+"&type="+type;  
+			opener.location.href = "./studyCustom?chapter="+v+"&level="+level+"&type="+type;  
 			window.close();
 		});
 });
