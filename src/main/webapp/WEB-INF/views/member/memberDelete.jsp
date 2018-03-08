@@ -33,6 +33,7 @@ $(function() {
 </head>
 <body class="body_w">
 <%@include file="../temp/header.jsp"%>
+<div class="dd">
 <div class="sidenav">
   <a href="#services"  class="m_menu" id="m1">서비스 관리</a>
 	   <div class="s_menu m1">
@@ -69,6 +70,7 @@ $(function() {
 	
 	<p><button id="btn4" class="btn4">Delete</button></p>
 	</form>
+</div>
 </div>
 <%@include file="../temp/footer.jsp"%>
 </body>

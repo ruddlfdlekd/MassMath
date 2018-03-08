@@ -204,7 +204,7 @@ input{
 	border-bottom-width: thin;
 }
 .join_in{
-	border-bottom-color: black;
+	border-bottom-color: #bbbbbb;
 	border-bottom-width: thin;
 }
 #street2{
@@ -252,7 +252,7 @@ input{
 /***********PW FIND************/
 #pw-center{
 	width: 30%;
-	height: 700px;
+	height: 900px;
 }
 #pw-center > h2{
 	color: black;	
@@ -265,7 +265,7 @@ input{
 	margin-top: 20%;
 }
 .p2{
-	border-bottom-color: black;
+	border-bottom-color: #bbbbbb;
 	border-bottom-style: solid;
 	border-bottom-width: thin;
 }
@@ -278,12 +278,16 @@ input{
 	background-color: black;
 }
 /************MY PAGE************/
+.dd{
+	width: 90%;
+	margin: 0 auto;
+}
 .sidenav {
     width: 130px;
-	position: absolute;
+	float: left;
     z-index: 1;
-    top: 200px;
-    left: 200px;
+    margin-top: 12%;
+    margin-left: 13%;
     background: #eee;
     overflow-x: hidden;
     padding: 8px 0;
@@ -312,8 +316,9 @@ input{
 
 .mypage-center{
 	width: 30%;
-	height: 700px;
-	margin: 0 auto;
+	height: 900px;
+	margin-left: 40%;
+	margin-top: 5%;
 	padding-top: 5%;
 }
 .mypage-center > h2{
@@ -344,8 +349,9 @@ input{
 /************UPDATE************/
 .update-center{
 	width: 30%;
-	height: 700px;
-	margin: 0 auto;
+	height: 900px;
+	margin-left: 40%;
+	margin-top: 5%;
 	padding-top: 5%;
 }
 .update-center > h2{
@@ -367,8 +373,9 @@ input{
 /************DELETE************/
 .delete-center{
 	width: 25%;
-	height: 700px;
-	margin: 0 auto;
+	height: 900px;
+	margin-left: 40%;
+	margin-top: 5%;
 	padding-top: 5%;
 }
 .delete-center > h2{
