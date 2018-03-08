@@ -9,6 +9,7 @@
 <link href="/m1/resources/css/join.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#nn").click(function() {
@@ -39,6 +40,7 @@
 </head>
 <body class="body_w">
 <%@include file="../temp/header.jsp"%>
+<div class="dd">
 <div class="sidenav">
   <a href="#services"  class="m_menu" id="m1">서비스 관리</a>
 	   <div class="s_menu m1">
@@ -86,6 +88,7 @@
 			<a href="./memberDelete" class="btn3">DELETE</a>
 		</p>
 	</div>
+</div>
 </div>
 <%@include file="../temp/footer.jsp"%>
 </body>

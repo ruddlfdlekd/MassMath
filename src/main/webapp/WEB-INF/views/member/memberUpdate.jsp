@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="/m1/resources/css/join.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>UPDATE</title>
@@ -94,7 +95,7 @@ $(function() {
 </head>
 <body class="body_w">
 <%@include file="../temp/header.jsp"%>
-
+<div class="dd">
 	<div class="sidenav">
 	  <a href="#services"  class="m_menu" id="m1">서비스 관리</a>
 		   <div class="s_menu m1">
@@ -145,7 +146,7 @@ $(function() {
 	<p><input type="button" value="UPDATE" id="btn4"></p>
 	</form>
 </div>
-
+</div>
 <%@include file="../temp/footer.jsp"%>
 
 </body>

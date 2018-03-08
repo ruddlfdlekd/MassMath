@@ -186,7 +186,7 @@
 					<label>ID </label>
 					<p>
 						<input type="email" id="id" name="id" placeholder="  이메일 형식만 가능"><input
-							type="button" value="인증번호 발급" id="btn2">
+							type="button" value="인증 이메일 전송" id="btn2">
 					</p>
 				</div>
 				

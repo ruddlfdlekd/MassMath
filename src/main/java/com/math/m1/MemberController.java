@@ -38,14 +38,12 @@ public class MemberController {
 	public ModelAndView apiLogin(MemberDTO memberDTO, int api, HttpSession session, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result=0;
-		System.out.println(memberDTO.getId());
 		MemberDTO memberDTO2 = memberService.memberLogin2(memberDTO);
 		if(memberDTO2==null){		
 			if(api==0){
 				memberDTO.setPw("kakao");
 			}else if(api==1){
 				memberDTO.setPw("facebook");
-				System.out.println(memberDTO.getPw());
 			}
 			result = memberService.memberJoin2(memberDTO);
 			mv.addObject("path", "apiMemberUpdate");
@@ -58,7 +56,7 @@ public class MemberController {
 		}else {
 			session.setAttribute("member", memberDTO);
 			mv.addObject("message", "로그인 성공");
-			mv.addObject("path", "./login");
+			mv.addObject("path", "../main/mainPage");
 		}
 		
 		mv.setViewName("common/result");
@@ -282,7 +280,7 @@ public class MemberController {
 		} else {
 			mv.addObject("message", "로그인에 실패하였습니다.");
 		}
-		mv.addObject("path", "./login");
+		mv.addObject("path", "../main/mainPage");
 		mv.setViewName("common/result");
 		return mv;
 	}
@@ -313,7 +311,7 @@ public class MemberController {
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("message", message);
-		mv.addObject("path", "./login");
+		mv.addObject("path", "./memberMyPage");
 		mv.setViewName("common/result");
 		return mv;
 	}
