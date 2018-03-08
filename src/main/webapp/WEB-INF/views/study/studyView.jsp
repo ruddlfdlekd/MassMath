@@ -30,10 +30,70 @@ $(function() {
 </head>
 <body>
 <%@ include file="../temp/header.jsp"%>
-
-<button class="btn2" value="1">개념</button>
-<button class="btn2" value="2">문제풀기</button>
-<button class="btn2" value="3">맞춤형테스트</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        	<h4 class="text-center"><b>고등수학(상)</b></h4>
+            <div id="sidebar" class="well sidebar-nav">
+                <h4>
+                    <small><b>1 다항식</b></small>
+                </h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">01.다항식의 연산</a></li>
+                    <li><a href="#">02.항등식과 나머지정리</a></li>
+                    <li class="active"><a href="#">03.인수분해</a></li>
+                </ul>
+                <h4>
+                    <small><b>2 방정식과 부등식</b></small>
+                </h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">04.복소수</a></li>
+                    <li><a href="#">05.이차방정식</a></li>
+                    <li><a href="#">06.이차방정식과 이차함수</a></li>
+                    <li><a href="#">07.여러가지 방정식</a></li>
+                    <li><a href="#">08.여러가지 부등식</a></li>
+                </ul>
+                <h4>
+                    <small><b>3 도형의 방정식</b></small>
+                </h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">10.평면좌표</a></li>
+                    <li><a href="#">11.직선의 방정식</a></li>
+                    <li><a href="#">12.원의 방정식</a></li>
+                    <li><a href="#">13.도형의 이동</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9" style="margin-top :40px; border: 1px solid #bbbbbb; height: 650px;">
+        	<img style="margin-top: 100px; margin-left: auto; margin-right: auto; display: block;" alt="hello" src="/m1/resources/images/hello.png">
+        	<br>
+        	<p style="text-align: center;">선택해주세요.</p>
+        	<div class="row text-center">
+				<div style="border-right : 1px solid #bbbbbb; height: 250px;" class="col-md-4">
+					<div style="height: 140px;">
+						<h4><b>기초학습</b></h4>
+						<p>기본 개념을 공부하는 곳입니다.<br>단원을 처음 학습하거나 기초부터 개념을 다시 학습하고 싶은 분들께 추천합니다.</p>
+					</div>
+					<button style="margin-top : 50px; margin-bottom: 50px;" class="btn2 btn btn-default" value="1">시작하기</button>
+				</div>
+				<div style="border-right : 1px solid #bbbbbb; height: 250px;" class="col-md-4">
+					<div style="height: 140px;">
+						<h4><b>실력확인</b></h4>
+						<p>실력확인을 하는 곳입니다. 원하는 난이도를 선택하여 테스트 문제를 풀어보고, <br>자신의 예상점수를 확인할 수 있습니다.</p>
+					</div>
+					<button style="margin-top : 50px; margin-bottom: 50px;"  class="btn2 btn btn-default" value="2">시작하기</button>
+				</div>
+				<div style="height: 250px;" class="col-md-4">
+					<div style="height: 140px;">
+						<h4><b>맞춤형 문제</b></h4>
+						<p>맞춤형 문제가 제공되는 곳입니다. 학습자의 예상점수와 알맞는 난이도의 문제가 제공됩니다.</p>
+					</div>
+					<button style="margin-top : 50px; margin-bottom: 50px;" class="btn2 btn btn-default" value="3">시작하기</button>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
 
 <%@ include file="../temp/footer.jsp"%>
 </body>
