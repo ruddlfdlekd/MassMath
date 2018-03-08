@@ -39,28 +39,28 @@ $(function() {
                     <small><b>1 다항식</b></small>
                 </h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">01.다항식의 연산</a></li>
-                    <li><a href="#">02.항등식과 나머지정리</a></li>
-                    <li class="active"><a href="#">03.인수분해</a></li>
+                    <li><a href="./studyView?chapter=111">01.다항식의 연산</a></li>
+                    <li><a href="./studyView?chapter=112">02.항등식과 나머지정리</a></li>
+                    <li class="active"><a href="./studyView?chapter=113">03.인수분해</a></li>
                 </ul>
                 <h4>
                     <small><b>2 방정식과 부등식</b></small>
                 </h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">04.복소수</a></li>
-                    <li><a href="#">05.이차방정식</a></li>
-                    <li><a href="#">06.이차방정식과 이차함수</a></li>
-                    <li><a href="#">07.여러가지 방정식</a></li>
-                    <li><a href="#">08.여러가지 부등식</a></li>
+                    <li><a href="./studyView?chapter=121">04.복소수</a></li>
+                    <li><a href="./studyView?chapter=122">05.이차방정식</a></li>
+                    <li><a href="./studyView?chapter=123">06.이차방정식과 이차함수</a></li>
+                    <li><a href="./studyView?chapter=124">07.여러가지 방정식</a></li>
+                    <li><a href="./studyView?chapter=125">08.여러가지 부등식</a></li>
                 </ul>
                 <h4>
                     <small><b>3 도형의 방정식</b></small>
                 </h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">10.평면좌표</a></li>
-                    <li><a href="#">11.직선의 방정식</a></li>
-                    <li><a href="#">12.원의 방정식</a></li>
-                    <li><a href="#">13.도형의 이동</a></li>
+                    <li><a href="./studyView?chapter=131">10.평면좌표</a></li>
+                    <li><a href="./studyView?chapter=132">11.직선의 방정식</a></li>
+                    <li><a href="./studyView?chapter=133">12.원의 방정식</a></li>
+                    <li><a href="./studyView?chapter=134">13.도형의 이동</a></li>
                 </ul>
             </div>
         </div>
