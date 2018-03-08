@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(function() {
 		$(".btn2").click(function(){
-	/* 		var type = $("#select").val(); */
+			var type = $("#select").val();
 			var v = <%= request.getParameter("chapter") %>;
 			if($(this).val()=="1"){
 				location.href="./studyConcept?chapter="+v;
@@ -22,7 +22,7 @@ $(function() {
 				window.open("./studyLevel?chapter="+v, "", "top=500,left=500,width=400,height=400");
 			}
 			if($(this).val()=="3"){
-				location.href="./studyCustom?chapter="+v+"1";
+				location.href="./studyCustom?chapter="+v+type;
 			}
 		});
 	});
@@ -64,40 +64,9 @@ $(function() {
                 </ul>
             </div>
         </div>
-        <div class="col-md-9" style="margin-top :40px; border: 1px solid #bbbbbb; height: 650px;">
-        	<img style="margin-top: 100px; margin-left: auto; margin-right: auto; display: block;" alt="hello" src="/m1/resources/images/hello.png">
-        	<br>
-        	<p style="text-align: center;">선택해주세요.</p>
-        	<div class="row text-center">
-				<div style="border-right : 1px solid #bbbbbb; height: 250px;" class="col-md-4">
-					<div style="height: 140px;">
-						<h4><b>기초학습</b></h4>
-						<p>기본 개념을 공부하는 곳입니다.<br>단원을 처음 학습하거나 기초부터 개념을 다시 학습하고 싶은 분들께 추천합니다.</p>
-					</div>
-					<button style="margin-top : 50px; margin-bottom: 50px;" class="btn2 btn btn-default" value="1">시작하기</button>
-				</div>
-				<div style="border-right : 1px solid #bbbbbb; height: 250px;" class="col-md-4">
-					<div style="height: 140px;">
-						<h4><b>실력확인</b></h4>
-						<p>실력확인을 하는 곳입니다. 원하는 난이도를 선택하여 테스트 문제를 풀어보고, <br>자신의 예상점수를 확인할 수 있습니다.</p>
-					</div>
-					<button style="margin-top : 50px; margin-bottom: 50px;"  class="btn2 btn btn-default" value="2">시작하기</button>
-				</div>
-				<div style="height: 250px;" class="col-md-4">
-					<div style="height: 140px;">
-						<h4><b>맞춤형 문제</b></h4>
-						<p>맞춤형 문제가 제공되는 곳입니다. 학습자의 예상점수와 알맞는 난이도의 문제가 제공됩니다.</p>
-						<p>현재등급 : <%=request.getAttribute("rate") %></p>
-					<!-- 	타입 : <select id="select">
-						<option value="1">A형</option>
-						<option value="2">B형</option>
-						</select> -->
-
-					</div>
-					<button style="margin-top : 50px; margin-bottom: 50px;" class="btn2 btn btn-default" value="3">시작하기</button>
-				</div>
-			</div>
-        </div>
+        <c:forEach items="${ar}" var="rate" varStatus="i">
+        <p>${i.index+1 }Chapter 등급 : ${rate }</p>
+        </c:forEach>
     </div>
 </div>
 

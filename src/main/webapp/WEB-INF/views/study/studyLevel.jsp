@@ -13,9 +13,8 @@
 $(function() {
 		$("#btn").click(function(){
 			var v = <%= request.getParameter("chapter") %>;
-			var level = $("#level").val();
-			var type = $("#type").val();
-			opener.location.href = "./studyCustom?chapter="+v+"&level="+level+"&type="+type;  
+			var rate = $("#level").val();
+			opener.location.href = "./studyTest?chapter="+v+"&rate="+rate;  
 			window.close();
 		});
 });
@@ -26,17 +25,13 @@ $(function() {
 <h1>현재등급</h1>
 레벨선택
 <select id = "level">
-<option value="1">한단계위</option>
-<option value="2">현재등급</option>
-<option value="3">한단계아래</option>
+<option value="A">A(정답률0~20%)</option>
+<option value="B">B(정답률20~40%)</option>
+<option value="C">C(정답률40~60%)</option>
+<option value="D">D(정답률60~80%)</option>
+<option value="E">E(정답률80~100%)</option>
 </select>
-<br>
-유형선택
-<select id = "type">
-<option value="1">1유형</option>
-<option value="2">2유형</option>
-</select>
-<br>
+<p>(전에 풀던 문제가 있으면 등급에 상관없이 자동으로 가져옴)</p>
 <button id="btn">확인</button>
 
 </body>

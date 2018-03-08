@@ -45,6 +45,7 @@ $(function(){
 <h1>문제페이지</h1>
 <form name="frm" action="./AnswerCheck" method="POST" target="AnswerCheck">
 <input type="hidden" id="ma" name="ma">
+<input type="hidden" name="type" value="${ar[0].type }">
 <c:forEach items="${ar}" var="problem" varStatus="i">
 		<p>${i.index+1 }문제  ${problem.contents }</p>
 		<input type="hidden" name="pnum" value="${problem.pnum }">
