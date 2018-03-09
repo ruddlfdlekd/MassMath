@@ -11,7 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
-$(function() {
+	$(function() {
 		$(".btn2").click(function(){
 			
 			var v = <%= request.getParameter("chapter") %>;
@@ -24,6 +24,18 @@ $(function() {
 			if($(this).val()=="3"){
 				location.href="./study3?chapter="+v;
 			}
+		});
+		
+		$("#sidebar li").click(function() {
+			$("#sidebar li").removeClass("active");
+			$(this).addClass("active");
+		});
+		
+		$("#btn3").click(function(){
+			var v = <%= request.getParameter("chapter") %>;
+			var level = $("#level").val();
+			var type = $("#type").val();
+			location.href = "./study2?chapter="+v+"&level="+level+"&type="+type;  
 		});
 	});
 </script>
@@ -41,7 +53,7 @@ $(function() {
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#">01.다항식의 연산</a></li>
                     <li><a href="#">02.항등식과 나머지정리</a></li>
-                    <li class="active"><a href="#">03.인수분해</a></li>
+                    <li><a href="#">03.인수분해</a></li>
                 </ul>
                 <h4>
                     <small><b>2 방정식과 부등식</b></small>
@@ -81,7 +93,8 @@ $(function() {
 						<h4><b>실력확인</b></h4>
 						<p>실력확인을 하는 곳입니다. 원하는 난이도를 선택하여 테스트 문제를 풀어보고, <br>자신의 예상점수를 확인할 수 있습니다.</p>
 					</div>
-					<button style="margin-top : 50px; margin-bottom: 50px;"  class="btn2 btn btn-default" value="2">시작하기</button>
+					<!-- <button style="margin-top : 50px; margin-bottom: 50px;"  class="btn2 btn btn-default" value="2">시작하기</button> -->
+					<p><a style="margin-top : 50px; margin-bottom: 50px;" class="btn btn-default" data-target="#modal" data-toggle="modal">시작하기</a></p>
 				</div>
 				<div style="height: 250px;" class="col-md-4">
 					<div style="height: 140px;">
@@ -94,7 +107,37 @@ $(function() {
         </div>
     </div>
 </div>
-
 <%@ include file="../temp/footer.jsp"%>
+
+<div class="row">
+	<div class="modal" id="modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="text-align: center;">
+					난이도 선택
+					<button class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="text-align: center;">
+					난이도 선택
+					<select id = "level">
+						<option value="1">HARD</option>
+						<option value="2">NORMAL</option>
+						<option value="3">EASY</option>
+					</select>
+					<br>
+					유형 선택
+					<select id = "type">
+						<option value="1">1유형</option>
+						<option value="2">2유형</option>
+					</select>
+					<br>
+					<button id="btn btn3 btn-default">확인</button>
+				</div>
+				<hr>
+			</div>
+		</div>
+	</div>
+</div>
+
 </body>
 </html> 

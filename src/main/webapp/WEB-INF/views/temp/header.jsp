@@ -4,15 +4,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/m1/resources/css/navbar.css">
 <link rel="stylesheet" href="/m1/resources/css/footer.css">
-<script type="text/javascript">
-  $(function(){
-      
-      $("#make_btn").click(function(){
-         window.open("../../../m1/problem/makeProblem","","top=100px, left=200px, width=1100px, height=600px");         
-      })
-   });
-  </script>
 
+<script type="text/javascript">
+	$(function(){
+		
+		$("#make_btn").click(function(){
+			var popupX = (window.screen.width/2) - (1300/2);
+			window.open("../../../m1/problem/makeProblem","","top=-100px, left="+popupX+", width=1300px, height=600px");         
+		})
+
+		var url = window.location.href;
+		if (url.indexOf("/main/")>0){
+			$("#header-main").addClass("active");
+		}else if(url.indexOf("/study/")>0){
+			$("#header-study").addClass("active");
+		}else if(url.indexOf("/myNote/")>0){
+			$("#header-mynote").addClass("active");
+		}else if(url.indexOf("/problem/")>0){
+			$("#header-problem").addClass("active");
+		}else if(url.indexOf("/qna/")>0){
+			$("#header-qna").addClass("active");
+		}else if(url.indexOf("/payment/")>0){
+			$("#header-payment").addClass("active");
+		}
+	});
+</script>
 <body>
    <!-- navi -->
     <nav class="navbar navbar-default">
@@ -30,30 +46,30 @@
                <a class="navbar-brand" href="/m1/main/mainPage">MassMath</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-               <ul class="nav navbar-nav">
-                  <li><a href="/m1/main/mainPage">메인<span class="sr-only"></span></a></li>
-                  <li class="dropdown">
+               <ul class="nav navbar-nav" id="menu">
+                  <li id="header-main"><a href="/m1/main/mainPage">메인<span class="sr-only"></span></a></li>
+                  <li id="header-study" class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">학습하기<span class="caret"></span></a>
                      <ul class="dropdown-menu">
-                        <li><a href="../../../m1/study/studyView?chapter=1111">고등수학 상</a></li>
-                        <li><a href="../../../m1/study/studyView?chapter=2111">고등수학 하</a></li>
-                        <li><a href="../../../m1/study/studyView?chapter=3111">수학 1</a></li>
-                        <li><a href="../../../m1/study/studyView?chapter=4111">수학 2</a></li>
-                        <li><a href="../../../m1/study/studyView?chapter=5111">미적분</a></li>
-                        <li><a href="../../../m1/study/studyView?chapter=6111">확률과 통계</a></li>
-                        <li><a href="../../../m1/study/studyView?chapter=7111">기하</a></li>
+                        <li><a href="/m1/study/studyView?chapter=1111">고등수학 상</a></li>
+                        <li><a href="/m1/study/studyView?chapter=2111">고등수학 하</a></li>
+                        <li><a href="/m1/study/studyView?chapter=3111">수학 1</a></li>
+                        <li><a href="/m1/study/studyView?chapter=4111">수학 2</a></li>
+                        <li><a href="/m1/study/studyView?chapter=5111">미적분</a></li>
+                        <li><a href="/m1/study/studyView?chapter=6111">확률과 통계</a></li>
+                        <li><a href="/m1/study/studyView?chapter=7111">기하</a></li>
                      </ul>
                   </li>
-                  <li class="active"><a href="../myNote/myNoteList?id=${member.id}">마이노트</a></li>
+                  <li id="header-mynote"><a href="/m1/myNote/myNoteList?id=${member.id}">마이노트</a></li>
                   <c:if test="${member.id eq 'admin@admin'}">
                   	<li id="make_btn"><a href="#">문제등록</a></li>
-                    <li><a href="../../../m1/problem/problemList">문제리스트</a></li>
+                    <li id="header-problem"><a href="/m1/problem/problemList">문제리스트</a></li>
                   </c:if>
-                  <li><a href="#">질문하기</a></li>
+                  <li id="header-qna"><a href="#">질문하기</a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>                  
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">회원관리<span class="caret"></span></a>                  
                      <ul class="dropdown-menu">
                         <c:if test="${empty member}">
                            <li><a href="/m1/member/login">로그인</a></li>
@@ -67,7 +83,7 @@
                   </li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">결제하기</a></li>
+                  <li id="header-payment"><a href="#">결제하기</a></li>
                </ul>
             </div>
          </div>

@@ -62,6 +62,14 @@
     background-color: #555;
 }
 </style>
+<script type="text/javascript">
+$(function() {
+	$("#sidebar li").click(function() {
+		$("#sidebar li").removeClass("active");
+		$(this).addClass("active");
+	});
+});
+</script>
 </head>
 <body>
 <%@ include file="../temp/header.jsp"%>
@@ -76,7 +84,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#">01.다항식의 연산</a></li>
                     <li><a href="#">02.항등식과 나머지정리</a></li>
-                    <li class="active"><a href="#">03.인수분해</a></li>
+                    <li><a href="#">03.인수분해</a></li>
                 </ul>
                 <h4>
                     <small><b>2 방정식과 부등식</b></small>
