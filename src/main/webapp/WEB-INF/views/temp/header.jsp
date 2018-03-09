@@ -51,15 +51,6 @@
                   <li id="header-study" class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">학습하기<span class="caret"></span></a>
                      <ul class="dropdown-menu">
-<<<<<<< HEAD
-                        <li><a href="/m1/study/studyView?chapter=1111">고등수학 상</a></li>
-                        <li><a href="/m1/study/studyView?chapter=2111">고등수학 하</a></li>
-                        <li><a href="/m1/study/studyView?chapter=3111">수학 1</a></li>
-                        <li><a href="/m1/study/studyView?chapter=4111">수학 2</a></li>
-                        <li><a href="/m1/study/studyView?chapter=5111">미적분</a></li>
-                        <li><a href="/m1/study/studyView?chapter=6111">확률과 통계</a></li>
-                        <li><a href="/m1/study/studyView?chapter=7111">기하</a></li>
-=======
                         <li><a href="/m1/study/studyMain?chapter=1">고등수학 상</a></li>
                         <li><a href="/m1/study/studyMain?chapter=2">고등수학 하</a></li>
                         <li><a href="/m1/study/studyMain?chapter=3">수학 1</a></li>
@@ -67,7 +58,6 @@
                         <li><a href="/m1/study/studyMain?chapter=5">미적분</a></li>
                         <li><a href="/m1/study/studyMain?chapter=6">확률과 통계</a></li>
                         <li><a href="/m1/study/studyMain?chapter=7">기하</a></li>
->>>>>>> Study
                      </ul>
                   </li>
                   <li id="header-mynote"><a href="/m1/myNote/myNoteList?id=${member.id}">마이노트</a></li>

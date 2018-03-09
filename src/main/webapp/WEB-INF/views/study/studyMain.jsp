@@ -41,7 +41,7 @@ $(function() {
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="./studyView?chapter=1111">01.다항식의 연산</a></li>
                     <li><a href="./studyView?chapter=1121">02.항등식과 나머지정리</a></li>
-                    <li class="active"><a href="./studyView?chapter=1131">03.인수분해</a></li>
+                    <li><a href="./studyView?chapter=1131">03.인수분해</a></li>
                 </ul>
                 <h4>
                     <small><b>2 방정식과 부등식</b></small>
