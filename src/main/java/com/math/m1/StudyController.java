@@ -190,20 +190,27 @@ public class StudyController {
 		problemDTO.setChapter_m(chapter.charAt(2)+"");
 		problemDTO.setType(type);
 		problemDTO.setRate(rate);
-		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());		
+		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());	
+		ArrayList<ArrayList<String>> commentary = new ArrayList<>();
 		String[] check = new String[10];
-		String[] commentary = new String[10];
 		String[] my_answer = new String[10];
 		int count = 0;
 		for(int i=0; i<10; i++){
 			if(answer[i].equals(ma.charAt(i)+"")){
+				ArrayList<String> com = new ArrayList<>();
 				check[i]="O";
 				studyService.right(pnum[i]);
+				commentary.add(com);
 				count++;
 			}
 			else{
 				check[i]="X";
-				commentary[i]=studyService.commentary(pnum[i]);
+				StringTokenizer st = new StringTokenizer(studyService.commentary(pnum[i]), "*");
+				ArrayList<String> com = new ArrayList<>();
+				while(st.hasMoreElements()){
+					com.add(st.nextToken());
+				}
+				commentary.add(com);
 			} 
 			my_answer[i] = ma.charAt(i)+"";
 		}
@@ -215,7 +222,11 @@ public class StudyController {
 			else
 				studyService.rateChange2(problemDTO);
 		}
-		
+		for(int i =0; i<commentary.size(); i++){
+			for(int ii=0; ii<commentary.get(i).size(); ii++){
+				System.out.println(commentary.get(i).get(ii));
+			}
+		}
 		studyService.deleteProblem(problemDTO);
 		mv.addObject("check", check);
 		mv.addObject("c", commentary);
