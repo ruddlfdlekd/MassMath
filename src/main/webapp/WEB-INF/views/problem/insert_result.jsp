@@ -34,8 +34,9 @@ function loading() {
 		$("#insert").click(function(){
 			location.href="./makeProblem";
 		});
-		$("#go_list").click(function(){
-			location.href="./problemList"
+		$("#nav_list").click(function(){
+			opener.location.href="/m1/problem/problemList";
+			window.close();
 		});
 		$(".boton").wrapInner('<div class=botontext></div>');
 		    
@@ -147,24 +148,8 @@ body {
 .chapter_m{
 	display: none;
 }
-@keyframes blink {
- 0% {color: black;}
- 50% {color: red;}
-}
- 
-/* for Chrome, Safari */
-@-webkit-keyframes blink {
-  0% {background-color: black;}
- 50% {background-color: red;}
-}
-#nextIcon3 {
- animation: blink 1s step-end infinite;
- -webkit-animation: blink 1s step-end infinite;
-}
-#well4{
-animation: blink 1s step-end infinite;
- -webkit-animation: blink 1s step-end infinite;
-}
+
+
 @keyframes push {
   0% {
     transform: translate(0, -1em) rotate(-45deg);
@@ -220,19 +205,14 @@ animation: blink 1s step-end infinite;
 		  	<li id="nav_com"  data-toggle="modal" data-target="#com_info"><a href="#">Make Commentary?</a></li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
-		  	<li><a class="navbar-brand" href="./problemList">List<span class="glyphicon glyphicon-list"></span></a></li>
+		  	<li id="nav_list"><a class="navbar-brand" href="#">List<span class="glyphicon glyphicon-list"></span></a></li>
 		  </ul>
 		</div>
 	</nav>
 
 <div class="container-fluid text-center">
 	<div class="row content">
-	  <div class="col-sm-2 sidenav">
-			
-
-		</div>
-			<div class="col-sm-8 text-center">
-		<div class="container">
+	 
 		
 	<h3>PNUM:${view.pnum}</h3>
 	<h3>TYPE:${view.type}</h3>
@@ -264,29 +244,12 @@ animation: blink 1s step-end infinite;
 			<img src="http://latex.codecogs.com/gif.latex?${i}"/>
 			</c:if>
 		</c:forEach>
-				<a href="#" class="boton" id="insert"> Make Problem! </a>
+				<a href="#" class="boton" id="insert" style="margin-top:100px;"> Make Problem! </a>
 		</div>
 			</div>
-			<div class="col-sm-2 sidenav">
-				<div class="well" id="well1">
-					<h3 style="color:green">문제입력</h3>
-				</div>
-				<i id="nextIcon" class="fa fa-arrow-down" style="font-size:60px; color: green"></i>
-				<div class="well" id="well2">
-					<h3 style="color:green">정답입력</h3>
-				</div>
-				<i id="nextIcon2" class="fa fa-arrow-down" style="font-size:60px; color: green"></i>
-				<div class="well" id="well3">
-					<h3 style="color:green">해설입력</h3>
-				</div>
-				<i id="nextIcon3" class="fa fa-arrow-down" style="font-size:60px"></i>
-				<div class="well" id="well4">
-						<h3>${message}</h3>
-				</div>
-			</div>
+			
 		</div>
-	</div>
-	</div>
+	
 	
 	<!-- 문제입력 사용 -->
 	<div class="modal fade" id="pro_info" role="dialog">

@@ -36,6 +36,7 @@ $(function(){
 			location.href="/m1/";
 		}
 	</c:if>
+	var popupX = (window.screen.width/2) - (1300/2);
 	 var message='${message}';
 		if(message != ""){
 		alert('${message}');
@@ -84,10 +85,10 @@ $(function(){
 			contents = encodeURIComponent(contents);
 			answerlist = encodeURIComponent(answerlist);
 			commentary = encodeURIComponent(commentary);
-			
+			 	
 			window.open("../../../m1/problem/problemUpdate?pnum="+pnum+"&&contents="+contents+"&&chapter="+chapter+"&&chapter_m="+chapter_m
 					+"&&answer="+answer+"&&answerlist="+answerlist+"&&commentary="+commentary+"&&type="+type+"&&book="+book
-					,"","top=100px, left=200px, width=1100px, heigth=700px");
+					,"","top=100px, left="+popupX+", width=1300px, heigth=600px");
 		});
 		
 		$("#listView").on("click",".td_search",function(){
@@ -105,7 +106,7 @@ $(function(){
 			
 		});
 		$("#listView").on("click","#insert_p",function(){
-			window.open("./makeProblem","","top=100px, left=200px, width=1300px, heigth=600px");
+			window.open("./makeProblem","","top=100px, left="+popupX+", width=1300px, heigth=600px");
 		})
 		
 		$("#listView").on("click",".page",function(){
