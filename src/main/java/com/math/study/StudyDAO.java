@@ -1,7 +1,5 @@
 package com.math.study;
 
-
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,40 +16,15 @@ public class StudyDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="StudyMapper.";
 	
-	public List<ProblemDTO> SelectConcept(String chapter,String rate,String id)throws Exception{
-		ProblemDTO problemDTO= new ProblemDTO();
-		problemDTO.setId(id);
-		problemDTO.setBook(chapter.charAt(0)+"");
-		problemDTO.setChapter(chapter.charAt(1)+"");
-		problemDTO.setChapter_m(chapter.charAt(2)+"");
-		problemDTO.setChapter_s(chapter.charAt(3)+"");
-		problemDTO.setType(chapter.charAt(4)+"");
-		problemDTO.setRate(rate);
+	public List<ProblemDTO> SelectConcept(ProblemDTO problemDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"SelectConcept", problemDTO);
 	}
-	public List<ProblemDTO> SelectTest(String chapter,String rate,String id)throws Exception{
-		ProblemDTO problemDTO= new ProblemDTO();
-		problemDTO.setId(id);
-		problemDTO.setBook(Integer.parseInt(chapter.charAt(0)+"")+"");
-		problemDTO.setChapter(Integer.parseInt(chapter.charAt(1)+"")+"");
-		problemDTO.setTest(Integer.parseInt(chapter.charAt(5)+""));
-		problemDTO.setRate(rate);
+	public List<ProblemDTO> SelectTest(ProblemDTO problemDTO)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"SelectTest", problemDTO);
 	}
 	
-	public List<ProblemDTO> CheckProblem(String chapter,String id)throws Exception{
-		ProblemDTO problemDTO= new ProblemDTO();
-		problemDTO.setBook(chapter.charAt(0)+"");
-		problemDTO.setChapter(chapter.charAt(1)+"");
-		problemDTO.setChapter_m(chapter.charAt(2)+"");
-		problemDTO.setChapter_s(chapter.charAt(3)+"");
-		problemDTO.setType(chapter.charAt(4)+"");
-		problemDTO.setTest(Integer.parseInt(chapter.charAt(5)+""));
-		HashMap<String, Object> map =  new HashMap<>();
-		 map.put("problem", problemDTO);
-		 map.put("id", id);
-		
-		return sqlSession.selectList(NAMESPACE+"CheckProblem", map);
+	public List<ProblemDTO> CheckProblem(ProblemDTO problemDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"CheckProblem", problemDTO);
 	}
 	
 	public ProblemDTO SelectProblem(int pnum)throws Exception{
@@ -94,9 +67,6 @@ public class StudyDAO {
 	public void myNote(ProblemDTO problemDTO)throws Exception{
 		sqlSession.insert(NAMESPACE+"MyNote",problemDTO);
 	}
-	public void myNote2(ProblemDTO problemDTO)throws Exception{
-		sqlSession.update(NAMESPACE+"MyNote2",problemDTO);
-	}
 	public ProblemDTO SelectChapter(int pnum)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"SelectChapter", pnum);
 	}
@@ -107,30 +77,28 @@ public class StudyDAO {
 	public void right(String pnum)throws Exception{
 		sqlSession.update(NAMESPACE+"Right", Integer.parseInt(pnum));
 	}
-	public String rateUp(String rate, String chapter,String id)throws Exception{
-		if(rate!="A")
-		rate = ((char)(rate.charAt(0)-1))+"";
-		ProblemDTO problemDTO = new ProblemDTO();
-		problemDTO.setId(id);
-		problemDTO.setRate(rate);
-		problemDTO.setChapter(chapter);
+	public void rateChange(ProblemDTO problemDTO)throws Exception{
+		if(getRate(problemDTO)==null)
+			sqlSession.insert(NAMESPACE+"insertRate",problemDTO);
+		else
 		sqlSession.update(NAMESPACE+"rateChange", problemDTO);
-		return rate;
 	}
-	public String rateDown(String rate, String chapter,String id)throws Exception{
-		if(rate!="E")
-		rate = ((char)(rate.charAt(0)+1))+"";
-		ProblemDTO problemDTO = new ProblemDTO();
-		problemDTO.setId(id);
-		problemDTO.setRate(rate);
-		problemDTO.setChapter(chapter);
-		sqlSession.update(NAMESPACE+"rateChange", problemDTO);
-		return rate;
+	public void rateChange2(ProblemDTO problemDTO)throws Exception{
+		if(getRate(problemDTO)==null)
+			sqlSession.insert(NAMESPACE+"insertRate2",problemDTO);
 	}
+
 	public void CountUp(ProblemDTO problemDTO)throws Exception{
 		sqlSession.update(NAMESPACE+"CountUp",problemDTO);
 	}
 	public void MProblem(ProblemDTO problemDTO)throws Exception{
 		sqlSession.insert(NAMESPACE+"MProblem", problemDTO);
+	}
+	public String getRate(ProblemDTO problemDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getRate", problemDTO);
+	}
+	
+	public List<String> bookRate(ProblemDTO problemDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"bookRate", problemDTO);
 	}
 }

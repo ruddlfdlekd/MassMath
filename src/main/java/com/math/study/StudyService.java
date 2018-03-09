@@ -17,27 +17,26 @@ public class StudyService {
 	 @Autowired
 	StudyDAO studyDAO;
 	 
-	 public List<ProblemDTO> CheckProblem(String chapter,String id,String rate)throws Exception{
+	 public List<ProblemDTO> CheckProblem(ProblemDTO problemDTO)throws Exception{
 		 List<ProblemDTO> ar = new ArrayList<>();
 		 List<ProblemDTO> list = null;
-		 ProblemDTO problemDTO = null;
-		 System.out.println(chapter);
-		 list = studyDAO.CheckProblem(chapter, id);
-		 if(chapter.charAt(5)=='1'){
+		 ProblemDTO problemDTO2 = null;
+		 list = studyDAO.CheckProblem(problemDTO);
+		 if(problemDTO.getTest()==1){
 			 if(list.size()!=0){
 				 for(int i=0; i<list.size(); i++){
 				 ar.add(studyDAO.SelectProblemTest(list.get(i).getPnum()));
 				 }
 			 }
 			 else{
-				 ar=studyDAO.SelectTest(chapter,rate,id);
+				 ar=studyDAO.SelectTest(problemDTO);
 				 for(int i=0; i<ar.size(); i++){
-					 problemDTO = ar.get(i);
-					 problemDTO.setTest(1);
-					 problemDTO.setId(id);
-					 studyDAO.SaveProblemTest(problemDTO);
-					 studyDAO.CountUp(problemDTO);
-					 studyDAO.MProblem(problemDTO);
+					 problemDTO2 = ar.get(i);
+					 problemDTO2.setTest(1);
+					 problemDTO2.setId(problemDTO.getId());
+					 studyDAO.SaveProblemTest(problemDTO2);
+					 studyDAO.CountUp(problemDTO2);
+					 studyDAO.MProblem(problemDTO2);
 				 }
 			 }
 		 }
@@ -48,30 +47,27 @@ public class StudyService {
 				 }
 			 }
 			 else{
-				 ar=studyDAO.SelectConcept(chapter,rate,id);
+				 ar=studyDAO.SelectConcept(problemDTO);
 				 for(int i=0; i<ar.size(); i++){
-					 problemDTO = ar.get(i);
-					 problemDTO.setTest(2);
-					 problemDTO.setId(id);
-					 studyDAO.SaveProblem(problemDTO);
-					 studyDAO.CountUp(problemDTO);
-					 studyDAO.MProblem(problemDTO);
+					 problemDTO2 = ar.get(i);
+					 problemDTO2.setTest(2);
+					 problemDTO2.setId(problemDTO.getId());
+					 studyDAO.SaveProblem(problemDTO2);
+					 studyDAO.CountUp(problemDTO2);
+					 studyDAO.MProblem(problemDTO2);
 				 }
 			 }
 			
 		 }
 		 return ar;
 		}
-	 public String rateUp(String rate,String chapter,String id)throws Exception{
-			rate = studyDAO.rateUp(rate,chapter,id);
-			return rate;
+
+	 public void rateChange(ProblemDTO problemDTO)throws Exception{
+			studyDAO.rateChange(problemDTO);
 		}
-		public String rateDown(String rate,String chapter,String id)throws Exception{
-			rate = studyDAO.rateDown(rate,chapter,id);
-			return rate;
+	 public void rateChange2(ProblemDTO problemDTO)throws Exception{
+			studyDAO.rateChange(problemDTO);
 		}
-	 
-	
 	public int UpdateCount(int pnum)throws Exception{
 		return studyDAO.UpdateCount(pnum);
 	}
@@ -87,19 +83,21 @@ public class StudyService {
 	public void myNote(List<ProblemDTO> ar)throws Exception{
 		for(int i=0; i<ar.size(); i++){
 		ProblemDTO problemDTO =ar.get(i);	
-		ProblemDTO problemDTO2=studyDAO.myNoteCheck(problemDTO);
-		if(problemDTO2 == null)
 			studyDAO.myNote(problemDTO);
-		else
-			studyDAO.myNote2(problemDTO);
-		
 		}
-		ProblemDTO problemDTO3 = studyDAO.SelectChapter(ar.get(0).getPnum());
-		problemDTO3.setId("iu");
-		studyDAO.deleteProblem(problemDTO3);
-		
 	}	 
+	public void deleteProblem(ProblemDTO problemDTO)throws Exception{
+		studyDAO.deleteProblem(problemDTO);
+	}
 	public void right(String pnum)throws Exception{
 		studyDAO.right(pnum);
 	}
+	public String getRate(ProblemDTO problemDTO)throws Exception{
+		return studyDAO.getRate(problemDTO);
+	}
+	
+	public List<String> bookRate(ProblemDTO problemDTO)throws Exception{
+		return studyDAO.bookRate(problemDTO);
+	}
+	
 }

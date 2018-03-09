@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	$(function() {
 		$(".btn2").click(function(){
-			
+	/* 		var type = $("#select").val(); */
 			var v = <%= request.getParameter("chapter") %>;
 			if($(this).val()=="1"){
 				location.href="./studyConcept?chapter="+v;
@@ -22,7 +22,7 @@
 				window.open("./studyLevel?chapter="+v, "", "top=500,left=500,width=400,height=400");
 			}
 			if($(this).val()=="3"){
-				location.href="./studyTest?chapter="+v;
+				location.href="./studyCustom?chapter="+v+"1";
 			}
 		});
 		
@@ -51,28 +51,34 @@
                     <small><b>1 다항식</b></small>
                 </h4>
                 <ul class="nav nav-pills nav-stacked">
+<<<<<<< HEAD
                     <li><a href="#">01.다항식의 연산</a></li>
                     <li><a href="#">02.항등식과 나머지정리</a></li>
                     <li><a href="#">03.인수분해</a></li>
+=======
+                    <li><a href="./studyView?chapter=1111">01.다항식의 연산</a></li>
+                    <li><a href="./studyView?chapter=1121">02.항등식과 나머지정리</a></li>
+                    <li class="active"><a href="./studyView?chapter=1131">03.인수분해</a></li>
+>>>>>>> Study
                 </ul>
                 <h4>
                     <small><b>2 방정식과 부등식</b></small>
                 </h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">04.복소수</a></li>
-                    <li><a href="#">05.이차방정식</a></li>
-                    <li><a href="#">06.이차방정식과 이차함수</a></li>
-                    <li><a href="#">07.여러가지 방정식</a></li>
-                    <li><a href="#">08.여러가지 부등식</a></li>
+                    <li><a href="./studyView?chapter=1211">04.복소수</a></li>
+                    <li><a href="./studyView?chapter=1221">05.이차방정식</a></li>
+                    <li><a href="./studyView?chapter=1231">06.이차방정식과 이차함수</a></li>
+                    <li><a href="./studyView?chapter=1241">07.여러가지 방정식</a></li>
+                    <li><a href="./studyView?chapter=1251">08.여러가지 부등식</a></li>
                 </ul>
                 <h4>
                     <small><b>3 도형의 방정식</b></small>
                 </h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">10.평면좌표</a></li>
-                    <li><a href="#">11.직선의 방정식</a></li>
-                    <li><a href="#">12.원의 방정식</a></li>
-                    <li><a href="#">13.도형의 이동</a></li>
+                    <li><a href="./studyView?chapter=1311">10.평면좌표</a></li>
+                    <li><a href="./studyView?chapter=1321">11.직선의 방정식</a></li>
+                    <li><a href="./studyView?chapter=1331">12.원의 방정식</a></li>
+                    <li><a href="./studyView?chapter=1341">13.도형의 이동</a></li>
                 </ul>
             </div>
         </div>
@@ -100,6 +106,12 @@
 					<div style="height: 140px;">
 						<h4><b>맞춤형 문제</b></h4>
 						<p>맞춤형 문제가 제공되는 곳입니다. 학습자의 예상점수와 알맞는 난이도의 문제가 제공됩니다.</p>
+						<p>현재등급 : <%=request.getAttribute("rate") %></p>
+					<!-- 	타입 : <select id="select">
+						<option value="1">A형</option>
+						<option value="2">B형</option>
+						</select> -->
+
 					</div>
 					<button style="margin-top : 50px; margin-bottom: 50px;" class="btn2 btn btn-default" value="3">시작하기</button>
 				</div>

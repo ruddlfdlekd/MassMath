@@ -1,6 +1,9 @@
 package com.math.m1;
 import java.util.ArrayList;
 import java.util.List;
+import com.math.member.MemberDTO;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +26,15 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value="studyView")
-	public ModelAndView View(String chapter){
+	public ModelAndView View(String chapter,HttpSession session)throws Exception{
+		ProblemDTO problemDTO = new ProblemDTO();
+		problemDTO.setId(((MemberDTO)session.getAttribute("member")).getId());
+		problemDTO.setBook(chapter.charAt(0)+"");
+		problemDTO.setChapter(chapter.charAt(1)+"");
+		String rate = studyService.getRate(problemDTO);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("chapter", chapter);
+		mv.addObject("rate", rate);
 		return mv;
 	}
 	@RequestMapping(value="studyConcept")
@@ -35,58 +44,73 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value="studyCustom")
-	public ModelAndView studyCustom(String chapter,String id, String level, String type)throws Exception{
-		chapter +=type+"2";
-		id="iu";
-		String rate = "B";
-		switch(level){
-		case "1":
-			if(rate!="A")
-			rate = ((char)(rate.charAt(0)-1))+"";
-			
-			break;
-			
-		case "2":
-			break;
-			
-		case "3":
-			if(rate!="E")
-			rate = ((char)(rate.charAt(0)+1))+"";
-			break;
+	public ModelAndView studyCustom(String chapter,HttpSession session)throws Exception{
+		ProblemDTO problemDTO = new ProblemDTO();
+		problemDTO.setBook(chapter.charAt(0)+"");
+		problemDTO.setChapter(chapter.charAt(1)+"");
+		problemDTO.setChapter_m(chapter.charAt(2)+"");
+		problemDTO.setChapter_s("1");
+		problemDTO.setType(chapter.charAt(4)+"");
+		problemDTO.setTest(2);
+		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
+		problemDTO.setRate(studyService.getRate(problemDTO));
 		
-			default:
-				break;
-		}
 		List<ProblemDTO> ar = null;
-		ar = studyService.CheckProblem(chapter, id, rate);
-	
+		ar = studyService.CheckProblem(problemDTO);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ar", ar);
 		return mv;
 	}
+	
 	@RequestMapping(value="studyTest")
-	public ModelAndView studyTest(String chapter,String id)throws Exception{
-		chapter +="01";
-		id="iu";
-		String rate = "B";
+	public ModelAndView studyTest(String chapter,String rate,HttpSession session)throws Exception{
+		ProblemDTO problemDTO = new ProblemDTO();
+		problemDTO.setBook(chapter.charAt(0)+"");
+		problemDTO.setChapter(chapter.charAt(1)+"");
+		problemDTO.setChapter_m("0");
+		problemDTO.setChapter_s("0");
+		problemDTO.setType("0");
+		problemDTO.setTest(1);
+		problemDTO.setRate(rate);
+		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
 		List<ProblemDTO> ar = null;
-		ar = studyService.CheckProblem(chapter, id, rate);
+		ar = studyService.CheckProblem(problemDTO);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ar", ar);
+		mv.addObject("rate", rate);
+		mv.addObject("chapter",chapter);
 		return mv;
 		
+	}
+	
+	
+	@RequestMapping(value="studyMain")
+	public ModelAndView studyMain(String chapter,HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		ProblemDTO problemDTO = new ProblemDTO();
+		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
+		problemDTO.setBook(chapter);
+		List<String> ar = studyService.bookRate(problemDTO);
+		mv.addObject("ar",ar);
+		mv.addObject("chpater",chapter);
+		return mv;
 	}
 	
 	
 	
 	
 	@RequestMapping(value="AnswerCheck", method=RequestMethod.POST)
-	public ModelAndView study1(String[] pnum,String[] answer,String ma,String test)throws Exception{
+	public ModelAndView study1(String rate, String chapter,String[] pnum,String[] answer,String ma,String test, String type,HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		String chapter="1";
-		String rate = "B";
-		String id = "iu";
+		ProblemDTO problemDTO = new ProblemDTO();
+		problemDTO.setBook(chapter.charAt(0)+"");
+		problemDTO.setChapter(chapter.charAt(1)+"");
+		problemDTO.setChapter_m(chapter.charAt(2)+"");
+		problemDTO.setType(type);
+		problemDTO.setRate(rate);
+		System.out.println(chapter);
+		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());		
 		String[] check = new String[10];
 		String[] commentary = new String[10];
 		String[] my_answer = new String[10];
@@ -104,12 +128,15 @@ public class StudyController {
 			my_answer[i] = ma.charAt(i)+"";
 		}
 		if(test!=null){
-			if(count>=9)
-				rate = studyService.rateUp(rate,chapter,id);
-			else if(count<=7)
-				rate = studyService.rateDown(rate,chapter,id);
-			mv.addObject("rate", rate);
+			problemDTO.setChapter_m("0");
+			problemDTO.setType("0");
+			if(count>=8)
+			  studyService.rateChange(problemDTO);
+			else
+				studyService.rateChange2(problemDTO);
 		}
+		
+		studyService.deleteProblem(problemDTO);
 		mv.addObject("check", check);
 		mv.addObject("c", commentary);
 		mv.addObject("pnum", pnum);
@@ -123,23 +150,26 @@ public class StudyController {
 
 	
 	@RequestMapping(value="my_answer")
-	public void answerCheck(ProblemDTO problemDTO)throws Exception{
-		problemDTO.setId("iu");
+	public void answerCheck(ProblemDTO problemDTO,HttpSession session)throws Exception{
+		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
 		studyService.answerCheck(problemDTO);
 	}
 	
 	
 	@RequestMapping(value="myNote", method=RequestMethod.POST)
-	public void myNote(String[] a)throws Exception{
+	public void myNote(String[] a,HttpSession session)throws Exception{
 		ArrayList<ProblemDTO> ar = new ArrayList<>();
+		System.out.println(a.length);
+		if(a.length>3){
 		for(int i =0; i<a.length; i+=3){
 		ProblemDTO problemDTO = new ProblemDTO();
-		problemDTO.setId("iu");
+		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
 		problemDTO.setReason(a[i]);
 		problemDTO.setMy_answer(Integer.parseInt(a[i+1]));
 		problemDTO.setPnum(Integer.parseInt(a[i+2]));
 		ar.add(problemDTO);
 		}
 		studyService.myNote(ar);
+		}
 }
 }

@@ -9,8 +9,8 @@
  		select level_l from member where id=#{id}
  	</select>
  	
- 		<select id="CheckProblem" parameterType="Map" resultType="ProblemDTO">
- 		<![CDATA[select * from PROBLEM_DATA_SAVE where id=#{id} and book=#{problem.book} and chapter=#{problem.chapter} and chapter_m=#{problem.chapter_m} and chapter_s=#{problem.chapter_s} and type=#{problem.type} and test=#{problem.test}]]>
+ 		<select id="CheckProblem" parameterType="ProblemDTO" resultType="ProblemDTO">
+ 		<![CDATA[select * from PROBLEM_DATA_SAVE where id=#{id} and book=#{book} and chapter=#{chapter} and chapter_m=#{chapter_m} and chapter_s=#{chapter_s} and type=#{type} and test=#{test}]]>
  		 </select>
  		 
  		<select id="SelectProblem" parameterType="int" resultType="ProblemDTO">
@@ -97,12 +97,9 @@
 		insert into mynote values (#{id}, #{pnum}, #{my_answer}, #{reason}, sysdate)
 		</insert>
 		
-		<update id="MyNote2" parameterType="ProblemDTO">
-		update mynote set my_answer=#{my_answer}, reason = #{reason}, reg_date = sysdate where id = #{id} and pnum = #{pnum}
-		</update>
 		
 		<delete id="DeleteProblem" parameterType="ProblemDTO">
-		delete problem_data_save where id=#{id} and book=#{book} and chapter=#{chapter} and chapter_m=#{chapter_m} and chapter_s=#{chapter_s} and type=#{type}
+		delete problem_data_save where id=#{id} and book=#{book} and chapter=#{chapter} and chapter_m=#{chapter_m} and type=#{type}
 		</delete>
 		
 		<update id="Right" parameterType="int">
@@ -121,11 +118,24 @@
 		insert into mproblem values (#{id}, #{pnum})		
 		</insert>
 		
+		<insert id="insertRate" parameterType="ProblemDTO">
+		insert into member_level values (#{id}, #{chapter}, #{rate}, sysdate, #{book})
+		</insert>
+		
+		<insert id="insertRate2" parameterType="ProblemDTO">
+		insert into member_level values (#{id}, #{chapter}, 'E', sysdate, #{book})
+		</insert>
+		
 		<update id="rateChange" parameterType="ProblemDTO">
 		update member_level set rate = #{rate} where id=#{id} and chapter=#{chapter}
 		</update>
-
+	
+		<select id="getRate" parameterType="ProblemDTO" resultType="String">
+		select rate from member_level where id=#{id} and book=#{book} and chapter=#{chapter}
+		</select>
 		
-		
+		<select id="bookRate" parameterType="ProblemDTO" resultType="String">
+		select rate from member_level where id=#{id} and book=#{book}
+		</select>
   		
   	</mapper>
