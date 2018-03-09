@@ -105,7 +105,7 @@ $(function(){
 			
 		});
 		$("#listView").on("click","#insert_p",function(){
-			window.open("./makeProblem","","top=100px, left=200px, width=500px, heigth=600px");
+			window.open("./makeProblem","","top=100px, left=200px, width=1300px, heigth=600px");
 		})
 		
 		$("#listView").on("click",".page",function(){

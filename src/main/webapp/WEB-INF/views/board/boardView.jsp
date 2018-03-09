@@ -69,7 +69,7 @@
 				<div class="container">${view.contents}</div>
 				<div>
 				<a href="./noticeList" class="boton" id="btn" style="margin-top:50px"> List Notice! </a>
-				 <c:if test="${member.id eq '관리자'}">
+				 <c:if test="${member.id eq 'admin@admin'}">
 				 <div style="margin-left: 45%; margin-top: 100px;">
 					 <button class="btn btn-primary" id="update">Update</button>
 					 <button class="btn btn-primary" id="delete">Delete</button>				

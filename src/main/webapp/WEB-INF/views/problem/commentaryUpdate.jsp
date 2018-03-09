@@ -22,6 +22,20 @@
 <script type="text/javascript">
   $(function(){
 	  
+ 	var a = '${problemDTO.commentary}';
+	  
+	  $.ajax({
+		 
+		  url: "./problemAjax",
+			data: {
+				contents : a,
+			},
+			success: function(data){
+				$("#result").html(data);
+				}	
+			
+			 }); //ajax 
+	  
 	  var answer = '${problemDTO.answer}';
 	  $("#answer option").each(function(){
 		  if($(this).val()==answer){

@@ -164,7 +164,7 @@ function loading() {
 		  $(".form-control").each(function(){
 			  if($(this).attr("id")==id){
 				  $(this).val($(this).val()+a);
-				  answerlist =  $(this).val();
+				  answerlist = $(this).val();
 				  $.ajax({
 						type: "GET",
 						url: "./answerAjax",
@@ -355,7 +355,7 @@ animation: blink 1s step-end infinite;
 	width:13%;
 	display:inline-block;
 	float: right;
-	margin-right: 140px;
+	margin-right: 200px;
 	
 }
 
@@ -480,8 +480,7 @@ animation: blink 1s step-end infinite;
 			<div class="col-sm-8 text-left">
 				<h1>사용법</h1>
 				<p><h3>Latex 이용하여 문제만들기</h3></p>
-				<p><h3>1. 처음 시작할때 한칸 꼭 띄어서 사용하세요*</h3></p>
-				<p><h3>2. 수식은 맨처음과 뒤를 * 로 시작하고 끝맺음 지어주세요.</h3></p>
+				<p><h3>1. 수식은 맨처음과 뒤를 * 로 시작하고 끝맺음 지어주세요.</h3></p>
 				ex) 둘리는 *{x}^{2}*개 희동이는 *{5}^{x}+2*개 
 				<img alt="" src="../resources/images/test.png" style="width:400px; height:300px; margin-left: 40px">  
 				<hr>
@@ -633,10 +632,9 @@ animation: blink 1s step-end infinite;
           <h4 class="modal-title">문제입력시 주의사항</h4>
         </div>
         <div class="modal-body">
-          <p>1. 시작하시기전에 스페이스바를 한번 *꼭* 눌러주세요</p>
-          <p>2. 문제입력시 한글과 수식은 같이 입력될수 없어, 구분점으로 시작과 끝을  * 으로 지어줘야합니다.</p>
-          <p>3. *(수식)* 수식이 들어갈 내용에는 한글 입력하지 마세요.</p>
-          <p>4. 식이 잘못되거나, * 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
+          <p>1. 문제입력시 한글과 수식은 같이 입력될수 없어, 구분점으로 시작과 끝을  * 으로 지어줘야합니다.</p>
+          <p>2. *(수식)* 수식이 들어갈 내용에는 한글 입력하지 마세요.</p>
+          <p>3. 식이 잘못되거나, * 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -679,10 +677,9 @@ animation: blink 1s step-end infinite;
           <h4 class="modal-title">해설입력시 주의사항</h4>
         </div>
         <div class="modal-body">
-          <p>1. 시작하시기전에 스페이스바를 한번 *꼭* 눌러주세요</p>
-          <p>2. 문제입력시 한글과 수식은 같이 입력될수 없어, 구분점으로 시작과 끝을  * 으로 지어줘야합니다.</p>
-          <p>3. *(수식)* 수식이 들어갈 내용에는 한글 입력하지 마세요.</p>
-          <p>4. 식이 잘못되거나, * 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
+          <p>1. 문제입력시 한글과 수식은 같이 입력될수 없어, 구분점으로 시작과 끝을  * 으로 지어줘야합니다.</p>
+          <p>2. *(수식)* 수식이 들어갈 내용에는 한글 입력하지 마세요.</p>
+          <p>3. 식이 잘못되거나, * 안에 한글이 들어갈경우 미리보기가 제한됩니다.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
