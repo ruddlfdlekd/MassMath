@@ -69,10 +69,10 @@
  		 </select>
  		
  		<insert id="SaveProblem" parameterType="ProblemDTO">
- 			insert into problem_data_save values ('iu', #{pnum}, #{my_answer}, #{chapter}, #{chapter_m}, #{chapter_s}, #{type}, #{book},#{answer},#{commentary},#{test})
+ 			insert into problem_data_save values (#{id}, #{pnum}, #{my_answer}, #{chapter}, #{chapter_m}, #{chapter_s}, #{type}, #{book},#{answer},#{commentary},#{test})
  		</insert>
  		<insert id="SaveProblemTest" parameterType="ProblemDTO">
- 			insert into problem_data_save values ('iu', #{pnum}, #{my_answer}, #{chapter},0, 0, 0, #{book},#{answer},#{commentary},#{test})
+ 			insert into problem_data_save values (#{id}, #{pnum}, #{my_answer}, #{chapter},0, 0, 0, #{book},#{answer},#{commentary},#{test})
  		</insert>
  		
  		<update id="UpdateCount" parameterType="ProblemDTO">
