@@ -31,9 +31,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model,HttpSession session) {
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setId("iu");
-		session.setAttribute("member", memberDTO);
+
 		
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
