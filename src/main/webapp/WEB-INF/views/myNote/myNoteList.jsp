@@ -92,20 +92,20 @@ $(function (){
 <body>
 	<%@ include file="../temp/header.jsp"%>
 	
-	<!-- 필터 -->
-
-	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-2">
-			<div class="pull-left" style="width:100%; padding: 30px 40px; background-color: white; border: 1px solid black">
-<!-- 				<form class="frm"> -->
-					<h4 class="text-center"><b>종류 선택</b></h4><br>
-					<p><input type="hidden" id="id" name="id" value="${member.id}"></p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="wrong">모르는 문제</p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="miss">실수한 문제</p>
-					<hr>
-					<h4 class="text-center"><b>책 선택</b></h4><br>
+	<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        	<h4 class="text-center"><b>필터 적용</b></h4>
+            <div id="sidebar" class="well sidebar-nav">
+                <h4>
+                    <small><b>종류 선택</b></small>
+                </h4>
+                <p><input type="hidden" id="id" name="id" value="${member.id}"></p>
+				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
+				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="wrong">모르는 문제</p>
+				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="miss">실수한 문제</p>
+				<hr>
+				<h4><small><b>책 선택</b></small></h4><br>
 					<div >
 						<label><input name="book" class="book" id="b1" type="checkbox" value="b1">고등수학(상)</label>
 					</div>
@@ -130,13 +130,12 @@ $(function (){
 					<div class="text-center" style="margin-top: 20px;">
 						<input class="btn btn-default center" type="button" id="btn" value="적용하기">
 					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div id="myNoteList">
+            </div>
+        </div>
+        <div class="col-md-9">
+        	<div id="myNoteList">
 				<c:forEach items="${result}" var="list">
-					<div id="del${list.num}">
+					<div id="del${list.num}" class="listcount">
 						<table class="table" style="width:100%; margin: 0 auto;">
 							<thead>
 								<tr>
@@ -190,9 +189,56 @@ $(function (){
 					</div>
 				</c:forEach>
 			</div>
+        </div>
+    </div>
+</div>
+	
+	<!-- 필터 -->
+
+<!-- 	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<div class="pull-left" style="width:100%; padding: 30px 40px; background-color: white; border: 1px solid black">
+
+					<h4 class="text-center"><b>종류 선택</b></h4><br>
+					<p><input type="hidden" id="id" name="id" value="${member.id}"></p>
+					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
+					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="wrong">모르는 문제</p>
+					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="miss">실수한 문제</p>
+					<hr>
+					<h4 class="text-center"><b>책 선택</b></h4><br>
+					<div >
+						<label><input name="book" class="book" id="b1" type="checkbox" value="b1">고등수학(상)</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b2" type="checkbox" value="b2">고등수학(하)</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b3" type="checkbox" value="b3">수학 1</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b4" type="checkbox" value="b4">수학 2</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b5" type="checkbox" value="b5">미적분</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b6" type="checkbox" value="b6">확률</label>
+					</div>
+					<div>
+						<label><input name="book" class="book" id="b7" type="checkbox" value="b7">통계</label>
+					</div>
+					<div class="text-center" style="margin-top: 20px;">
+						<input class="btn btn-default center" type="button" id="btn" value="적용하기">
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-md-6">
+			
 		</div>
 		<div class="col-md-2"></div>
-	</div>
+	</div> -->
 	<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>

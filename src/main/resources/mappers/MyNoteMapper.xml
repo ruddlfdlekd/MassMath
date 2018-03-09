@@ -2,12 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyNoteMapper">
 	
-	<!-- 
-	여기서부터 시작해야됩미다
-	가져와야하는 자료들이 무엇인지 확인하고
-	제이슨 파싱해서 테이블을 만들어주는 작업 시작!
-	 -->
-	
 	<select id="myNoteFilter" parameterType="MyNoteListData" resultType="MyNoteDTO">
 		select * from
 		(select rownum R, N.* from
