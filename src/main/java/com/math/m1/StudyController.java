@@ -150,8 +150,8 @@ public class StudyController {
 
 	
 	@RequestMapping(value="my_answer")
-	public void answerCheck(ProblemDTO problemDTO)throws Exception{
-		problemDTO.setId("iu");
+	public void answerCheck(ProblemDTO problemDTO,HttpSession session)throws Exception{
+		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
 		studyService.answerCheck(problemDTO);
 	}
 	
