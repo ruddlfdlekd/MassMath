@@ -37,6 +37,11 @@ $(function(){
 		else
 			alert("정답 다 체크해");
 	});
+	
+	$("#sidebar li").click(function() {
+		$("#sidebar li").removeClass("active");
+		$(this).addClass("active");
+	});
 });
 </script>
 </head>

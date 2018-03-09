@@ -97,8 +97,8 @@ $(function (){
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-2">
-			<div class="pull-left" style="width:100%; padding: 50px 40px; background-color: white; border: 1px solid black">
-				<form class="frm">
+			<div class="pull-left" style="width:100%; padding: 30px 40px; background-color: white; border: 1px solid black">
+<!-- 				<form class="frm"> -->
 					<h4 class="text-center"><b>종류 선택</b></h4><br>
 					<p><input type="hidden" id="id" name="id" value="${member.id}"></p>
 					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
