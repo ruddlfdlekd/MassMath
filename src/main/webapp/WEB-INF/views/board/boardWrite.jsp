@@ -10,9 +10,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <link rel="stylesheet" href="../resources/css/problemView.css">
-
+<link rel="stylesheet" href="../resources/css/switch.css">
 <script type="text/javascript">
 $(function(){
+	$("#simple-3").click(function(){
+		var a =$("#simple-3").prop("checked");
+		if(a){
+			$("#top_view").val("1");
+		}else{
+			$("#top_view").val("2");
+		}
+		
+	});
 	$(".boton").wrapInner('<div class=botontext></div>');
     
     $(".botontext").clone().appendTo( $(".boton") );
@@ -68,14 +77,17 @@ $(function(){
 			<form action="./noticeWrite" method="post" id="frm"
 				enctype="multipart/form-data">
 				<div class="container">
-					<table class="table-responsive" style="margin-left: 38%;">
+					<table class="table-responsive" style="margin-left: 25%;">
 						<tr>
 							<th>Email</th>
 							<th>Writer</th>
+							<th>맨위로 올리기</th>
 						</tr>
 						<tr>
 							<th style="width:300px;">${member.id}</th>
-							<th>${member.name}</th>
+							<th style="width:200px;">${member.name}</th>
+							<th> <input type="checkbox" id="simple-3">
+ 								 <label for="simple-3" class="green"></label></th>
 						</tr>
 					</table>
 				</div>
@@ -90,9 +102,9 @@ $(function(){
 					<textarea rows="10" cols="100" name="contents" id="contents"></textarea>
 				</div>
 				
+				<input type="hidden" id="top_view" name="top_view">
 
 				<a href="#" class="boton" id="btn" style="margin-top:50px"> Insert Notice! </a>
-				
 				</div>
 			</form>
 		</div>

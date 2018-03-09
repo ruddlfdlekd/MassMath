@@ -25,10 +25,10 @@
 		}
 		
 		
-		$("tbody tr").mouseover(function(){
+		$(".i tr").mouseover(function(){
 			$(this).attr("class","success");
 		});
-		$("tbody tr").mouseout(function(){
+		$(".i tr").mouseout(function(){
 			$(this).attr("class","");
 		})
 		
@@ -63,15 +63,15 @@
 		<div class="container-fluid text-center">
 			<div class="jumbotron" style="background-color: white;"><h2>공지사항</h2></div>
 			<div class="input-group" style="margin-left: 55%">
-				<form name="frm" action="./${board}List">
+				<form name="frm" action="./noticeList">
 					<input type="hidden" name="curPage" id="curPage" value="1">
 					<a href="./noticeList"><img alt="" src="../resources/images/logo.png"></a>
 					<select name="kind" style="width:15%; height:20%">
 						<option value="title">TITLE</option>
 						<option value="writer">WRITER</option>
 						<option value="contents">CONTENTS</option>
-					</select>
-					<input type="text" name="search" placeholder="검색">
+					</select> 
+				 <input type="text" name="search" placeholder="검색">
 					<button id="btn" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 				</form>
 				</div>
@@ -87,17 +87,30 @@
 					<td>DATE</td>
 					<td>HIT</td>
 				</tr>
-				<c:forEach items="${list}" var="dto">
 				<tbody>
+				<c:forEach items="${top}" var="ar2">
+				  <tr class="info">
+						<td><span>공지</span></td>
+						<td><a href="noticeView?num=${ar2.num}">${ar2.title}</a> <c:if test="${today eq ar2.reg_date}">
+							<span class="label label-danger" style="margin-left: 50px;">new</span>
+						</c:if> </td>
+						<td>${ar2.writer}</td>
+						<td>${ar2.reg_date}</td>
+						<td>${ar2.hit}</td>
+					</tr>
+				</c:forEach>
+				<c:forEach items="${list}" var="dto">
+				 <div class="i">
 					<tr>
 						<td>${dto.num}</td>
-						<td><a href="${board}View?num=${dto.num}">${dto.title}</a> <c:if test="${today eq dto.reg_date}">
+						<td><a href="noticeView?num=${dto.num}">${dto.title}</a> <c:if test="${today eq dto.reg_date}">
 							<span class="label label-danger" style="margin-left: 50px;">new</span>
 						</c:if> </td>
 						<td>${dto.writer}</td>
 						<td>${dto.reg_date}</td>
 						<td>${dto.hit}</td>
 					</tr>
+				 </div>
 				</c:forEach>				
 				</tbody>
 			</table>
@@ -125,7 +138,7 @@
 			</div>
 			<div>
 			 <c:if test="${member.id eq 'admin@admin'}">
-				<a class="btn btn-default" href="${board}Write">글등록</a>			 
+				<a class="btn btn-default" href="noticeWrite">글등록</a>			 
 			 </c:if>
 			</div>
 		</div>

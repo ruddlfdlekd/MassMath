@@ -8,7 +8,9 @@
   		<update id="hitUpdate" parameterType="BoardDTO">
   			update notice set hit=#{hit}+1 where num=#{num}
   		</update>
-  	
+  		<select id="topView" resultType="BoardDTO">
+  			select * from notice where top_view=1 order by num
+  		</select>
  		<select id="selectList" parameterType="ListData" resultType="BoardDTO">
  			select * from
   			(select rownum R, N.* from
@@ -27,7 +29,7 @@
   		</select>
  		
   		<insert id="insert" parameterType="BoardDTO">
-  			insert into notice values(notice_seq.nextval,#{email},#{writer},#{title},#{contents},sysdate,0)
+  			insert into notice values(notice_seq.nextval,#{email},#{writer},#{title},#{contents},sysdate,0,#{top_view})
   		</insert>
   		
   		<select id="selectOne" parameterType="int" resultType="BoardDTO">
@@ -39,7 +41,7 @@
   		</delete>
   		
   		<update id="update" parameterType="BoardDTO">
-  			update notice set title=#{title}, contents=#{contents} where num=#{num}
+  			update notice set title=#{title}, contents=#{contents}, top_view=#{top_view} where num=#{num}
   		</update>
   		
   		<select id="totalCount" resultType="int" parameterType="listData">

@@ -23,11 +23,15 @@ public class NoticeService {
 	@Inject
 	private NoticeDAO noticeDAO;
 	
+	public List<BoardDTO> topView() throws Exception{
+		return noticeDAO.topView();
+	}
+	
 	public int hitUpdate(BoardDTO boardDTO) throws Exception{
 		return noticeDAO.hitUpdate(boardDTO);
 	}
 	
-	public int delete(int num, HttpSession session) throws Exception{
+	public int delete(int num) throws Exception{
 		return noticeDAO.delete(num);
 	}
 	

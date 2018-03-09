@@ -33,6 +33,20 @@ function loading() {
 	  var chapter = '${problemDTO.chapter}';
 	  var chapter_m = '${problemDTO.chapter_m}';
 	  var book = '${problemDTO.book}';
+	  var a ='${problemDTO.contents}';
+	  
+	  $.ajax({
+			 
+			type: "GET",
+			url: "./problemAjax",
+			data: {
+				contents : a,
+			},
+			success: function(data){
+				$("#result").html(data);
+				}	
+			
+			 }); //ajax 
 	  
 	  $("#book option").each(function(){
 		 if($(this).val() == book){
@@ -400,7 +414,7 @@ animation: blink 1s step-end infinite;
 	width:13%;
 	display:inline-block;
 	float: right;
-	margin-right: 140px;
+	margin-right: 200px;
 	
 }
 

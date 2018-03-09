@@ -22,6 +22,9 @@ public class NoticeDAO implements BoardDAO {
 		this.sqlSession = sqlSession;
 	}
 	
+	public List<BoardDTO> topView() throws Exception{
+		return sqlSession.selectList(namespace+"topView");
+	}
 	public int hitUpdate(BoardDTO boardDTO) throws Exception{
 		return sqlSession.update(namespace+"hitUpdate", boardDTO);
 	}

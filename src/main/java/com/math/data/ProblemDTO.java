@@ -150,9 +150,6 @@ public class ProblemDTO {
 		return percentage;
 	}
 	public void setPercentage(double percentage) {
-		if(Double.isNaN(percentage)){
-			percentage = 0;
-		}
 		this.percentage = percentage;
 	}
 	public int getRightCount() {
