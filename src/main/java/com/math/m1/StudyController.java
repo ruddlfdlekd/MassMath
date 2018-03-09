@@ -222,11 +222,6 @@ public class StudyController {
 			else
 				studyService.rateChange2(problemDTO);
 		}
-		for(int i =0; i<commentary.size(); i++){
-			for(int ii=0; ii<commentary.get(i).size(); ii++){
-				System.out.println(commentary.get(i).get(ii));
-			}
-		}
 		studyService.deleteProblem(problemDTO);
 		mv.addObject("check", check);
 		mv.addObject("c", commentary);
