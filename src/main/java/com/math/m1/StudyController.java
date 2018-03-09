@@ -1,6 +1,8 @@
 package com.math.m1;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+
 import com.math.member.MemberDTO;
 import javax.servlet.http.HttpSession;
 
@@ -57,8 +59,48 @@ public class StudyController {
 		
 		List<ProblemDTO> ar = null;
 		ar = studyService.CheckProblem(problemDTO);
+		
+		
+		ArrayList<String> contents1 = null;
+		ArrayList<String> answerList1 = null;
+		ArrayList<ArrayList<String>> con = new ArrayList<ArrayList<String>>();
+		ArrayList<ArrayList<String>> ans = new ArrayList<ArrayList<String>>();
+		
+		for(int i=0; i<ar.size(); i++){
+			
+			String contents=ar.get(i).getContents();
+			String answerList=ar.get(i).getAnswerlist();
+
+			//Contents 한글과 식 나누는작업
+			StringTokenizer st = new StringTokenizer(contents, "*");
+			
+			contents1 = new ArrayList<String>();
+			while(st.hasMoreElements()){
+				contents1.add(st.nextToken());
+			}
+			
+			con.add(contents1); //contents 배열을 ArrayList형식으로 한번 더 넣어줌
+			
+			
+			//contents 배열에 담은
+			
+			//answerList 나누는작업
+			st = new StringTokenizer(answerList, ",");
+			
+			answerList1 = new ArrayList<String>();
+			while(st.hasMoreElements()){
+				answerList1.add(st.nextToken());
+			}
+			
+			ans.add(answerList1);
+			
+		} //for문 끝
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ar", ar);
+		mv.addObject("chapter",chapter);
+		mv.addObject("con", con);
+		mv.addObject("ans", ans);
 		return mv;
 	}
 	
@@ -76,10 +118,49 @@ public class StudyController {
 		List<ProblemDTO> ar = null;
 		ar = studyService.CheckProblem(problemDTO);
 		
+		
+		
+		ArrayList<String> contents1 = null;
+		ArrayList<String> answerList1 = null;
+		ArrayList<ArrayList<String>> con = new ArrayList<ArrayList<String>>();
+		ArrayList<ArrayList<String>> ans = new ArrayList<ArrayList<String>>();
+		
+		for(int i=0; i<ar.size(); i++){
+			
+			String contents=ar.get(i).getContents();
+			String answerList=ar.get(i).getAnswerlist();
+
+			//Contents 한글과 식 나누는작업
+			StringTokenizer st = new StringTokenizer(contents, "*");
+			
+			contents1 = new ArrayList<String>();
+			while(st.hasMoreElements()){
+				contents1.add(st.nextToken());
+			}
+			
+			con.add(contents1); //contents 배열을 ArrayList형식으로 한번 더 넣어줌
+			
+			
+			//contents 배열에 담은
+			
+			//answerList 나누는작업
+			st = new StringTokenizer(answerList, ",");
+	
+			answerList1 = new ArrayList<String>();
+			while(st.hasMoreElements()){
+				answerList1.add(st.nextToken());
+			}
+			
+			ans.add(answerList1);
+			
+		} //for문 끝
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("ar", ar);
 		mv.addObject("rate", rate);
 		mv.addObject("chapter",chapter);
+		mv.addObject("con", con);
+		mv.addObject("ans", ans);
 		return mv;
 		
 	}
@@ -109,7 +190,6 @@ public class StudyController {
 		problemDTO.setChapter_m(chapter.charAt(2)+"");
 		problemDTO.setType(type);
 		problemDTO.setRate(rate);
-		System.out.println(chapter);
 		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());		
 		String[] check = new String[10];
 		String[] commentary = new String[10];
@@ -159,7 +239,6 @@ public class StudyController {
 	@RequestMapping(value="myNote", method=RequestMethod.POST)
 	public void myNote(String[] a,HttpSession session)throws Exception{
 		ArrayList<ProblemDTO> ar = new ArrayList<>();
-		System.out.println(a.length);
 		if(a.length>3){
 		for(int i =0; i<a.length; i+=3){
 		ProblemDTO problemDTO = new ProblemDTO();

@@ -14,7 +14,7 @@
 	</c:if>
 
 </c:forEach>
-</div>
+
 
 </body>
 

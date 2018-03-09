@@ -51,12 +51,21 @@ $(function(){
 <form name="frm" action="./AnswerCheck" method="POST" target="AnswerCheck">
 <input type="hidden" id="ma" name="ma">
 <input type="hidden" name="type" value="${ar[0].type }">
+<input type="hidden" name="chapter" value="<%=request.getAttribute("chapter")%>">
 <c:forEach items="${ar}" var="problem" varStatus="i">
-		<p>${i.index+1 }문제  ${problem.contents }</p>
+		${i.index+1 }.<c:forEach items="${con[i.index] }" var="contents" varStatus="v">
+			<c:if test="${v.index % 2 eq 0 }">
+						${contents}
+					</c:if>
+				<c:if test="${v.index % 2 eq 1}">
+					<img src="http://latex.codecogs.com/gif.latex?${contents}"/>
+				</c:if>
+		</c:forEach>
+		<br><br>
 		<input type="hidden" name="pnum" value="${problem.pnum }">
 		<input type="hidden" name="answer" value="${problem.answer }">
 		<c:forEach items="${problem.answerlist.split(',')}" var="answerlist" varStatus="a">
-		<input type="radio"<c:if test="${problem.my_answer == a.index+1}">  checked="checked"</c:if> class="answer" title="${problem.pnum }" name="answer${i.index+1}" value="${a.index+1}">${answerlist }
+		<input type="radio"<c:if test="${problem.my_answer == a.index+1}">  checked="checked"</c:if> class="answer" title="${problem.pnum }" name="answer${i.index+1}" value="${a.index+1}"><img src="http://latex.codecogs.com/gif.latex?${answerlist }"/><br>
 		</c:forEach>
 		<br><br>
 </c:forEach>
