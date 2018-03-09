@@ -9,6 +9,8 @@ public class BoardDTO {
 	private String contents;
 	private String reg_date;
 	private int hit;
+	private int top_view;
+	
 	public int getNum() {
 		return num;
 	}
@@ -50,6 +52,12 @@ public class BoardDTO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public int getTop_view() {
+		return top_view;
+	}
+	public void setTop_view(int top_view) {
+		this.top_view = top_view;
 	}
 	
 

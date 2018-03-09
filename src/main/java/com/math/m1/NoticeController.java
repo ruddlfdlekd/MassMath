@@ -30,8 +30,8 @@ public class NoticeController {
 	
 	
 	@RequestMapping(value="noticeDelete")
-	public String delete(int num, HttpSession session,  RedirectAttributes re)throws Exception{
-		int result= noticeService.delete(num, session);
+	public String delete(int num,  RedirectAttributes re)throws Exception{
+		int result= noticeService.delete(num);
 		String message="Delete Fail";
 		if(result>0){
 			message="Delete Success";
@@ -44,7 +44,8 @@ public class NoticeController {
 	
 	@RequestMapping(value="noticeUpdate", method=RequestMethod.POST)
 	public String noticeUpdate(BoardDTO boardDTO, RedirectAttributes re) throws Exception{
-		
+		System.out.println("update");
+		System.out.println(boardDTO.getTop_view());
 		int result=noticeService.update(boardDTO);
 		String message="Update fail";
 		if(result>0){
@@ -60,7 +61,6 @@ public class NoticeController {
 	
 	@RequestMapping(value="noticeUpdate", method=RequestMethod.GET)
 	public ModelAndView noticeUpdate(int num) throws Exception{
-		System.out.println("noticeUpdate:"+num);
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO=noticeService.selectOne(num);
 		mv.addObject("board", "notice");
@@ -100,14 +100,15 @@ public class NoticeController {
 		Date date = new Date();
 		SimpleDateFormat simpleDate = new SimpleDateFormat("yy/MM/dd");
 		String today = simpleDate.format(date);
-		
 		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> ar = noticeService.selectList(listData);
-		
+		List<BoardDTO> ar2 = noticeService.topView();
+		if(ar2 != null){
+			mv.addObject("top", ar2);
+		}
 		mv.addObject("today", today);
 		mv.addObject("list", ar);
 		mv.addObject("page",listData);
-		mv.addObject("board", "notice");
 		mv.setViewName("board/boardList");
 		return mv;
 	}

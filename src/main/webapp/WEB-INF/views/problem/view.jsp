@@ -74,11 +74,12 @@
 		</div>
 			
 		
-		
+		<div class="container" style="margin-left:40%; margin-top:100px;">
 			<button class="btn btn-primary" 
 					style="width: 100px; height: 30px" id="update">update</button>
 				<button class="btn btn-danger" 
-					style="width: 100px; height: 30px; margin-left: 30px;" id="delete">delete</button>
+					style="width: 100px; height: 30px; margin-left: 30px;" id="delete">delete</button>		
+		</div>
 		
 			
 

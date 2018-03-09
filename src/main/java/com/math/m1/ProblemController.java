@@ -39,16 +39,18 @@ public class ProblemController {
 	}
 	
 	@RequestMapping(value="problemUpdate", method=RequestMethod.POST)
-		public ModelAndView update1(ProblemDTO problemDTO, boolean check) throws Exception{
+		public ModelAndView update(ProblemDTO problemDTO, boolean check) throws Exception{
 			ModelAndView mv = new ModelAndView();
 			if(check==true){
-				System.out.println("check==true");
+				problemDTO.setCommentary(" "+problemDTO.getCommentary());
 				int result=problemService.update(problemDTO);
 				if(result>0){
 					System.out.println("성공");
 					mv.setViewName("problem/result");
 				}
 			}else{
+				problemDTO.setContents(" "+problemDTO.getContents());
+				problemDTO.setCommentary(problemDTO.getCommentary().trim());
 				mv.addObject("problemDTO", problemDTO);
 				StringTokenizer st= new StringTokenizer(problemDTO.getAnswerlist(), ",");
 				ArrayList<String> ar = new ArrayList<String>();
@@ -65,6 +67,7 @@ public class ProblemController {
 	@RequestMapping(value="problemUpdate", method=RequestMethod.GET)
 	public ModelAndView update(ProblemDTO problemDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		problemDTO.setContents(problemDTO.getContents().trim());
 		StringTokenizer st = new StringTokenizer(problemDTO.getAnswerlist(), ",");
 		ArrayList<String> answerList = new ArrayList<String>();
 		while(st.hasMoreElements()){
@@ -92,8 +95,9 @@ public class ProblemController {
 			
 		
 		for(int i=0; i<ar.size(); i++){
-			ar.get(i).setPercentage(ar.get(i).getRightCount()/ar.get(i).getCount()*100);
-				ProblemDTO pDTO = new ProblemDTO();
+			
+			ar.get(i).setPercentage((double)ar.get(i).getRightCount()/ar.get(i).getCount()*100);
+			ProblemDTO pDTO = new ProblemDTO();
 				pDTO.setPnum(ar.get(i).getPnum());
 				pDTO.setPercentage(ar.get(i).getPercentage());
 				problemService.updatePer(pDTO);
@@ -141,7 +145,7 @@ public class ProblemController {
 			
 			ans.add(answerList1);
 			
-			//Commentary 한S글과 식 나누는작업
+			//Commentary 한글과 식 나누는작업
 			st = new StringTokenizer(commentary, "*");
 			
 			z =0;
@@ -218,7 +222,7 @@ public class ProblemController {
 	
 	@RequestMapping(value="problemAjax", method=RequestMethod.GET)
 	public ModelAndView problemAjax(String contents) throws Exception{
-		
+		contents = " "+contents;
 		StringTokenizer st = new StringTokenizer(contents,"*");
 		String [] array = new String[st.countTokens()];
 		int i=0;
@@ -240,6 +244,7 @@ public class ProblemController {
 	
 	@RequestMapping(value="write", method=RequestMethod.POST)
 	public ModelAndView write(ProblemDTO problemDTO)throws Exception{
+		problemDTO.setContents(" "+problemDTO.getContents());
 		ModelAndView mv= new ModelAndView();
 		if(problemDTO.getCommentary()==null){
 			StringTokenizer st = new StringTokenizer(problemDTO.getAnswerlist(), ",");
@@ -256,6 +261,7 @@ public class ProblemController {
 			mv.addObject("problemDTO", problemDTO);
 			mv.setViewName("problem/commentary");
 		}else{//글등록후 등록된 문제 보여주기
+			problemDTO.setCommentary(" "+problemDTO.getCommentary());
 			int result=problemService.insert(problemDTO);
 			
 			if(result>0){				

@@ -28,6 +28,7 @@ b.style.visibility="visible";
 <script type="text/javascript">
   $(function(){
 	  
+	  
 	  $("#btn2").click(function(){
 		  if($("#rightCount").val().length==0){
 			  alert("정답률입력해주세요.");
