@@ -27,7 +27,8 @@ function loading() {
 	$("body").css("background-color","white");
 	<c:if test="${empty member}">
 		alert("죄송합니다 관리자 페이지 입니다.");
-		location.href="/m1/";
+		opner.location.href="/m1/member/memberLogin";
+		window.close();
 	</c:if> 
 	<c:if test="${not empty member}">
 		if('${member.id}' != 'admin@admin'){
@@ -355,7 +356,7 @@ animation: blink 1s step-end infinite;
 	width:13%;
 	display:inline-block;
 	float: right;
-	margin-right: 200px;
+	margin-right: 35%;
 	
 }
 
@@ -522,7 +523,7 @@ animation: blink 1s step-end infinite;
 			<option value="원의 방정식">원의 방정식</option>
 		</select><br>
 		<input type="hidden" id="answerlist" name="answerlist">
-		<div>
+		<div style="margin-top:30px;">
 					<textarea name="contents" rows="10" cols="60" id="contents" placeholder="스페이스바 한번 누르세요."></textarea>		
 				
 				<div id="result">

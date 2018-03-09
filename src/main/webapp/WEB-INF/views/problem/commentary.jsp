@@ -169,8 +169,9 @@ animation: blink 1s step-end infinite;
 }
 .scroll{
 	top: 100px;
-	position: fixed;
+	position: relative;
 	z-index: 999;
+	width:400px;
 }
 #result{
 	margin-bottom: 110px;
@@ -259,14 +260,16 @@ animation: blink 1s step-end infinite;
 					        <option>3</option>
 					        <option>4</option>
 		      			</select>
+		      			<div>
 		      			<c:forEach begin="0" end="${answer_ar.size()}" var="i" items="${answer_ar}" varStatus="index">
 					&nbsp;&nbsp;${index.index+1}번 <img src="http://latex.codecogs.com/gif.latex?${i}"/>&nbsp; &nbsp;&nbsp;&nbsp;
-					</c:forEach>
+					</c:forEach>		      			
+		      			</div>
 				<hr>
 				<div class="container">				
 				<table>
 				<tr>
-					<th style="width:550px;">해설입력</th>
+					<th style="width:440px;">해설입력</th>
 					<th style="width:550px;">미리보기</th>
 				</tr>
 				<tr>
