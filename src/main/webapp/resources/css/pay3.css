@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+ * {
+    font-weight: 400;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    word-break: keep-all;
+    outline: none;
+ }
+body {
+    background-color: lightblue;
+}
+.col-sm-4{
+    width: 300px;
+    border: 25px solid lightblue;
+    padding: 25px;
+    margin: 25px;
+    background-color: white;
+}
+span {
+    color: rgb(112, 112, 112);
+}
+h5{
+font-size: 20px;
+}
