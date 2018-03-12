@@ -3,7 +3,7 @@
 
 <style>
 
-#topAutoScroll img {max-width:50px; z-index:999; position:fixed; bottom:0px; right:50px; display: none}
+#topAutoScroll img {max-width:50px; z-index:999; right:0px; position:fixed; bottom:0px; display: none}
 
 </style>
 <script>
@@ -13,11 +13,7 @@
               $('#topAutoScroll img').fadeIn();
               
            } else {
-              $('#topAutoScroll img').fadeOut(function(){
-                 
-              $('#topAutoScroll img').css("top","890px");
-              $('#topAutoScroll img').css("right","50px");
-              });
+              $("#topAutoScroll img").fadeOut();
            }
         });
       $("#topAutoScroll img").click(function() {
@@ -33,12 +29,6 @@
 </script>
 </head>
 
-<div class="row" id=topAutoScroll>
- <div class="col-sm-10">
- </div>
- <div class="col-sm-2">
+<div class="row" id="topAutoScroll">
    <img src="/m1/resources/images/topAutoScroll.png">  
- </div>
 </div>
-
-</html>

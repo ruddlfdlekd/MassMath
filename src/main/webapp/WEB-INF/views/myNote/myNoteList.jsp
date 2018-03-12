@@ -96,6 +96,7 @@ $(function (){
 </head>
 <body>
 	<%@ include file="../temp/header.jsp"%>
+	<%@ include file="../temp/scroll.jsp"%>
 	
 	<!-- 필터 -->
 
@@ -146,8 +147,8 @@ $(function (){
 							<thead>
 								<tr>
 									<th>${list.num}(num)</th>
-									<th>${list.chapter}(단원)</th>
-									<th>${list.chapter_m}(중단원)</th>
+									<th>${list.chapter_name}(단원)</th>
+									<th>${list.chapter_m_name}(중단원)</th>
 									<th>${list.reg_date}</th>
 									<th>${list.reason}</th>
 									<th style="text-align: right">
