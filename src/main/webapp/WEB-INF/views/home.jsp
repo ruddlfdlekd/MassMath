@@ -26,7 +26,6 @@
   </script>
 
 <body>
-HA
 <%@ include file="./temp/header.jsp"%>
    <a href="./member/login">login</a>
    <a href="./myNote/myNoteList?id=${member.id}">MY NOTE</a>
