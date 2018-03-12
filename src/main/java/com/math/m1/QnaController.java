@@ -19,6 +19,7 @@ import com.math.file.FileDAO;
 import com.math.file.FileDTO;
 import com.math.qna.QnaDTO;
 import com.math.qna.QnaService;
+import com.math.reply.ReplyDTO;
 import com.math.util.ListData;
 
 @Controller
@@ -29,12 +30,16 @@ public class QnaController {
 	private QnaService qnaService;
 	@Inject
 	private FileDAO fileDAO;
-	@RequestMapping(value="test",method=RequestMethod.GET)
-	public String test(){
-		return "board/test";
+	
+	@RequestMapping(value="ReplyInsert2", method=RequestMethod.GET)
+	public String replyInsert2(Model model) throws Exception{
+		model.addAttribute("qna", "qna");
+		
+		return "qna/qnaWrite";
 	}
 	
-	@RequestMapping(value="ReplyInsert2",method=RequestMethod.GET)
+	
+	@RequestMapping(value="ReplyInsert2",method=RequestMethod.POST)
 	public ModelAndView replyInsert2(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv=new ModelAndView();
 		int result=qnaService.replyInsert2(boardDTO);
@@ -55,9 +60,10 @@ public class QnaController {
 		
 		model.addAttribute("view",boardDTO);
 		model.addAttribute("files",far);
-		model.addAttribute("board","qna");
-		return "board/boardUpdate";
+		
+		return "qna/qnaUpdate";
 	}
+	
 	@RequestMapping(value="qnaDelete")
 	public String delete(int num, HttpSession session)throws Exception{
 		int result=qnaService.delete(num, session);
@@ -73,8 +79,8 @@ public class QnaController {
 		List<BoardDTO> ar = qnaService.selectList(listData);
 		mv.addObject("list", ar);
 		mv.addObject("page", listData);
-		mv.addObject("board", "qna");
-		mv.setViewName("board/boardList");
+		mv.addObject("qna", "qna");
+		mv.setViewName("qna/qnaList");
 		
 		return mv;
 	}
@@ -86,16 +92,16 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("view",boardDTO);
 		mv.addObject("files", far);
-		mv.addObject("board","qna");
-		mv.setViewName("board/boardView");
+		mv.addObject("qna","qna");
+		mv.setViewName("qna/qnaView");
 		return mv;
 	}
 
 	@RequestMapping(value="qnaWrite", method=RequestMethod.GET)
 	public String insert(Model model) throws Exception{
-		model.addAttribute("board", "qna");
+		model.addAttribute("qna", "qna");
 		
-		return "board/boardWrite";
+		return "qna/qnaWrite";
 	}
 
 	@RequestMapping(value="qnaWrite", method=RequestMethod.POST)
