@@ -83,7 +83,7 @@
                   </li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
-                  <li id="header-payment"><a href="#">결제하기</a></li>
+                  <li id="header-payment"><a href="/m1/pay/pay3">결제하기</a></li>
                </ul>
             </div>
          </div>
