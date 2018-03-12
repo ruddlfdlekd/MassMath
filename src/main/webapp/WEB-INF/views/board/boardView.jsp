@@ -43,9 +43,6 @@ listReply("1");
 		reply();
 	});
 
-	
-	
-	
 function reply(){
 var replytext=$("#replytext").val();//댓글 내용
 var bno="${dto.bno}"; //게시물번호
@@ -83,8 +80,6 @@ function listReply(num){
 	<c:forEach items="${files}" var="file">
 		<a href="../file/fileDown?fname=${file.fname}&oname=${file.oname}">${file.oname}</a>
 	</c:forEach>	
-	
-	
 	
 	<a href="${board}Update?num=${view.num}">수정</a>
 	<a href="${board}Delete?num=${view.num}">삭제</a>

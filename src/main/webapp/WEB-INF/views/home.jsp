@@ -21,9 +21,6 @@
 <a href="qna/qnaList">Qna</a>
 
 
-
-
-
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
