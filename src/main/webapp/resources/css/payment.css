@@ -1,0 +1,140 @@
+@CHARSET "UTF-8";
+* {
+    font-weight: 400;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    word-break: keep-all;
+    outline: none;
+}
+.background-root.jsx-3732055019 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-size: cover;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.root.jsx-3177947012 {
+    height: 100vh;
+}
+.body.jsx-3177947012 {
+    width: 100%;
+    height: calc(100% - 94px);
+    overflow-y: auto;
+}
+.content-background.jsx-3280580650 {
+    background-color: rgb(69, 159, 206)
+}
+.content-wrapper.jsx-3280580650 {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.content-wrapper.jsx-3280580650 {
+    box-sizing: content-box;
+    padding: 58px 20px 80px;
+}
+
+.content-wrapper.jsx-3280580650, .payment-terms-wrapper.jsx-3280580650 {
+    max-width: 550px;
+    margin: 0px auto;
+}
+h3.jsx-3280580650 {
+    line-height: 26px;
+    font-size: 16px;
+    letter-spacing: -0.16px;
+}
+h2.jsx-3280580650 {
+    line-height: 33px;
+    font-size: 20px;
+    letter-spacing: -0.2px;
+}
+.method.jsx-4237515084 {
+    height: 73px;
+    padding-left: 33px;
+    padding-right: 26px;
+}
+p.jsx-4237515084 {
+    margin-left: 39px;
+    line-height: 25px;
+    font-size: 15px;
+   
+}
+
+p.jsx-4237515084 {
+width:500px;
+    flex-grow: 1;
+    margin-left: 0;
+    line-height: 28px;
+    font-size: 16px;
+    color: rgb(185, 185, 185);
+    
+}
+.method.jsx-4237515084 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 75px;
+    padding-left: 58px;
+    padding-right: 56px;
+    cursor: pointer;
+    border-top: 1px solid rgba(62, 62, 62, 0.5);
+    
+}
+.method.jsx-4237515084:last-of-type {
+    border-bottom: 1px solid rgba(62, 62, 62, 0.5);
+    
+}
+
+.method.jsx-4237515084 {
+    height: 73px;
+    padding-left: 33px;
+    padding-right: 26px;
+}
+
+.method.jsx-4237515084 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 75px;
+    padding-left: 58px;
+    padding-right: 56px;
+    cursor: pointer;
+    border-top: 1px solid rgba(62, 62, 62, 0.5);
+}
+.payment-btn-wrapper.jsx-3280580650 {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.payment-btn-wrapper.jsx-3280580650 {
+    margin-top: 50px;
+     text-align: center;
+}
+.payment-terms-background.jsx-3280580650 {
+    background: rgb(21, 21, 21);
+      text-align: center;
+}
+.Inquery {
+    height: 400px;
+    background: url(/images/inquery_background.png);
+    background-size: cover;
+    text-align: center;
+    padding: 55px;
+    color: white;
+}
+
+#select1{
+margin: 0 auto;
+text-align: center;
+}
+#select2{
+margin: 0 auto;
+text-align: center;
+}
+h2{
+background-color: rgb(112, 112, 112);
+font-size: 70px;
+}

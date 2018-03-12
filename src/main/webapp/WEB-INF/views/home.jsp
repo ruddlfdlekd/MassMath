@@ -21,6 +21,7 @@
 </head>
 <%@include file="./temp/scroll.jsp"%>
 <body>
+
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="container">
