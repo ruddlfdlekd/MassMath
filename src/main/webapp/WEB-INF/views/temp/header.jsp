@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="/m1/resources/css/navbar.css">
 <<<<<<< HEAD
-<body>
+<body>asdfasdf
 	<!-- navi -->
  	<nav class="navbar navbar-default">
 		<div class="container">
