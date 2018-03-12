@@ -26,7 +26,7 @@ function loading() {
 	$("html").css("background-color","white");
 	$("body").css("background-color","white");
 	<c:if test="${empty member}">
-		alert("죄송합니다 관리자 페이지 입니다.");
+		alert("로그인 먼저 해주세요.");
 		opner.location.href="/m1/member/memberLogin";
 		window.close();
 	</c:if> 
@@ -320,6 +320,7 @@ body {
 	width:100px;
 	height: 20px;
 	margin: 0 auto;
+	margin-left : 150px;
 }
 .dropdown-menu div{
 	float: left;

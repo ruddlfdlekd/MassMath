@@ -5,136 +5,74 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
-  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/m1/resources/css/main.css">
 <script type="text/javascript">
-
+	$(function(){
+		$("#btn").click(function(){
+			location.href="/m1/member/memberLogin";
+		});
+	});
 </script>
-<style type="text/css">
-div {
-  width: 200px;
-  height: 50px;
-  background: #151515;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: hidden;
-}
-button {
-  font-family: 'Space Mono', monospace;
-  letter-spacing: 1px;
-  background: none;
-  color: white;
-  position: relative;
-  outline: none;
-  border: none;
-  height: 50px;
-  width: 190px;
-  font-size: 14px;
-  z-index: 2;
-  -webkit-transition: .01s .23s ease-out all;
-  transition: .01s .23s ease-out all;
-  overflow: hidden;
-}
-button:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 55%;
-  background: #202020;
-  z-index: -1;
-  -webkit-transition: .3s ease-in all;
-  transition: .3s ease-in all;
-}
-button:after {
-  content: '';
-  position: absolute;
-  left: -5%;
-  top: 5%;
-  height: 90%;
-  width: 5%;
-  background: white;
-  z-index: -1;
-  -webkit-transition: .4s .02s ease-in all;
-  transition: .4s .02s ease-in all;
-}
-button:hover {
-  cursor: pointer;
-  color: transparent;
-}
-button:hover:before {
-  left: 100%;
-  width: 25%;
-}
-button:hover:after {
-  left: 100%;
-  width: 70%;
-}
-button:hover .icon-right.after:after {
-  left: -80px;
-  color: white;
-  -webkit-transition: .2s .2s ease all;
-  transition: .2s .2s ease all;
-}
-button:hover .icon-right.after:before {
-  left: -104px;
-  top: 14px;
-  opacity: 0.2;
-  color: white;
-}
-
-.icon-right {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.icon-right:after {
-  font-family: "FontAwesome";
-  content: '\2192';
-  font-size: 24px;
-  display: inline-block;
-  position: relative;
-  top: 26px;
-  -webkit-transform: translate3D(0, -50%, 0);
-          transform: translate3D(0, -50%, 0);
-}
-.icon-right.after:after {
-  left: -250px;
-  color: black;	
-  -webkit-transition: .15s .25s ease left, .5s .05s ease color;
-  transition: .15s .25s ease left, .5s .05s ease color;
-}
-.icon-right.after:before {
-  content: 'Explore';
-  position: absolute;
-  left: -230px;
-  top: 14px;
-  opacity: 0;
-  -webkit-transition: .2s ease-in all;
-  transition: .2s ease-in all;
-}
-</style>
 </head>
 <body>
-<div>
-<button class="explore">Explore<span class="icon-right"></span><span class="icon-right after"></span></button>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<img class="pull-left" width="50" height="50" alt="매스매쓰 로고"
+					src="/m1/resources/img/logo.png"> <a class="navbar-brand"
+					href="/m1/main/mainPage">MassMath</a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav" id="menu">
+					<li id="header-main"><div class="large-12 columns">
+							<div class="wrapper">
+								<div class="btn btn--border btn--primary btn--animated" id="btn" style="margin-left: 750px; width:300px; margin-top:50px;">시작하기</div>
+							</div>
+						</div>
+						<span class="sr-only"></span></li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	</nav>
+	
+	<div id="section1" class="container-fluid">
+  <h1>Section 1</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 </div>
- 
+<div id="section2" class="container-fluid">
+  <h1>Section 2</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section3" class="container-fluid">
+  <h1>Section 3</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section41" class="container-fluid">
+  <h1>Section 4 Submenu 1</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section42" class="container-fluid">
+  <h1>Section 4 Submenu 2</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
 </body>
 </html>
