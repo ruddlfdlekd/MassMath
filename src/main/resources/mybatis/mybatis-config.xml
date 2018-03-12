@@ -17,6 +17,7 @@
   <typeAlias type="com.math.qna.QnaDTO" alias="QnaDTO"/>
   <typeAlias type="com.math.util.ListData" alias="listData"/>
   <typeAlias type="com.math.file.FileDTO" alias="FileDTO"/>
+  <typeAlias type="com.math.reply.ReplyDTO" alias="ReplyDTO"/>
  
  
   </typeAliases>

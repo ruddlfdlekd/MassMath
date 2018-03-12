@@ -15,6 +15,7 @@ import com.math.board.BoardDTO;
 import com.math.board.BoardService;
 import com.math.file.FileDAO;
 import com.math.file.FileDTO;
+import com.math.reply.ReplyDTO;
 import com.math.util.FileSaver;
 import com.math.util.ListData;
 import com.math.util.PageMaker;
@@ -78,8 +79,9 @@ public class QnaService implements BoardService {
 		
 	}
 
+	
 	public int replyInsert2(BoardDTO boardDTO) throws Exception{
-		
+		qnaDAO.replyUpdate(boardDTO);
 		return qnaDAO.replyInsert2(boardDTO);
 	}
 
