@@ -2,23 +2,22 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
-  
   <configuration>
+  	<typeAliases>
+  		<typeAlias type="java.util.List" alias="List"/>
+  		<typeAlias type="java.util.Map" alias="Map"/>
+  		<typeAlias type="com.math.member.MemberDTO" alias="MemberDTO"/>
+  		<typeAlias type="com.math.myNote.MyNoteDTO" alias="MyNoteDTO"/>
+		<typeAlias type="com.math.util.MyNoteListData" alias="MyNoteListData"/>	
+ 		<typeAlias type="com.math.notice.NoticeDTO" alias="NoticeDTO"/>
+ 		<typeAlias type="com.math.data.ProblemDTO" alias="ProblemDTO"/>
+ 		<typeAlias type="com.math.util.ListData" alias="ListData"/>
+ 		<typeAlias type="java.util.Map" alias="Map"/>
+ 		<typeAlias type="com.math.file.FileDTO" alias="FileDTO"/>
+ 		<typeAlias type="com.math.board.BoardDTO" alias="BoardDTO"/>
+ 		<typeAlias type="com.math.qna.QnaDTO" alias="QnaDTO"/>
+ 		<typeAlias type="com.math.study.StudyDTO" alias="StudyDTO"/>
+ 		
+ 	</typeAliases>
+ </configuration>
 
-
-
-
-
-  <typeAliases>
-
-
-  <typeAlias type="java.util.Map" alias="Map"/>
-  <typeAlias type="com.math.qna.QnaDTO" alias="QnaDTO"/>
-  <typeAlias type="com.math.util.ListData" alias="listData"/>
-  <typeAlias type="com.math.file.FileDTO" alias="FileDTO"/>
-  <typeAlias type="com.math.reply.ReplyDTO" alias="ReplyDTO"/>
- 
- 
-  </typeAliases>
-  </configuration>
