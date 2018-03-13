@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 $(function() {
+
+	<c:if test="${empty member}">
+	alert("로그인을 해주세요.");
+	location.href="/m1/member/memberLogin";
+	</c:if>
+
 		$(".btn2").click(function(){
 			var type = $("#select").val();
 			var v = <%= request.getParameter("chapter") %>;

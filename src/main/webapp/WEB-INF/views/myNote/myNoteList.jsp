@@ -17,10 +17,19 @@
 <script type="text/javascript">
 
 $(function (){
+<<<<<<< HEAD
 	var curPage = 1;
 
 	
 	$("#btn").click(function getFilterList(){
+=======
+	<c:if test="${empty member}">
+	alert("로그인을 해주세요.");
+	location.href="/m1/member/memberLogin";
+	</c:if>
+	
+	$("#btn").click(function(){
+>>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
 		var id = $("#id").val();
 		var reason = $("input[class=reason]:checked").val();
 	
@@ -90,6 +99,13 @@ $(function (){
 </script>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+	<%@ include file="../temp/header.jsp"%>
+	<%@ include file="../temp/scroll.jsp"%>
+	
+	<!-- 필터 -->
+>>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
 
 <%@ include file="../temp/header.jsp"%>
 	
@@ -131,18 +147,28 @@ $(function (){
 					<div class="text-center" style="margin-top: 20px;">
 						<input class="btn btn-default center" type="button" id="btn" value="적용하기">
 					</div>
+<<<<<<< HEAD
             </div>
         </div>
         <div class="col-md-9">
         	<div id="myNoteList">
 				<c:forEach items="${result}" var="list">
 					<div id="del${list.num}" class="listcount">
+=======
+				</form>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div id="myNoteList">
+				<c:forEach items="${result}" var="list" varStatus="i">
+					<div id="del${list.num}">
+>>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
 						<table class="table" style="width:100%; margin: 0 auto;">
 							<thead>
 								<tr>
 									<th>${list.num}(num)</th>
-									<th>${list.chapter}(단원)</th>
-									<th>${list.chapter_m}(중단원)</th>
+									<th>${list.chapter_name}(단원)</th>
+									<th>${list.chapter_m_name}(중단원)</th>
 									<th>${list.reg_date}</th>
 									<th>${list.reason}</th>
 									<th style="text-align: right">
@@ -153,22 +179,20 @@ $(function (){
 							<tbody>
 								<tr>
 									<td colspan="6">
-									문제${list.contents }<br>
-									내용내용내용내용
-									내용내용내용내용내용내용내용내용내용내용내용내용
-									내용내용내용내용내용내용내용내용내용내용내용내용
-									내용내용내용내용내용내용내용내용내용내용내용내용
-									내용내용내용내용내용내용내용내용내용내용내용내용
-									내용내용내용내용내용내용내용내용내용내용내용내용
-									내용내용내용내용내용내용내용내용내용내용내용내용
-									내용내용내용내용내용내용내용내용내용내용내용내용
+									<h1>문제:</h1><br>
+									<c:forEach items="${con[i.index]}" var="contents" varStatus="v">
+										<c:if test="${v.index % 2 eq 0 }">
+													${contents}
+												</c:if>
+											<c:if test="${v.index % 2 eq 1}">
+												<img src="http://latex.codecogs.com/gif.latex?${contents}"/>
+											</c:if>
+									</c:forEach>
 									<br>
-									보기 : <br>
-									1<br>
-									2<br>
-									3<br>
-									4<br>
-									5<br>
+									<h1>보기 : </h1><br>
+									<c:forEach items="${list.answerlist.split(',')}" var="answerlist" varStatus="a">
+										 ${a.index+1}번<span style="margin-left: 30px"><img src="http://latex.codecogs.com/gif.latex?${answerlist}"/></span><br>
+									</c:forEach>
 									</td>
 								</tr>
 								<tr>
@@ -179,7 +203,15 @@ $(function (){
 								</tr>
 								<tr id="commentary${list.num}" style="display: none">
 									<td colspan="6">
-										해설<br>${list.commentary}
+										<h1>해설</h1><br>
+										<c:forEach items="${com[i.index]}" var="commentary" varStatus="s">
+										<c:if test="${s.index % 2 eq 0 }">
+													${commentary}
+												</c:if>
+											<c:if test="${s.index % 2 eq 1}">
+												<img src="http://latex.codecogs.com/gif.latex?${commentary}"/>
+											</c:if>
+									</c:forEach>
 									</td>
 								</tr>
 							</tbody>

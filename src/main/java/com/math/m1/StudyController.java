@@ -29,14 +29,18 @@ public class StudyController {
 	
 	@RequestMapping(value="studyView")
 	public ModelAndView View(String chapter,HttpSession session)throws Exception{
-		ProblemDTO problemDTO = new ProblemDTO();
-		problemDTO.setId(((MemberDTO)session.getAttribute("member")).getId());
-		problemDTO.setBook(chapter.charAt(0)+"");
-		problemDTO.setChapter(chapter.charAt(1)+"");
-		String rate = studyService.getRate(problemDTO);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("chapter", chapter);
-		mv.addObject("rate", rate);
+		if(((MemberDTO)session.getAttribute("member")).getId()==null){
+			mv.setViewName("/member/memberLogin");
+		}else{
+			ProblemDTO problemDTO = new ProblemDTO();
+			problemDTO.setId(((MemberDTO)session.getAttribute("member")).getId());
+			problemDTO.setBook(chapter.charAt(0)+"");
+			problemDTO.setChapter(chapter.charAt(1)+"");
+			String rate = studyService.getRate(problemDTO);
+			mv.addObject("chapter", chapter);
+			mv.addObject("rate", rate);	
+		}
 		return mv;
 	}
 	@RequestMapping(value="studyConcept")
@@ -170,11 +174,13 @@ public class StudyController {
 	public ModelAndView studyMain(String chapter,HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		ProblemDTO problemDTO = new ProblemDTO();
-		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
-		problemDTO.setBook(chapter);
-		List<String> ar = studyService.bookRate(problemDTO);
-		mv.addObject("ar",ar);
-		mv.addObject("chpater",chapter);
+		if((MemberDTO) session.getAttribute("member") != null){
+			problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
+			problemDTO.setBook(chapter);
+			List<String> ar = studyService.bookRate(problemDTO);
+			mv.addObject("ar",ar);
+			mv.addObject("chpater",chapter);			
+		}
 		return mv;
 	}
 	

@@ -55,6 +55,7 @@
 </style>
 </head>
 	<%@ include file="../temp/header.jsp"%>
+	
 <body>
 	
 	<section style="width:100%; height:900px;">

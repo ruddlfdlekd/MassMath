@@ -35,7 +35,7 @@ $(function(){
 		frm.submit();
 		}
 		else
-			alert("정답 다 체크해");
+			alert("정답을 체크해주세요.");
 	});
 	
 	$("#sidebar li").click(function() {
@@ -47,32 +47,40 @@ $(function(){
 </head>
 <body>
 <%@ include file="../temp/header.jsp"%>
-<h1>시험문제페이지</h1>
+
 <form name="frm" action="./AnswerCheck" method="POST" target="AnswerCheck">
 <input type="hidden" name="test" value="test">
 <input type="hidden" id="ma" name="ma">
 <input type="hidden" name="chapter" value="<%=request.getAttribute("chapter")%>">
 <input type="hidden" name="rate" value="<%=request.getAttribute("rate")%>">
-<c:forEach items="${ar}" var="problem" varStatus="i">
-		${i.index+1 }.<c:forEach items="${con[i.index] }" var="contents" varStatus="v">
-			<c:if test="${v.index % 2 eq 0 }">
-						${contents}
+<div class="container-fluid">
+ <div class="container" style="margin-left:200px;">
+	<h1 style="font-weight: 700"><%=request.getAttribute("rate")%>등급 문제</h1>
+	<c:forEach items="${ar}" var="problem" varStatus="i">
+			${i.index+1 }.<c:forEach items="${con[i.index] }" var="contents" varStatus="v">
+				<c:if test="${v.index % 2 eq 0 }">
+							${contents}
+						</c:if>
+					<c:if test="${v.index % 2 eq 1}">
+						<img src="http://latex.codecogs.com/gif.latex?${contents}"/>
 					</c:if>
-				<c:if test="${v.index % 2 eq 1}">
-					<img src="http://latex.codecogs.com/gif.latex?${contents}"/>
-				</c:if>
-		</c:forEach>
-		<br><br>
-		<input type="hidden" name="pnum" value="${problem.pnum }">
-		<input type="hidden" name="answer" value="${problem.answer }">
-		<c:forEach items="${problem.answerlist.split(',')}" var="answerlist" varStatus="a">
-		<input type="radio"<c:if test="${problem.my_answer == a.index+1}">  checked="checked"</c:if> class="answer" title="${problem.pnum }" name="answer${i.index+1}" value="${a.index+1}"><img src="http://latex.codecogs.com/gif.latex?${answerlist }"/><br>
-		</c:forEach>
-		<br><br>
-</c:forEach>
+			</c:forEach>
+			<br><br>
+			<input type="hidden" name="pnum" value="${problem.pnum }">
+			<input type="hidden" name="answer" value="${problem.answer }">
+			<c:forEach items="${problem.answerlist.split(',')}" var="answerlist" varStatus="a">
+			<input type="radio"<c:if test="${problem.my_answer == a.index+1}">  checked="checked"</c:if> class="answer" title="${problem.pnum }" name="answer${i.index+1}" value="${a.index+1}"><img src="http://latex.codecogs.com/gif.latex?${answerlist }"/><br>
+			</c:forEach>
+			<br><br>
+			<hr>
+	</c:forEach>
 <br>
+ <div class="container" style="padding:20px;">
+<input class="btn btn-primary" style="width:250px; margin-left:300px" type="button" id="btn" value="제출"> 
+ </div>
+ </div>
+</div>
 
-<input type="button" id="btn" value="제출">
 </form>
 <%@ include file="../temp/footer.jsp"%>
 </body>
