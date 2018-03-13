@@ -17,17 +17,22 @@
 <script type="text/javascript">
 
 $(function (){
+<<<<<<< HEAD
+	var curPage = 1;
+
+	
+	$("#btn").click(function getFilterList(){
+=======
 	<c:if test="${empty member}">
 	alert("로그인을 해주세요.");
 	location.href="/m1/member/memberLogin";
 	</c:if>
 	
 	$("#btn").click(function(){
+>>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
 		var id = $("#id").val();
-		
 		var reason = $("input[class=reason]:checked").val();
-		alert(reason);
-
+	
 		var books = [];
 		$("input[class=book]:checked").each(function(){
 			books.push($(this).val());
@@ -36,9 +41,7 @@ $(function (){
 		if(books.length == 0){
 			books = ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7'];
 		}
-		alert(books);
-
- 		var data={id:id, books:books, reason:reason};
+ 		var data={id:id, books:books, reason:reason, curPage:curPage};
 		var values = [];
  		$.ajax({
  			type: "GET",
@@ -46,11 +49,12 @@ $(function (){
  			data: data,
  			success: function(data){
  				alert("완료");
- 				alert(data);
  				$("#myNoteList").html(data);
  			}
  		});
 	});
+	
+	
 	
 	//삭제 ajax처리
 	$("#myNoteList").on("click", ".del", function () {
@@ -95,23 +99,30 @@ $(function (){
 </script>
 </head>
 <body>
+<<<<<<< HEAD
+=======
 	<%@ include file="../temp/header.jsp"%>
 	<%@ include file="../temp/scroll.jsp"%>
 	
 	<!-- 필터 -->
+>>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
 
-	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-2">
-			<div class="pull-left" style="width:100%; padding: 30px 40px; background-color: white; border: 1px solid black">
-<!-- 				<form class="frm"> -->
-					<h4 class="text-center"><b>종류 선택</b></h4><br>
-					<p><input type="hidden" id="id" name="id" value="${member.id}"></p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="wrong">모르는 문제</p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="miss">실수한 문제</p>
-					<hr>
-					<h4 class="text-center"><b>책 선택</b></h4><br>
+<%@ include file="../temp/header.jsp"%>
+	
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        	<h4 class="text-center"><b>필터</b></h4>
+            <div id="sidebar" class="well sidebar-nav">
+                <h4>
+                    <small><b>종류 선택</b></small>
+                </h4>
+                <p><input type="hidden" id="id" name="id" value="${member.id}"></p>
+				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
+				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="wrong">모르는 문제</p>
+				<p><input type="radio" class="reason" name="reason" autocomplete="off" value="miss">실수한 문제</p>
+				<hr>
+				<h4><small><b>책 선택</b></small></h4><br>
 					<div >
 						<label><input name="book" class="book" id="b1" type="checkbox" value="b1">고등수학(상)</label>
 					</div>
@@ -136,6 +147,14 @@ $(function (){
 					<div class="text-center" style="margin-top: 20px;">
 						<input class="btn btn-default center" type="button" id="btn" value="적용하기">
 					</div>
+<<<<<<< HEAD
+            </div>
+        </div>
+        <div class="col-md-9">
+        	<div id="myNoteList">
+				<c:forEach items="${result}" var="list">
+					<div id="del${list.num}" class="listcount">
+=======
 				</form>
 			</div>
 		</div>
@@ -143,6 +162,7 @@ $(function (){
 			<div id="myNoteList">
 				<c:forEach items="${result}" var="list" varStatus="i">
 					<div id="del${list.num}">
+>>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
 						<table class="table" style="width:100%; margin: 0 auto;">
 							<thead>
 								<tr>
@@ -202,9 +222,9 @@ $(function (){
 					</div>
 				</c:forEach>
 			</div>
-		</div>
-		<div class="col-md-2"></div>
-	</div>
-	<%@ include file="../temp/footer.jsp"%>
+        </div>
+    </div>
+</div>
+<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>

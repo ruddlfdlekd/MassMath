@@ -27,7 +27,7 @@ public class MyNoteController {
 	private MyNoteService myNoteService;
 	
 	@RequestMapping(value="myNoteFilter")
-	public String myNoteFilter(String id, String reason, @RequestParam(value="books[]") List<String> books, Model model, HttpSession session) throws Exception {
+	public String myNoteFilter(String id, String reason, int curPage, @RequestParam(value="books[]") List<String> books, Model model, HttpSession session) throws Exception {
 
 		MyNoteListData myNoteListData = new MyNoteListData();
 		System.out.println("=====param -> controller=====");
@@ -36,11 +36,13 @@ public class MyNoteController {
 		System.out.println("books.size() : "+books.size());
 		
 		myNoteListData.setId(id);
-		myNoteListData.setBooks(books);
 		myNoteListData.setReason(reason);
+		myNoteListData.setCurPage(curPage);
+		myNoteListData.setBooks(books);
 		
 		List<MyNoteDTO> mynotelist = myNoteService.myNoteFilter(myNoteListData);
 		model.addAttribute("result", mynotelist);
+		model.addAttribute("page", myNoteListData);
 		return "common/myNoteResult";
 	}
 	

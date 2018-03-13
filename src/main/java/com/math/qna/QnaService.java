@@ -2,6 +2,7 @@ package com.math.qna;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -29,11 +30,12 @@ public class QnaService{
 	private FileDAO fileDAO;
 	
 	
-	public List<BoardDTO> selectList(ListData listData) throws Exception {
+	public List<QnaDTO> selectList(ListData listData) throws Exception {
 		int totalCount=qnaDAO.totalCount(listData);
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.pageMaker(totalCount, listData);
-		return qnaDAO.selectList(listData);
+		List<QnaDTO> ar = qnaDAO.selectList2(listData);
+		return ar;
 	}
 
 	

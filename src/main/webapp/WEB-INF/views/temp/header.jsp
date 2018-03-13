@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -63,12 +63,12 @@
                      </ul>
                   </li>
                   <li id="header-mynote"><a href="/m1/myNote/myNoteList?id=${member.id}">마이노트</a></li>
+                  <li id="header-qna"><a href="/m1/qna/qnaList">질문하기</a></li>
                   <li id="header-notice"><a href="/m1/notice/noticeList">공지사항</a></li>
                   <c:if test="${member.id eq 'admin@admin'}">
                   	<li id="make_btn"><a href="#">문제등록</a></li>
                     <li id="header-problem"><a href="/m1/problem/problemList">문제리스트</a></li>
                   </c:if>
-                  <li id="header-qna"><a href="#">질문하기</a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
