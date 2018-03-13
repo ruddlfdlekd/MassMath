@@ -36,7 +36,7 @@ $(function(){
 
   <p>올해도 학원비로 한달에 30만원, 인강비로 한달에 20만원?</p> 
   <p>MASS MATH으로 한방에 끝내는데 대체 왜?</p>
-  <h1><span>MASS MATH</span> 수강결재 하러 가즈아~!<i class="fa fa-car" style="font-size:48px;color:black;"></i><i class="fa fa-car" style="font-size:48px;color:black;"></i></h1>
+  <h1><span>MASS MATH</span> 수강결제 하러 가즈아~!<i class="fa fa-car" style="font-size:48px;color:black;"></i><i class="fa fa-car" style="font-size:48px;color:black;"></i></h1>
   
 </div>
 
@@ -48,7 +48,7 @@ $(function(){
       <p>프리패스 2개월49,000원</p>
       <p>모든 문제와 강의, 기능을2개월 완전 무제한으로!모든 기능 무제한 맞춤 문제 무제한 맞춤 강의 무제한</p>
 
-<button type="button" class="btn btn-primary" value="49000" >49000원결재하기</button>
+<button type="button" class="btn btn-primary" value="49000" >49000원결제하기</button>
     </div>
 <div class="col-sm-4">
       <h5>꼼꼼히 차근차근 공부하고 싶다면</h5>
@@ -58,7 +58,7 @@ $(function(){
 모든 기능 무제한
 맞춤 문제 무제한
 맞춤 강의 무제한</p>
-<button type="button" class="btn btn-primary" value="69000">69000원결재하기</button>
+<button type="button" class="btn btn-primary" value="69000">69000원결제하기</button>
     </div>
 <div class="col-sm-4">
       <h5>언제든 필요할 때 공부하고 싶다면</h5>        
@@ -68,7 +68,7 @@ $(function(){
 모든 기능 무제한
 맞춤 문제 무제한
 맞춤 강의 무제한</p>
-<button type="button" class="btn btn-primary" value="99000">99000원결재하기</button>
+<button type="button" class="btn btn-primary" value="99000">99000원결제하기</button>
     </div>
   </div>
 </div>
