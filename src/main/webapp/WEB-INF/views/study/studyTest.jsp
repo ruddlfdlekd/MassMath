@@ -75,11 +75,11 @@ $(function(){
 			<hr>
 	</c:forEach>
 <br>
- <div class="container" style="padding:20px;">
-<input class="btn btn-primary" style="width:250px; margin-left:300px" type="button" id="btn" value="제출"> 
- </div>
  </div>
 </div>
+ <div class="container text-center" style="padding:20px;">
+<input class="btn btn-primary" style="width:250px;" type="button" id="btn" value="제출"> 
+ </div>
 
 </form>
 <%@ include file="../temp/footer.jsp"%>
