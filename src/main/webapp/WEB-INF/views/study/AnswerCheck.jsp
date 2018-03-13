@@ -12,30 +12,29 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 $(function(){
-		$(window).bind("beforeunload", function (){
-		var a = new Array();
-		var reason = $(".reason");
-		var answer = $(".answer");
-		for(var i=0; i<reason.length; i++){
-		a.push(reason[i].value);
-		a.push(answer[i].title);
-		a.push(answer[i].value);
-		}
-		$.ajax({
-			url : "./myNote",
-		
-			type : 'POST',
-		
-			data : {"a" : a},
-			traditional : true,
-				
-			success:function(data){   
+	function AnswerCheck(){
+	window.opener.location.href="/m1/main/mainPage";
+	 var a = new Array();
+	var reason = $(".reason");
+	var answer = $(".answer");
+	for(var i=0; i<reason.length; i++){
+	a.push(reason[i].value);
+	a.push(answer[i].title);
+	a.push(answer[i].value);
+	}
+	$.ajax({
+		url : "./myNote",
+
+		type : 'POST',
+
+		data : {"a" : a},
+		traditional : true,
 			
-			},  
-		});
+		success:function(data){   
+			go();
+		},
 	});
-		
-		
+	};
 		$(".label").each(function(){
 			if($(this).attr("title") == 'X'){
 				$(this).attr("class","label label-danger");
@@ -43,14 +42,15 @@ $(function(){
 		});
 		
 		$("#btn").click(function(){
-			window.opener.location.href="/m1/main/mainPage";
 			window.close();
+			window.opener.location.href="/m1/main/mainPage";
 		});
 		
 });
+
 </script>
 </head>
-<body>
+<body onBeforeUnload="AnswerCheck()">
 <%@include file="../temp/loading2.jsp"%>
 <div id="b" name="b" style="visibility:hidden;">
 <div class="container" style="padding:50px">

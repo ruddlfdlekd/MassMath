@@ -1,6 +1,8 @@
 package com.math.member;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 
@@ -57,5 +59,8 @@ public class MemberService {
 	public int memberDelete(MemberDTO memberDTO) throws Exception {
 		return memberDAO.memberDelete(memberDTO);
 	}
-
+	
+	public List<String> getRateList(String id)throws Exception{
+		return memberDAO.getRateList(id);
+	}
 }

@@ -80,8 +80,10 @@ public class StudyDAO {
 	public void rateChange(ProblemDTO problemDTO)throws Exception{
 		if(getRate(problemDTO)==null)
 			sqlSession.insert(NAMESPACE+"insertRate",problemDTO);
-		else
-		sqlSession.update(NAMESPACE+"rateChange", problemDTO);
+		else{
+			if(getRate(problemDTO).charAt(0)>problemDTO.getRate().charAt(0))
+				sqlSession.update(NAMESPACE+"rateChange", problemDTO);
+		}
 	}
 	public void rateChange2(ProblemDTO problemDTO)throws Exception{
 		if(getRate(problemDTO)==null)
