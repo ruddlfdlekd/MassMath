@@ -48,4 +48,11 @@
 	<delete id="memberDelete" parameterType="MemberDTO">
 		delete member where id=#{id}
 	</delete>
+	
+	<select id="getRateList" parameterType="String" resultType="String">
+		select rate from member_level where id=#{id}
+	</select>
+	
+	
+	
 </mapper>

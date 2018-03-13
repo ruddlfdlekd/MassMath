@@ -1,5 +1,7 @@
 package com.math.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -58,5 +60,8 @@ public class MemberDAO {
 	public int memberDelete(MemberDTO memberDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
 	}
-
+	
+	public List<String> getRateList(String id)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getRateList", id);
+	}
 }

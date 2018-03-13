@@ -121,8 +121,8 @@ public class StudyController {
 		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
 		List<ProblemDTO> ar = null;
 		ar = studyService.CheckProblem(problemDTO);
-		
-		
+		rate = ar.get(0).getRate();
+	
 		
 		ArrayList<String> contents1 = null;
 		ArrayList<String> answerList1 = null;
@@ -223,10 +223,12 @@ public class StudyController {
 		if(test!=null){
 			problemDTO.setChapter_m("0");
 			problemDTO.setType("0");
-			if(count>=8)
-			  studyService.rateChange(problemDTO);
-			else
+			if(count>=8){
+				studyService.rateChange(problemDTO);
+			}
+			else{
 				studyService.rateChange2(problemDTO);
+			}
 		}
 		studyService.deleteProblem(problemDTO);
 		mv.addObject("check", check);
@@ -251,7 +253,7 @@ public class StudyController {
 	@RequestMapping(value="myNote", method=RequestMethod.POST)
 	public void myNote(String[] a,HttpSession session)throws Exception{
 		ArrayList<ProblemDTO> ar = new ArrayList<>();
-		if(a.length>3){
+		if(a!=null){
 		for(int i =0; i<a.length; i+=3){
 		ProblemDTO problemDTO = new ProblemDTO();
 		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
