@@ -6,14 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JOIN</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link href="/m1/resources/css/join.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript">
 	$(function() {
 		var email="";
 		var data2="";
+		
 		
 		   //약관 동의
 	      $("#all_check").click(function() {
@@ -84,22 +85,66 @@
 		$("#pw").keyup(function() {
 			if ($("#pw").val().length > 7) {
 				$("#pwcheck").text("사용가능한 비밀번호 입니다");
+				$("#pwCheck").val("1");
 			} else {
 				$("#pwcheck").text("비밀번호는 8자리 이상이여야 합니다");
+				$("#pwCheck").val("2");
 			}
 		});
 		
 		$("#pw2").keyup(function() {
 			if ($("#pw").val() == $("#pw2").val()) {
-				$("#pwcheck2").text("비밀번호가 일치합니다");
+				if($("#pw").val().length > 7){
+					$("#pwcheck2").text("비밀번호가 일치합니다");
+					$("#pwCheck").val("1");
+				}
+				
 			} else {
 				$("#pwcheck2").text("비밀번호가 일치 하지 않습니다");
+				$("#pwCheck").val("2");
 			}
 		});
+		if($("#pw").val().length < 8){
+			$("#pwCheck").val("2");
+		}else{
+			$("#pwCheck").val("1");
+		}
 		
 		$("#nn").click(function() {
-			//var addr = document.frm.addr.value;
-			window.open("./memberAddrSearch", "", "toolbar=yes,scrollbars=yes,resizable=yes,top=300,left=750,width=400,height=400");
+			new daum.Postcode({
+	               oncomplete: function(data) {
+	                   // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+	                   // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+	                   // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                   var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+	                   var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+	                   // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                   // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                   if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                       extraRoadAddr += data.bname;
+	                   }
+	                   // 건물명이 있고, 공동주택일 경우 추가한다.
+	                   if(data.buildingName !== '' && data.apartment === 'Y'){
+	                      extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                   }
+	                   // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                   if(extraRoadAddr !== ''){
+	                       extraRoadAddr = ' (' + extraRoadAddr + ')';
+	                   }
+	                   // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+	                   if(fullRoadAddr !== ''){
+	                       fullRoadAddr += extraRoadAddr;
+	                   }
+
+	                   // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                   $('#postal_code').val(data.zonecode); //5자리 새우편번호 사용
+	                   $('#street').val(fullRoadAddr);
+	                   
+	                   window.self.close();
+	               }
+	           }).open();
 		});
 		
 		$("#btn").click(function() {
@@ -108,9 +153,13 @@
 			}else{
 				if(email==$("#id").val() && $("#check").val()=="t"){
 					if ($("#id").val() && $("#pw").val() && $("#pw2").val() && $("#name").val() && $("#goal").val() && $("#birth").val() && $("#phone").val() && $("#postal_code").val().length > 0) {
-						if($("#c1").prop("checked") && $("#c2").prop("checked")){							
+						if($("#c1").prop("checked") && $("#c2").prop("checked")){		
+							if($("#pwCheck").val()=='2'){
+								alert("비밀번호 확인.");
+							}else{
 							frm.submit();
 							alert("회원가입 완료");
+							}
 						}else{
 							alert("약관동의를 확인해주세요");
 						}
@@ -206,7 +255,7 @@
 				<p class="p">
 					<input type="password" placeholder="  비밀번호를 확인해주세요" id="pw2">
 				<p id="pwcheck2"></p>
-
+					<input type="hidden" id="pwCheck">
 				<label>NAME </label>
 				<p class="p">
 					<input type="text" placeholder="  이름을 입력해주세요" name="name" id="name">

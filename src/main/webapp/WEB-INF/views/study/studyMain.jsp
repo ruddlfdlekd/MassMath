@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 $(function() {
+
+	<c:if test="${empty member}">
+	alert("로그인을 해주세요.");
+	location.href="/m1/member/memberLogin";
+	</c:if>
+
 		$(".btn2").click(function(){
 			var type = $("#select").val();
 			var v = <%= request.getParameter("chapter") %>;
@@ -64,9 +70,17 @@ $(function() {
                 </ul>
             </div>
         </div>
-        <c:forEach items="${ar}" var="rate" varStatus="i">
-        <p>${i.index+1 }Chapter 등급 : ${rate }</p>
-        </c:forEach>
+        <div class="col-md-9" style="margin-top :40px; border: 1px solid #bbbbbb; height: 450px;">
+        	<c:forEach items="${ar}" var="rate" varStatus="i">
+        	<p>${i.index+1 }Chapter 등급 : ${rate }</p>
+        	</c:forEach>
+        	<img style="margin-top: 100px; margin-left: auto; margin-right: auto; display: block;" alt="hello" src="/m1/resources/images/hello.png">
+        	<br>
+        	<p style="text-align: center;">반갑습니다.</p>
+        	
+        </div>
+        
+        
     </div>
 </div>
 

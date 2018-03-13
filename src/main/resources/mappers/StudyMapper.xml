@@ -69,10 +69,10 @@
  		 </select>
  		
  		<insert id="SaveProblem" parameterType="ProblemDTO">
- 			insert into problem_data_save values (#{id}, #{pnum}, #{my_answer}, #{chapter}, #{chapter_m}, #{chapter_s}, #{type}, #{book},#{answer},#{commentary},#{test})
+ 			insert into problem_data_save values (#{id}, #{pnum}, #{my_answer}, #{chapter}, #{chapter_m}, #{chapter_s}, #{type}, #{book},#{answer},#{commentary},#{test},#{rate})
  		</insert>
  		<insert id="SaveProblemTest" parameterType="ProblemDTO">
- 			insert into problem_data_save values (#{id}, #{pnum}, #{my_answer}, #{chapter},0, 0, 0, #{book},#{answer},#{commentary},#{test})
+ 			insert into problem_data_save values (#{id}, #{pnum}, #{my_answer}, #{chapter},0, 0, 0, #{book},#{answer},#{commentary},#{test},#{rate})
  		</insert>
  		
  		<update id="UpdateCount" parameterType="ProblemDTO">
@@ -127,9 +127,10 @@
 		</insert>
 		
 		<update id="rateChange" parameterType="ProblemDTO">
-		update member_level set rate = #{rate} where id=#{id} and chapter=#{chapter}
+		update member_level set rate = #{rate} where id=#{id} and chapter=#{chapter} and book=#{book}
 		</update>
 	
+		
 		<select id="getRate" parameterType="ProblemDTO" resultType="String">
 		select rate from member_level where id=#{id} and book=#{book} and chapter=#{chapter}
 		</select>

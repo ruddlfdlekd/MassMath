@@ -215,9 +215,6 @@ body {
 	 
 		
 	<h3>PNUM:${view.pnum}</h3>
-	<h3>TYPE:${view.type}</h3>
-	<h3>CHAPTER:${view.chapter}</h3>
-	<h3>CHAPTER_M:${view.chapter_m}</h3>
 	<h3>ANSWER:${view.answer}</h3>
 	<h3>Problem:
 	</h3>
@@ -244,7 +241,7 @@ body {
 			<img src="http://latex.codecogs.com/gif.latex?${i}"/>
 			</c:if>
 		</c:forEach>
-				<a href="#" class="boton" id="insert" style="margin-top:100px;"> Make Problem! </a>
+				<a href="#" class="boton" id="insert" style="margin-top:30px;"> Make Problem! </a>
 		</div>
 			</div>
 			

@@ -74,8 +74,7 @@ $(function(){
 	<section style="width: 100%; height: 900px; padding:100px;">
 		<div class="container">
 		
-			<form action="./noticeWrite" method="post" id="frm"
-				enctype="multipart/form-data">
+			<form action="./noticeWrite" method="post" id="frm">
 				<div class="container">
 					<table class="table-responsive" style="margin-left: 25%;">
 						<tr>
@@ -93,7 +92,7 @@ $(function(){
 				</div>
 				<div class="container" style="margin-top:30px;">
 				<input type="text" name="title" id="title"
-								placeholder="Title Insert" style="width:700px; font-size: 35px; font-weight: bold; margin-left: 20%;">
+								placeholder="제목을 입력해주세요." style="width:700px; font-size: 35px; font-weight: bold; margin-left: 20%;">
 				<input type="hidden" readonly="readonly" name="email"
 								value="${member.id}">
 				<input type="hidden" readonly="readonly" name="writer"

@@ -7,6 +7,14 @@ public class QnaDTO extends BoardDTO {
 	private int ref;
 	private int step;
 	private int s_re;
+	private Integer replyCount;
+
+	public Integer getReplyCount() {
+		return replyCount;
+	}
+	public void setReplyCount(Integer replyCount) {
+		this.replyCount = replyCount;
+	}
 	public int getRef() {
 		return ref;
 	}

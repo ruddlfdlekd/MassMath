@@ -123,7 +123,7 @@ public class ProblemController {
 			//Contents 한글과 식 나누는작업
 			StringTokenizer st = new StringTokenizer(contents, "*");
 			
-			int z = 0;
+			
 			contents1 = new ArrayList<String>();
 			while(st.hasMoreElements()){
 				contents1.add(st.nextToken());
@@ -137,7 +137,7 @@ public class ProblemController {
 			//answerList 나누는작업
 			st = new StringTokenizer(answerList, ",");
 			
-			z = 0;
+			
 			answerList1 = new ArrayList<String>();
 			while(st.hasMoreElements()){
 				answerList1.add(st.nextToken());
@@ -148,7 +148,7 @@ public class ProblemController {
 			//Commentary 한글과 식 나누는작업
 			st = new StringTokenizer(commentary, "*");
 			
-			z =0;
+			
 			commentary1 = new ArrayList<String>();
 			while(st.hasMoreElements()){
 				commentary1.add(st.nextToken());

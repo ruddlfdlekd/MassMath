@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+*{
+	font-family: 'Nanum Gothic', serif;
+}
+.index{
+	font: inherit;
+	vertical-align: baseline;
+	box-sizing: border-box;
+	word-break: keep-all;
+}
+.index .jumbotron{
+	background-size: cover;
+	
+}
+.intro-item{
+	line-height: 1.6em;
+	padding: 30px;
+    border-bottom: 1px solid rgba(12,60,96,.25)
+}
+  
+.navbar {
+	background-color: white;
+	font-style: bold;
+	font-weight: 700;
+}
+#topAutoScroll img {max-width:50px; z-index:999; position:fixed; bottom:0px; right:100px; display: none}
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1.2px;
+  padding: 12px 32px;
+  text-align: center;
+  text-transform: uppercase;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+}
+.btn:focus {
+  outline: none;
+}
+
+.btn--primary {
+  color: lightslategray;
+}
+
+.btn--border {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.btn--animated {
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+.btn--animated.btn--border.btn--primary {
+  border: 1px solid lightslategray;
+}
+.btn--animated:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: lightslategray;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+  z-index: -1;
+}
+.btn--animated:hover {
+  color: white;
+}
+.btn--animated:hover:before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transition-timing-function: cubic-bezier(0.45, 1.64, 0.47, 0.66);
+          transition-timing-function: cubic-bezier(0.45, 1.64, 0.47, 0.66);
+}
+

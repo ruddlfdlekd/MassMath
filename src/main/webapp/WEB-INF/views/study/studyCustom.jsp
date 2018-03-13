@@ -47,7 +47,9 @@ $(function(){
 </head>
 <body>
 <%@ include file="../temp/header.jsp"%>
-<h1>문제페이지</h1>
+<div class="container-fluid">
+ <div class="container" style="margin-left:200px;">
+<h1 style="font-weight: 700">맞춤형문제</h1>
 <form name="frm" action="./AnswerCheck" method="POST" target="AnswerCheck">
 <input type="hidden" id="ma" name="ma">
 <input type="hidden" name="type" value="${ar[0].type }">
@@ -70,9 +72,13 @@ $(function(){
 		<br><br>
 </c:forEach>
 <br>
-
-<input type="button" id="btn" value="제출">
+<div class="container" style="padding:20px;">
+<input  class="btn btn-primary" style="width:250px; margin-left:300px" type="button" id="btn" value="제출">
+ </div>
 </form>
+ 
+ </div>
+ </div>
 <%@ include file="../temp/footer.jsp"%>
 </body>
 </html>

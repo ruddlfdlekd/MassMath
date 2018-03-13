@@ -277,10 +277,11 @@ public class MemberController {
 		if (memberDTO != null) {
 			session.setAttribute("member", memberDTO);
 			mv.addObject("message", "로그인되었습니다.");
+			mv.addObject("path", "../main/mainPage");
 		} else {
 			mv.addObject("message", "로그인에 실패하였습니다.");
+			mv.addObject("path", "../member/memberLogin");
 		}
-		mv.addObject("path", "../main/mainPage");
 		mv.setViewName("common/result");
 		return mv;
 	}

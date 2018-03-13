@@ -66,13 +66,15 @@
 			 </div>
 
 				
-				<div class="container">${view.contents}</div>
+				<div class="container" style="text-align: center">
+				${view.contents}
+				</div>
 				<div>
 				<a href="./noticeList" class="boton" id="btn" style="margin-top:50px"> List Notice! </a>
 				 <c:if test="${member.id eq 'admin@admin'}">
-				 <div style="margin-left: 45%; margin-top: 100px;">
+				 <div style="margin-left: 38%; margin-top: 100px;">
 					 <button class="btn btn-primary" id="update">Update</button>
-					 <button class="btn btn-primary" id="delete">Delete</button>				
+					 <button class="btn btn-primary" id="delete" style="margin-left:150px;">Delete</button>				
 				 </div>
 				</c:if>
 				</div>

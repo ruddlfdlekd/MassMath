@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 	$(function() {
+		
+		<c:if test="${empty member}">
+		alert("로그인 먼저 해주세요.");
+		opner.location.href="/m1/member/memberLogin";
+		</c:if>
+		
 		var v = <%= request.getParameter("chapter") %>+"";
 		var c = $(".c");
 		var c1 = v.substring(1,2);
@@ -110,30 +116,31 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-9" style="margin-top :40px; border: 1px solid #bbbbbb; height: 650px;">
-        	<img style="margin-top: 100px; margin-left: auto; margin-right: auto; display: block;" alt="hello" src="/m1/resources/images/hello.png">
-        	<br>
-        	<p style="text-align: center;">선택해주세요.</p>
+        <div class="col-md-9" style="margin-top :40px; border: 1px solid #bbbbbb; height: 351px;">
         	<div class="row text-center">
-				<div style="border-right : 1px solid #bbbbbb; height: 250px;" class="col-md-4">
+				<div style="border-right : 1px solid #bbbbbb; height: 250px; margin: 50px 0px 50px 0px;" class="col-md-4">
 					<div style="height: 140px;">
 						<h4><b>기초학습</b></h4>
 						<p>기본 개념을 공부하는 곳입니다.<br>단원을 처음 학습하거나 기초부터 개념을 다시 학습하고 싶은 분들께 추천합니다.</p>
 					</div>
 					<button style="margin-top : 50px; margin-bottom: 50px;" class="btn2 btn btn-default" value="1">시작하기</button>
 				</div>
-				<div style="border-right : 1px solid #bbbbbb; height: 250px;" class="col-md-4">
+				<div style="border-right : 1px solid #bbbbbb; height: 250px; margin: 50px 0px 50px 0px;" class="col-md-4">
 					<div style="height: 140px;">
-						<h4><b>실력확인</b></h4>
+						<h4><b>테스트 문제</b></h4>
 						<p>실력확인을 하는 곳입니다. 원하는 난이도를 선택하여 테스트 문제를 풀어보고, <br>자신의 예상점수를 확인할 수 있습니다.</p>
 					</div>
 					<p><a style="margin-top : 50px; margin-bottom: 50px;" class="btn btn-default" data-target="#modal" data-toggle="modal">시작하기</a></p>
 				</div>
-				<div style="height: 250px;" class="col-md-4">
+				<div style="height: 250px; margin: 50px 0px 50px 0px;" class="col-md-4">
 					<div style="height: 140px;">
 						<h4><b>맞춤형 문제</b></h4>
 						<p>맞춤형 문제가 제공되는 곳입니다. 학습자의 예상점수와 알맞는 난이도의 문제가 제공됩니다.</p>
-						<p>현재등급 : <%=request.getAttribute("rate") %></p>
+						<p>현재등급 : 
+						    <c:if test="${empty rate}"><b style="color: red;">없음</b></c:if>
+						    <c:if test="${not empty rate}"><b style="color: red;"><%=request.getAttribute("rate") %></b></c:if>
+						    
+						</p>
 					</div>
 					<button style="margin-top : 50px; margin-bottom: 50px;" class="btn2 btn btn-default" value="3">시작하기</button>
 				</div>

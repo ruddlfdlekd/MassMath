@@ -24,9 +24,7 @@ public class StudyService {
 		 list = studyDAO.CheckProblem(problemDTO);
 		 if(problemDTO.getTest()==1){
 			 if(list.size()!=0){
-				 for(int i=0; i<list.size(); i++){
-				 ar.add(studyDAO.SelectProblemTest(list.get(i).getPnum()));
-				 }
+				 ar= list;
 			 }
 			 else{
 				 ar=studyDAO.SelectTest(problemDTO);
@@ -34,6 +32,7 @@ public class StudyService {
 					 problemDTO2 = ar.get(i);
 					 problemDTO2.setTest(1);
 					 problemDTO2.setId(problemDTO.getId());
+					 problemDTO2.setRate(problemDTO.getRate());
 					 studyDAO.SaveProblemTest(problemDTO2);
 					 studyDAO.CountUp(problemDTO2);
 					 studyDAO.MProblem(problemDTO2);
@@ -42,9 +41,10 @@ public class StudyService {
 		 }
 		 else{
 			 if(list.size()!=0){
-				 for(int i=0; i<list.size(); i++){
+				 ar= list;
+				 /*for(int i=0; i<list.size(); i++){
 					 ar.add(studyDAO.SelectProblem(list.get(i).getPnum()));
-				 }
+				 }*/
 			 }
 			 else{
 				 ar=studyDAO.SelectConcept(problemDTO);
@@ -52,6 +52,7 @@ public class StudyService {
 					 problemDTO2 = ar.get(i);
 					 problemDTO2.setTest(2);
 					 problemDTO2.setId(problemDTO.getId());
+					 problemDTO2.setRate(problemDTO.getRate());
 					 studyDAO.SaveProblem(problemDTO2);
 					 studyDAO.CountUp(problemDTO2);
 					 studyDAO.MProblem(problemDTO2);
@@ -66,7 +67,7 @@ public class StudyService {
 			studyDAO.rateChange(problemDTO);
 		}
 	 public void rateChange2(ProblemDTO problemDTO)throws Exception{
-			studyDAO.rateChange(problemDTO);
+			studyDAO.rateChange2(problemDTO);
 		}
 	public int UpdateCount(int pnum)throws Exception{
 		return studyDAO.UpdateCount(pnum);

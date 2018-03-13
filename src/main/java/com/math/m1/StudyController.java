@@ -29,14 +29,18 @@ public class StudyController {
 	
 	@RequestMapping(value="studyView")
 	public ModelAndView View(String chapter,HttpSession session)throws Exception{
-		ProblemDTO problemDTO = new ProblemDTO();
-		problemDTO.setId(((MemberDTO)session.getAttribute("member")).getId());
-		problemDTO.setBook(chapter.charAt(0)+"");
-		problemDTO.setChapter(chapter.charAt(1)+"");
-		String rate = studyService.getRate(problemDTO);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("chapter", chapter);
-		mv.addObject("rate", rate);
+		if(((MemberDTO)session.getAttribute("member")).getId()==null){
+			mv.setViewName("/member/memberLogin");
+		}else{
+			ProblemDTO problemDTO = new ProblemDTO();
+			problemDTO.setId(((MemberDTO)session.getAttribute("member")).getId());
+			problemDTO.setBook(chapter.charAt(0)+"");
+			problemDTO.setChapter(chapter.charAt(1)+"");
+			String rate = studyService.getRate(problemDTO);
+			mv.addObject("chapter", chapter);
+			mv.addObject("rate", rate);	
+		}
 		return mv;
 	}
 	@RequestMapping(value="studyConcept")
@@ -117,8 +121,8 @@ public class StudyController {
 		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
 		List<ProblemDTO> ar = null;
 		ar = studyService.CheckProblem(problemDTO);
-		
-		
+		rate = ar.get(0).getRate();
+	
 		
 		ArrayList<String> contents1 = null;
 		ArrayList<String> answerList1 = null;
@@ -170,11 +174,13 @@ public class StudyController {
 	public ModelAndView studyMain(String chapter,HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		ProblemDTO problemDTO = new ProblemDTO();
-		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
-		problemDTO.setBook(chapter);
-		List<String> ar = studyService.bookRate(problemDTO);
-		mv.addObject("ar",ar);
-		mv.addObject("chpater",chapter);
+		if((MemberDTO) session.getAttribute("member") != null){
+			problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
+			problemDTO.setBook(chapter);
+			List<String> ar = studyService.bookRate(problemDTO);
+			mv.addObject("ar",ar);
+			mv.addObject("chpater",chapter);			
+		}
 		return mv;
 	}
 	
@@ -217,10 +223,12 @@ public class StudyController {
 		if(test!=null){
 			problemDTO.setChapter_m("0");
 			problemDTO.setType("0");
-			if(count>=8)
-			  studyService.rateChange(problemDTO);
-			else
+			if(count>=8){
+				studyService.rateChange(problemDTO);
+			}
+			else{
 				studyService.rateChange2(problemDTO);
+			}
 		}
 		studyService.deleteProblem(problemDTO);
 		mv.addObject("check", check);
@@ -245,7 +253,7 @@ public class StudyController {
 	@RequestMapping(value="myNote", method=RequestMethod.POST)
 	public void myNote(String[] a,HttpSession session)throws Exception{
 		ArrayList<ProblemDTO> ar = new ArrayList<>();
-		if(a.length>3){
+		if(a!=null){
 		for(int i =0; i<a.length; i+=3){
 		ProblemDTO problemDTO = new ProblemDTO();
 		problemDTO.setId(((MemberDTO) session.getAttribute("member")).getId());
