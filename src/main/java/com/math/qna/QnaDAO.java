@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.math.board.BoardDAO;
 import com.math.board.BoardDTO;
+import com.math.data.ProblemDTO;
 import com.math.util.ListData;
 
 @Repository
@@ -18,6 +19,9 @@ public class QnaDAO implements BoardDAO {
 	private SqlSession sqlSession;
 	private String namespace = "QnaMapper.";
 	
+	public String contentsView(int num) throws Exception{
+		return sqlSession.selectOne(namespace+"contentsView", num);
+	}
 
 	public List<QnaDTO> selectList2(ListData listData) throws Exception {
 		return sqlSession.selectList(namespace+"selectList", listData);

@@ -17,8 +17,9 @@
 <script type="text/javascript">
 
 $(function (){
-
-	
+	$(".btnQ").click(function (){
+		location.href="/m1/qna/qnaWrite?num="+$(this).val();
+	});
 	var curPage = 1;
 	<c:if test="${empty member}">
 	alert("로그인을 해주세요.");
@@ -186,7 +187,7 @@ $(function (){
 								<tr>
 									<td colspan="6" style="text-align: center;">
 										<button type="button" class="btn btn-primary btn-sm" id="checkAnswer" value="${list.num}">정답 확인</button>
-										<button type="button" class="btn btn-default btn-sm" value="${list.num}">질문 하기</button>
+										<button class="btnQ" type="button" class="btn btn-default btn-sm" value="${list.num}">질문 하기</button>
 									</td>
 								</tr>
 								<tr class="commentary${list.num}" style="display: none;">

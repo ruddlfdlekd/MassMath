@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.math.board.BoardDTO;
 import com.math.board.BoardService;
+import com.math.data.ProblemDTO;
 import com.math.file.FileDAO;
 import com.math.file.FileDTO;
 import com.math.util.FileSaver;
@@ -29,6 +30,9 @@ public class QnaService{
 	@Inject
 	private FileDAO fileDAO;
 	
+	public String contentsView(int num) throws Exception{
+		return qnaDAO.contentsView(num);
+	}
 	
 	public List<QnaDTO> selectList(ListData listData) throws Exception {
 		int totalCount=qnaDAO.totalCount(listData);

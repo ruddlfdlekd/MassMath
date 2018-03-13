@@ -64,7 +64,7 @@ $(function(){
 			<input id="btn" type="submit" value="SEARCH">
 		</form>
 		<div>
-			<a class="btn btn-primary" href="qnaWrite">글쓰기</a> 
+			<a class="btn btn-primary" href="qnaWrite2">글쓰기</a> 
 		</div>
 	</div>
 	<div class="text-center">

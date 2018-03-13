@@ -1,6 +1,8 @@
 package com.math.m1;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.math.board.BoardDTO;
+import com.math.data.ProblemDTO;
 import com.math.qna.QnaDTO;
 import com.math.qna.QnaService;
 import com.math.util.ListData;
@@ -45,9 +48,27 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="qnaWrite", method=RequestMethod.GET)
-	public void qnaWrite() throws Exception{
+	public ModelAndView qnaWrite(int num) throws Exception{
 		System.out.println("==qnaWriteGET==");
+		
+		ModelAndView mv = new ModelAndView();
+		String contents = qnaService.contentsView(num);
+		System.out.println(contents);
+		ArrayList<String> con = new ArrayList<>(); 
+		StringTokenizer st = new StringTokenizer(contents, "*");
+		while(st.hasMoreElements()){
+			con.add(st.nextToken());
+		}
+		mv.addObject("con", con);
+		mv.addObject("problem", contents);
+		return mv;
 	}
+	
+	@RequestMapping(value="qnaWrite2", method=RequestMethod.GET)
+	public void qnaWrite() throws Exception{
+		
+	}
+	
 	
 	
 	@RequestMapping(value="qnaList")

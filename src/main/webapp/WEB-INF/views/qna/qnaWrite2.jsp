@@ -89,18 +89,7 @@ $(function () {
               </div>
             </div>
             <div>
-             <div class="container" style="margin-left: 50px; padding: 30px;">
-             <h1>문제:</h1>
-               <c:forEach begin="0" end="${con.size()}" items="${con}" var="i" varStatus="index">
-				<c:if test="${index.index % 2 eq 0}">
-				${i}
-			</c:if>
-				<c:if test="${index.index % 2 eq 1}">
-					<img src="http://latex.codecogs.com/gif.latex?\large&space;${i}" />
-				</c:if>
-			</c:forEach>
-			 <br><br>
-             </div>
+         
             </div>
             <!-- Message body -->
             <div class="form-group">
