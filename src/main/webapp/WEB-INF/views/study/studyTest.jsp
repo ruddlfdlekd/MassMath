@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 $(function(){
+	var popupX = (window.screen.width/2) - (1300/2);
 	$(".answer").click(function(){
 		var answer = $(this).val();
 		var num = $(this).attr("title");
@@ -31,7 +32,7 @@ $(function(){
 		}
 		$("#ma").val(aa);
 		if(num==10){
-		window.open("","AnswerCheck","width=600,height=600");
+		window.open("","AnswerCheck","top=100px, left="+popupX+",width=600,height=600");
 		frm.submit();
 		}
 		else
@@ -75,8 +76,8 @@ $(function(){
 			<hr>
 	</c:forEach>
 <br>
- <div class="container" style="padding:20px;">
-<input class="btn btn-primary" style="width:250px; margin-left:300px" type="button" id="btn" value="제출"> 
+ <div class="container" style="padding:50px;">
+<input class="btn btn-primary" style="width:300px; margin-left:300px" type="button" id="btn" value="제출"> 
  </div>
  </div>
 </div>
