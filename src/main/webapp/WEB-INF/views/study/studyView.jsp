@@ -127,7 +127,7 @@
 				</div>
 				<div style="border-right : 1px solid #bbbbbb; height: 250px; margin: 50px 0px 50px 0px;" class="col-md-4">
 					<div style="height: 140px;">
-						<h4><b>실력확인</b></h4>
+						<h4><b>테스트 문제</b></h4>
 						<p>실력확인을 하는 곳입니다. 원하는 난이도를 선택하여 테스트 문제를 풀어보고, <br>자신의 예상점수를 확인할 수 있습니다.</p>
 					</div>
 					<p><a style="margin-top : 50px; margin-bottom: 50px;" class="btn btn-default" data-target="#modal" data-toggle="modal">시작하기</a></p>
@@ -136,7 +136,11 @@
 					<div style="height: 140px;">
 						<h4><b>맞춤형 문제</b></h4>
 						<p>맞춤형 문제가 제공되는 곳입니다. 학습자의 예상점수와 알맞는 난이도의 문제가 제공됩니다.</p>
-						<p>현재등급 : <%=request.getAttribute("rate") %></p>
+						<p>현재등급 : 
+						    <c:if test="${empty rate}"><b style="color: red;">없음</b></c:if>
+						    <c:if test="${not empty rate}"><b style="color: red;"><%=request.getAttribute("rate") %></b></c:if>
+						    
+						</p>
 					</div>
 					<button style="margin-top : 50px; margin-bottom: 50px;" class="btn2 btn btn-default" value="3">시작하기</button>
 				</div>

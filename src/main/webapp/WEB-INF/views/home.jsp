@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btn").click(function(){
-			location.href="/m1/member/memberLogin";
+			location.href="/m1/member/login";
 		});
 	});
 </script>
