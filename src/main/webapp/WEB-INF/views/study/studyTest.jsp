@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -76,11 +76,16 @@ $(function(){
 			<hr>
 	</c:forEach>
 <br>
+
  <div class="container" style="padding:50px;">
 <input class="btn btn-primary" style="width:300px; margin-left:300px" type="button" id="btn" value="제출"> 
  </div>
+
  </div>
 </div>
+ <div class="container text-center" style="padding:20px;">
+<input class="btn btn-primary" style="width:250px;" type="button" id="btn" value="제출"> 
+ </div>
 
 </form>
 <%@ include file="../temp/footer.jsp"%>

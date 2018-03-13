@@ -17,19 +17,15 @@
 <script type="text/javascript">
 
 $(function (){
-<<<<<<< HEAD
-	var curPage = 1;
 
 	
-	$("#btn").click(function getFilterList(){
-=======
+	var curPage = 1;
 	<c:if test="${empty member}">
 	alert("로그인을 해주세요.");
 	location.href="/m1/member/memberLogin";
 	</c:if>
 	
-	$("#btn").click(function(){
->>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
+	$("#btn").click(function getFilterList(){
 		var id = $("#id").val();
 		var reason = $("input[class=reason]:checked").val();
 	
@@ -39,7 +35,7 @@ $(function (){
 		});
 		/* 배열의 길이가 0이면 전체 값을 다 넣어준다.	 */
 		if(books.length == 0){
-			books = ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7'];
+			books = ['1', '2', '3', '4', '5', '6', '7'];
 		}
  		var data={id:id, books:books, reason:reason, curPage:curPage};
 		var values = [];
@@ -84,7 +80,7 @@ $(function (){
 	
 	//정답확인
 	$("#myNoteList").on("click", "#checkAnswer", function(){
-		$("#commentary"+$(this).val()).toggle();
+		$(".commentary"+$(this).val()).toggle();
 	});
 	
 	//질문하기
@@ -99,15 +95,10 @@ $(function (){
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-=======
-	<%@ include file="../temp/header.jsp"%>
-	<%@ include file="../temp/scroll.jsp"%>
-	
-	<!-- 필터 -->
->>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
+
 
 <%@ include file="../temp/header.jsp"%>
+<%@ include file="../temp/scroll.jsp"%>
 	
 <div class="container">
     <div class="row">
@@ -124,51 +115,41 @@ $(function (){
 				<hr>
 				<h4><small><b>책 선택</b></small></h4><br>
 					<div >
-						<label><input name="book" class="book" id="b1" type="checkbox" value="b1">고등수학(상)</label>
+						<label><input name="book" class="book" id="b1" type="checkbox" value="1">고등수학(상)</label>
 					</div>
 					<div>
-						<label><input name="book" class="book" id="b2" type="checkbox" value="b2">고등수학(하)</label>
+						<label><input name="book" class="book" id="b2" type="checkbox" value="2">고등수학(하)</label>
 					</div>
 					<div>
-						<label><input name="book" class="book" id="b3" type="checkbox" value="b3">수학 1</label>
+						<label><input name="book" class="book" id="b3" type="checkbox" value="3">수학 1</label>
 					</div>
 					<div>
-						<label><input name="book" class="book" id="b4" type="checkbox" value="b4">수학 2</label>
+						<label><input name="book" class="book" id="b4" type="checkbox" value="4">수학 2</label>
 					</div>
 					<div>
-						<label><input name="book" class="book" id="b5" type="checkbox" value="b5">미적분</label>
+						<label><input name="book" class="book" id="b5" type="checkbox" value="5">미적분</label>
 					</div>
 					<div>
-						<label><input name="book" class="book" id="b6" type="checkbox" value="b6">확률</label>
+						<label><input name="book" class="book" id="b6" type="checkbox" value="6">확률</label>
 					</div>
 					<div>
-						<label><input name="book" class="book" id="b7" type="checkbox" value="b7">통계</label>
+						<label><input name="book" class="book" id="b7" type="checkbox" value="7">통계</label>
 					</div>
 					<div class="text-center" style="margin-top: 20px;">
 						<input class="btn btn-default center" type="button" id="btn" value="적용하기">
 					</div>
-<<<<<<< HEAD
             </div>
         </div>
-        <div class="col-md-9">
-        	<div id="myNoteList">
-				<c:forEach items="${result}" var="list">
-					<div id="del${list.num}" class="listcount">
-=======
-				</form>
-			</div>
-		</div>
-		<div class="col-md-6">
+		<div class="col-md-9">
 			<div id="myNoteList">
 				<c:forEach items="${result}" var="list" varStatus="i">
-					<div id="del${list.num}">
->>>>>>> 2f977be449ae33ef4b86ad95379e781bd2727653
+					<div id="del${list.num}" class="listcount">
 						<table class="table" style="width:100%; margin: 0 auto;">
 							<thead>
 								<tr>
-									<th>${list.num}(num)</th>
-									<th>${list.chapter_name}(단원)</th>
-									<th>${list.chapter_m_name}(중단원)</th>
+									<th>${list.num}번</th>
+									<th>${list.chapter_name}</th>
+									<th>${list.chapter_m_name}</th>
 									<th>${list.reg_date}</th>
 									<th>${list.reason}</th>
 									<th style="text-align: right">
@@ -178,8 +159,10 @@ $(function (){
 							</thead>
 							<tbody>
 								<tr>
-									<td colspan="6">
-									<h1>문제:</h1><br>
+									<td colspan="2">
+									<h4>문제</h4><br>
+									</td>
+									<td colspan="4">
 									<c:forEach items="${con[i.index]}" var="contents" varStatus="v">
 										<c:if test="${v.index % 2 eq 0 }">
 													${contents}
@@ -188,8 +171,13 @@ $(function (){
 												<img src="http://latex.codecogs.com/gif.latex?${contents}"/>
 											</c:if>
 									</c:forEach>
-									<br>
-									<h1>보기 : </h1><br>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" style="border-top-color: white;">
+										<h4>보기</h4>
+									</td>
+									<td colspan="4" style="border-top-color: white;">
 									<c:forEach items="${list.answerlist.split(',')}" var="answerlist" varStatus="a">
 										 ${a.index+1}번<span style="margin-left: 30px"><img src="http://latex.codecogs.com/gif.latex?${answerlist}"/></span><br>
 									</c:forEach>
@@ -201,9 +189,17 @@ $(function (){
 										<button type="button" class="btn btn-default btn-sm" value="${list.num}">질문 하기</button>
 									</td>
 								</tr>
-								<tr id="commentary${list.num}" style="display: none">
-									<td colspan="6">
-										<h1>해설</h1><br>
+								<tr class="commentary${list.num}" style="display: none;">
+									<td colspan="2"><h4>정답</h4></td>
+									<td colspan="4">
+										<h5><b>${list.answer}</b></h5>
+									</td>
+								</tr>
+								<tr class="commentary${list.num}" style="display: none;">
+									<td colspan="2" style="border-top-color: white;">
+										<h4>해설</h4>
+									</td>
+									<td colspan="4" style="border-top-color: white;">	
 										<c:forEach items="${com[i.index]}" var="commentary" varStatus="s">
 										<c:if test="${s.index % 2 eq 0 }">
 													${commentary}
