@@ -33,7 +33,7 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="qnaWrite", method=RequestMethod.POST)
-	public String qnaWrite(QnaDTO qnaDTO,MultipartFile f1, HttpSession session, RedirectAttributes re) throws Exception{
+	public String qnaWrite(QnaDTO qnaDTO, MultipartFile f1, HttpSession session, RedirectAttributes re) throws Exception{
 		System.out.println(f1);
 		int result=qnaService.insert(qnaDTO, f1, session);
 		String message="Write Fail";
@@ -53,11 +53,11 @@ public class QnaController {
 	@RequestMapping(value="qnaList")
 	public ModelAndView selectList(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<BoardDTO>ar=qnaService.selectList(listData);
+		List<QnaDTO>ar=qnaService.selectList(listData);
 		mv.addObject("list", ar);
 		mv.addObject("page",listData);
 		mv.addObject("board", "qna");
-		mv.setViewName("board/boardList");
+		mv.setViewName("qna/qnaList");
 		return mv;
 	}
 

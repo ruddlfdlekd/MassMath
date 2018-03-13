@@ -20,7 +20,6 @@
 			</foreach>
 		</if>
 		order by reg_date desc) N)
-		where R between #{startRow} and #{lastRow}
 		
 	</select>
 	 
@@ -30,9 +29,11 @@
 	</select>
 	
 	<select id="myNoteList" parameterType="MyNoteListData" resultType="MyNoteDTO">
-		SELECT * from mynote M, problem P
+		select * from
+		(select rownum R, N.* from 
+		(select * from mynote M, problem P
 		where M.num = P.pnum and M.id=#{id}
-		order by reg_date desc
+		order by reg_date desc) N)
 	</select>
 	
 	<delete id="myNoteDelete" parameterType="MyNoteDTO">

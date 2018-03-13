@@ -17,12 +17,13 @@
 <script type="text/javascript">
 
 $(function (){
-	$("#btn").click(function(){
-		var id = $("#id").val();
-		
-		var reason = $("input[class=reason]:checked").val();
-		alert(reason);
+	var curPage = 1;
 
+	
+	$("#btn").click(function getFilterList(){
+		var id = $("#id").val();
+		var reason = $("input[class=reason]:checked").val();
+	
 		var books = [];
 		$("input[class=book]:checked").each(function(){
 			books.push($(this).val());
@@ -31,9 +32,7 @@ $(function (){
 		if(books.length == 0){
 			books = ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7'];
 		}
-		alert(books);
-
- 		var data={id:id, books:books, reason:reason};
+ 		var data={id:id, books:books, reason:reason, curPage:curPage};
 		var values = [];
  		$.ajax({
  			type: "GET",
@@ -41,11 +40,12 @@ $(function (){
  			data: data,
  			success: function(data){
  				alert("완료");
- 				alert(data);
  				$("#myNoteList").html(data);
  			}
  		});
 	});
+	
+	
 	
 	//삭제 ajax처리
 	$("#myNoteList").on("click", ".del", function () {
@@ -90,12 +90,13 @@ $(function (){
 </script>
 </head>
 <body>
-	<%@ include file="../temp/header.jsp"%>
+
+<%@ include file="../temp/header.jsp"%>
 	
-	<div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-3">
-        	<h4 class="text-center"><b>필터 적용</b></h4>
+        	<h4 class="text-center"><b>필터</b></h4>
             <div id="sidebar" class="well sidebar-nav">
                 <h4>
                     <small><b>종류 선택</b></small>
@@ -192,53 +193,6 @@ $(function (){
         </div>
     </div>
 </div>
-	
-	<!-- 필터 -->
-
-<!-- 	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-2">
-			<div class="pull-left" style="width:100%; padding: 30px 40px; background-color: white; border: 1px solid black">
-
-					<h4 class="text-center"><b>종류 선택</b></h4><br>
-					<p><input type="hidden" id="id" name="id" value="${member.id}"></p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="all" checked="checked">전체</p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="wrong">모르는 문제</p>
-					<p><input type="radio" class="reason" name="reason" autocomplete="off" value="miss">실수한 문제</p>
-					<hr>
-					<h4 class="text-center"><b>책 선택</b></h4><br>
-					<div >
-						<label><input name="book" class="book" id="b1" type="checkbox" value="b1">고등수학(상)</label>
-					</div>
-					<div>
-						<label><input name="book" class="book" id="b2" type="checkbox" value="b2">고등수학(하)</label>
-					</div>
-					<div>
-						<label><input name="book" class="book" id="b3" type="checkbox" value="b3">수학 1</label>
-					</div>
-					<div>
-						<label><input name="book" class="book" id="b4" type="checkbox" value="b4">수학 2</label>
-					</div>
-					<div>
-						<label><input name="book" class="book" id="b5" type="checkbox" value="b5">미적분</label>
-					</div>
-					<div>
-						<label><input name="book" class="book" id="b6" type="checkbox" value="b6">확률</label>
-					</div>
-					<div>
-						<label><input name="book" class="book" id="b7" type="checkbox" value="b7">통계</label>
-					</div>
-					<div class="text-center" style="margin-top: 20px;">
-						<input class="btn btn-default center" type="button" id="btn" value="적용하기">
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="col-md-6">
-			
-		</div>
-		<div class="col-md-2"></div>
-	</div> -->
-	<%@ include file="../temp/footer.jsp"%>
+<%@ include file="../temp/footer.jsp"%>
 </body>
 </html>

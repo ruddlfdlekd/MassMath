@@ -43,7 +43,7 @@ public class FileController {
 		f = new File(filePath, fileName);
 		seFileDTO.getFiledata().transferTo(f);
 		file_result += "&bNewLine=true&sFileName="+seFileDTO.getFiledata().getOriginalFilename();
-		file_result += "&sFileURL=/s7/resources/upload/" + fileName;
+		file_result += "&sFileURL=/m1/resources/upload/" + fileName;
 		}
 		else{
 			file_result += "&errstr=error";

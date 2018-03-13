@@ -61,7 +61,7 @@
                      </ul>
                   </li>
                   <li id="header-mynote"><a href="/m1/myNote/myNoteList?id=${member.id}">마이노트</a></li>
-                  <li id="header-qna"><a href="#">질문하기</a></li>
+                  <li id="header-qna"><a href="/m1/qna/qnaList">질문하기</a></li>
                   <c:if test="${member.id eq 'admin@admin'}">
                   	<li id="make_btn"><a href="#">문제등록</a></li>
                     <li id="header-problem"><a href="/m1/problem/problemList">문제리스트</a></li>
