@@ -64,9 +64,17 @@ $(function() {
                 </ul>
             </div>
         </div>
-        <c:forEach items="${ar}" var="rate" varStatus="i">
-        <p>${i.index+1 }Chapter 등급 : ${rate }</p>
-        </c:forEach>
+        <div class="col-md-9" style="margin-top :40px; border: 1px solid #bbbbbb; height: 450px;">
+        	<c:forEach items="${ar}" var="rate" varStatus="i">
+        	<p>${i.index+1 }Chapter 등급 : ${rate }</p>
+        	</c:forEach>
+        	<img style="margin-top: 100px; margin-left: auto; margin-right: auto; display: block;" alt="hello" src="/m1/resources/images/hello.png">
+        	<br>
+        	<p style="text-align: center;">반갑습니다.</p>
+        	
+        </div>
+        
+        
     </div>
 </div>
 

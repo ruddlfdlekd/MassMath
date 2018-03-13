@@ -22,7 +22,9 @@ public class FileSaver {
 		//1. 저장할 파일명 생성
 		//iu.jpg
 		System.out.println("String saver");
+		System.out.println("f1:"+ f1);
 		String fileName= f1.getOriginalFilename();
+		
 		if(f1.getOriginalFilename()!=""){
 		fileName=fileName.substring(fileName.lastIndexOf("."));
 		fileName=UUID.randomUUID().toString()+fileName;

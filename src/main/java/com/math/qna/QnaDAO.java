@@ -19,8 +19,7 @@ public class QnaDAO implements BoardDAO {
 	private String namespace = "QnaMapper.";
 	
 
-	@Override
-	public List<BoardDTO> selectList(ListData listData) throws Exception {
+	public List<QnaDTO> selectList2(ListData listData) throws Exception {
 		return sqlSession.selectList(namespace+"selectList", listData);
 	}
 
@@ -48,8 +47,13 @@ public class QnaDAO implements BoardDAO {
 
 	@Override
 	public int totalCount(ListData listData) throws Exception {
+		return sqlSession.selectOne(namespace+"totalCount", listData);
+	}
+
+	@Override
+	public List<BoardDTO> selectList(ListData listData) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 }
